@@ -18,9 +18,86 @@
 	<!-- 이 부분은 설명 글 -->
 	<!-- <h1>Test form</h1> -->
 	<form action="logcheck.jsp" method="get">
-		아이디 <input type="text" name="ID" placeholder = "영문숫자 12자리 입력" /> <br />
+		아이디 <input type="text" name="ID" placeholder="영문숫자 12자리 입력" /> <br />
 		비밀번호 <input type="password" name="PW" required="required" /> <br />
-		<input type="submit"/><input type="reset" />
+		이메일 <input type="email" name="email" required="required" /> 
+		웹주소<input type="url" name="URL" required="required" /> 
+		
+		<br />
+		<input type="number" name="1" min="1" max="10" step="1" />
+		
+		<br />
+		<input type="number" name="1" min="1" max="10" step="1" />
+		
+		<br />
+		<input type= "color" />
+		
+		<br />
+		<input type= "date" />
+		
+		<br />
+		<input type= "week" />
+		
+		
+		<br />
+		<input type= "datetime-local" />
+				
+		<br />
+		<input type= "time" />
+										
+		<br />
+		<input type= "tel" />
+		
+		<br />
+		<input type= "search" />
+		
+		<textarea rows="5" cols="20"></textarea>
+		
+		<input type="text" maxlength="10" size="30" />
+		<input type="password" maxlength="10" />
+		
+		<select>
+		<option>1</option>
+		<option>1</option>
+		<option>1</option>
+		<option>1</option>
+		</select>
+		
+		<select size="4">
+		<option>02</option>
+		<option>031</option>
+		<option>032</option>
+		<option>033</option>
+		</select>
+		
+		<input type="checkbox" /> 자바
+		<input type="checkbox" /> jsp
+		<input type="checkbox" /> html
+		
+		
+		<input type="radio" name="r1" /> 1번
+		<input type="radio" name="r1" /> 2번
+		<input type="radio" name="r1" /> 3번
+		<input type="radio" name="r1" /> 4번
+		
+		<input type="text" value="수정불가능" readonly="readonly" />
+		
+		<br />
+		<textarea rows="5" cols="30" readonly="readonly">
+		fsrgregrgr
+		grgrgregregre
+		rgregregregr
+		erggergrgrgr
+		</textarea>
+		
+		<br />
+		<input type="file" />
+		
+		<br />
+		<input type="hidden" value = "숨겨진 데이터 보이지 않음" />
+		
+		<br />
+		<input type="submit" /><input type="reset" />
 	</form>
 </body>
 </html>
