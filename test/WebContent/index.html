@@ -1,10 +1,13 @@
-<!DOCTYPE html> <!-- HTMML 5 선언부 -->
+<!DOCTYPE html>
+<!-- HTMML 5 선언부 -->
 
 <html>
 <head>
-<meta charset="UTF-8"> <!-- 이 문서에 인코딩 설정 부분 설정 태그 -->
+<meta charset="UTF-8">
+<!-- 이 문서에 인코딩 설정 부분 설정 태그 -->
 <!-- head 사이에는 meta 태그를 가장 먼저!!! -->
-<title>폼 태그 연습</title> <!-- 브라우저 탭 이름 : 사용자에게 현 페이지 알림 -->
+<title>폼 태그 연습</title>
+<!-- 브라우저 탭 이름 : 사용자에게 현 페이지 알림 -->
 <!-- style / link / script 태그들 추가 기능 -->
 <!-- style 태그  : html 문서내에서 요소들을 꾸미고 싶을때 -->
 <!-- link 태그 : 외부 자원을 참조할 때 -->
@@ -12,10 +15,12 @@
 					또는 html내부에서 버튼등을 조작(이벤트)하고 싶을 경우 -->
 </head>
 <body>
-<!-- 이 부분은 설명 글 -->
-<!-- <h1>Test form</h1> -->
-<form>
-아이디 <input type="text" />
-비밀번호 <input type="password"/> </form>
+	<!-- 이 부분은 설명 글 -->
+	<!-- <h1>Test form</h1> -->
+	<form action="logcheck.jsp" method="get">
+		아이디 <input type="text" name="ID" /> <br />
+		비밀번호 <input type="password" name="PW" /> <br />
+		<input type="submit"/><input type="reset" />
+	</form>
 </body>
 </html>
