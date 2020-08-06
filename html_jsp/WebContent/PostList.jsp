@@ -12,24 +12,15 @@
 
 <%
 	request.setCharacterEncoding("UTF-8");
-	
+
 	String writer=request.getParameter("WRITER");
 	String title=request.getParameter("TITLE");
 	String content=request.getParameter("CONTENT");
 	
-	Date date=new Date();
+	Date date = new Date();
 	Long time=date.getTime();
-	
-	String filename = time+".txt";
-	PrintWriter pwriter=null;
 	try {
-		String filepath="c:/bbs/" + filename;
-		pwriter=new PrintWriter(filepath);
-		pwriter.printf("제목 : %s %n", title);
-		pwriter.printf("작성자 : %s %n", writer);
-		pwriter.println(content);
-		pwriter.printf("위치 : ");
-		out.println("저장되었습니다.");
+		
 	} catch(IOException ioe) {
 		out.print("파일에 데이터를 쓸 수 없습니다.");
 	} finally {
