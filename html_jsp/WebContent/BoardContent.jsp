@@ -8,14 +8,8 @@
 <title>BoardPost.jsp</title>
 </head>
 <body>
-<h2>글 파일 저장</h2>
 
-<%
-	File f=new File("c:/bbs");
-	String[] filenames=f.list();
-	for(String f_name:filenames)
-		out.println(f_name+"<br/>");
-	
-	%>
+<%=request.getParameter("f") %>
+
 </body>
 </html>

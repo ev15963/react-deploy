@@ -513,3 +513,6 @@ java.lang.NullPointerException
 
 !ENTRY org.eclipse.jface.text 2 0 2020-08-06 14:11:10.550
 !MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.jst.jsp.ui 2 2 2020-08-06 15:24:20.933
+!MESSAGE Computing Java proposals did not complete normally. The operation took too long to return.

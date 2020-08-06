@@ -13,9 +13,18 @@
 <%
 	File f=new File("c:/bbs");
 	String[] filenames=f.list();
-	for(String f_name:filenames)
-		out.println(f_name+"<br/>");
-	
+	out.println("<table border=1>");
+	for(String f_name:filenames) {
+		out.println("<tr><td>");
+		out.println("<a href=BoardContent.jsp?f=" + f_name + ">");
+		out.println(f_name);
+		out.println("</a>");
+		out.println("</td></tr>");
+	}
+
+	out.println("</table>");
 	%>
+	
+	
 </body>
 </html>
