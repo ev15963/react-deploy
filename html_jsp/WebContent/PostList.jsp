@@ -41,7 +41,5 @@
 	}
 	%>
 	
-	
-<button onclick = "location.href='BoardList.jsp'">글목록</button>
 </body>
 </html>

@@ -7,12 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% request.setCharacterEncoding("UTF-8"); %>
 <%= request.getParameter("name") %> <br/>
 <%= request.getParameter("title") %> <br/>
-------------------------------------<br/>
-<%= request.getParameter("CONTENT") %> <br/>
-------------------------------------<br/>
+---------------------------------- <br/>
+<%= request.getParameter("CON") %> <br/>
+---------------------------------- <br/>
 저장되었습니다.
 </body>
 </html>
