@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.*" %>
+<% GregorianCalendar now = new GregorianCalendar(); %>
+<%= String.format("%TY년 %Tm월 %Td일", now, now, now) %>
+<%-- Today.jsp --%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,12 +11,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% request.setCharacterEncoding("UTF-8"); %>
-<%= request.getParameter("name") %> <br/>
-<%= request.getParameter("title") %> <br/>
-------------------------------------<br/>
-<%= request.getParameter("CONTENT") %> <br/>
-------------------------------------<br/>
-저장되었습니다.
+
 </body>
 </html>
