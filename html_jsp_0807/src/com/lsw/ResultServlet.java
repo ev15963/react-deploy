@@ -29,10 +29,13 @@ public class ResultServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//servlet 담당
 		HttpSession session = request.getSession();
 		String food = (String) session.getAttribute("food");
 		String animal = request.getParameter("animal");
-		session.invalidate();
+		session.invalidate(); //더이상 추가하지 않는다.
+		
+		//jsp 담당
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<head><title>성격테스트</title></head>");
