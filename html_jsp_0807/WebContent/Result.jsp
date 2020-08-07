@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<% String result = request.getParameter("Result"); %>
+	pageEncoding="UTF-8"%>
+<%
+	String result = request.getParameter("result");
+	request.setCharacterEncoding("UTF-8");
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,12 +12,21 @@
 <title>회원 가입</title>
 </head>
 <body>
-	<h3> 회원 가입 결과 </h3>
+	<h3>회원 가입 결과</h3>
+
 	<%
-		if (result.equals("success"))
-			out.println("가입되었습니다.");
-		else
-			out.println("가입되지 않았습니다.");
+		out.println(result);
 	%>
+	가입하지마 그냥
+
+	<%--
+		if (result.equals("success")) {
+			out.println("가입되었습니다.");
+		} else {
+			out.println("가입되지 않았습니다.");
+		}
+	--%>
+
+
 </body>
 </html>
