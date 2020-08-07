@@ -5,7 +5,7 @@
 
 
 <html>
-<head>
+<head> 
 <meta charset="UTF-8">
 <title>쿠키 데이터 저장하기</title>
 </head>
