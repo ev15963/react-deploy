@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	String result = request.getParameter("result");
+	String result = request.getParameter("result1");
 	request.setCharacterEncoding("UTF-8");
 %>
 
@@ -17,7 +17,7 @@
 	<%
 		out.println(result);
 	%>
-	가입하지마 그냥
+
 
 	<%--
 		if (result.equals("success")) {

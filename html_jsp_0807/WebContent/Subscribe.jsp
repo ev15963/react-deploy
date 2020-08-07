@@ -20,7 +20,7 @@
 			wr.println("이름 : " + na);
 			result = "success";
 		} catch (IOException ioe) {
-			result = "f";
+			result = "err";
 		} finally {
 			try {
 				wr.close();
@@ -29,8 +29,8 @@
 			}
 		}
 	} else {
-		result = "f";
+		result = "NO";
 	}
 	session.invalidate();
-	response.sendRedirect("Result.jsp?Result=" + result);
+	response.sendRedirect("Result.jsp?result1=" + result);
 %>
