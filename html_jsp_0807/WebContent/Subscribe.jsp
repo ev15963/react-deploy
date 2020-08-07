@@ -7,7 +7,7 @@
 	request.setCharacterEncoding("UTF-8");
 	String agree = request.getParameter("agree");
 	String result = null;
-	if (agree.equals("YES")) {
+	if (agree.equals("yes")) {
 		String id = (String) session.getAttribute("ID");
 		String pw = (String) session.getAttribute("PW");
 		String na = (String) session.getAttribute("NA");
