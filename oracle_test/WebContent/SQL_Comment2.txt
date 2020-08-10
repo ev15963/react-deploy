@@ -1,0 +1,54 @@
+Table Name : emp
+Field Names : no, age, name, phone, gender, job, pay, code
+
+
+=========================================
+
+
+create table emp (
+	no int not null,
+	age int,
+	name varchar2(10),
+	phone varchar2(13),
+	gender varchar2(4),
+	job varchar2(6),
+	pay int,
+	code varchar2(4),
+	primary key(no)
+);
+
+=========================================
+
+insert into emp (no, age, name, phone, gender, job, pay, code) values (1, 27,  'PJH',   '010-8532-0537',   'F',   'game',    460,  'JP' );
+insert into emp (no, age, name, phone, gender, job, pay, code) values (2, 34,  'JDW',   '010-9672-5257',  'M',   'java',        200,  'FR' );
+insert into emp (no, age, name, phone, gender, job, pay, code) values (3, 28,  'AJH',   '010-9932-4536',   'F',    'mobile',    250,  'JP' );
+insert into emp (no, age, name, phone, gender, job, pay, code) values (4, 26,  'HST',   '010-4117-0975',  'M',   'it',            300,  'US' );
+insert into emp (no, age, name, phone, gender, job, pay, code) values (5, 29,  'HTW',  '011-8975-7892',  'M',    'mobile',   300,  'CN' );
+insert into emp (no, age, name, phone, gender, job, pay, code) values (6, 28,  'LWS',  '010-6251-6976',  'F',     'java',      200,  'DE' );
+insert into emp (no, age, name, phone, gender, job, pay, code) values (7, 27,  'LSD',   '010-9482-6059',  'M',    'game',    350,  'KR' );
+insert into emp (no, age, name, phone, gender, job, pay, code) values (8, 29,  'YJH',   '010-4845-0105',  'M',     'java',     200,  'JP' );
+insert into emp (no, age, name, phone, gender, job, pay, code) values (9, 29,  'JSW',  '010-6283-4849',  'F',     'mobile',   400,  'DE' );
+insert into emp (no, age, name, phone, gender, job, pay, code) values (10, 32,  'LKO',  '010-4510-1609',  'M',    'it',           440,  'KR' );
+
+=========================================
+
+사원 목록 조회 
+   --> EMPServlet --> doGet() -- ResultSet 
+   --> empList.jsp 
+
+
+신규 사원 추가 
+   --> empInsert.html --- age, name, phone, gender, job, pay, code 
+   --> EMPServletInsert -> doPost() 
+   --> EMPServlet -> doGet() -- ResultSet
+    --> empList.jsp 
+
+
+사원 목록에서 에서 수정 시, 
+  사원 선택 -- <a href -- ?no=3 
+  --> EMPServletUpdate -> doGet() -> -- ResultSet
+  --> empUpdate.jsp --- age, name, phone, gender, job, pay, code
+  --> EMPServletUpdate --> doPost()
+  --> EMPServlet -> doGet() -- ResultSet
+  --> empList.jsp 
+

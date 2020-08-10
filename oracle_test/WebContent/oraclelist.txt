@@ -1,0 +1,796 @@
+
+SQL*Plus: Release 11.2.0.2.0 Production on 월 8월 10 09:19:18 2020
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+SQL> conn
+Enter user-name: system
+Enter password:
+Connected.
+SQL> show user;
+USER is "SYSTEM"
+SQL> alter user hr account unlock;
+
+User altered.
+
+SQL> alter user hr identified by tiger;
+
+User altered.
+
+SQL> conn hr/tiger;
+Connected.
+SQL> show tab;
+tab ON
+SQL> select * from tab;
+
+TNAME                                                        TABTYPE
+------------------------------------------------------------ --------------
+ CLUSTERID
+----------
+COUNTRIES                                                    TABLE
+
+
+DEPARTMENTS                                                  TABLE
+
+
+EMPLOYEES                                                    TABLE
+
+
+
+TNAME                                                        TABTYPE
+------------------------------------------------------------ --------------
+ CLUSTERID
+----------
+EMP_DETAILS_VIEW                                             VIEW
+
+
+JOBS                                                         TABLE
+
+
+JOB_HISTORY                                                  TABLE
+
+
+
+TNAME                                                        TABTYPE
+------------------------------------------------------------ --------------
+ CLUSTERID
+----------
+LOCATIONS                                                    TABLE
+
+
+REGIONS                                                      TABLE
+
+
+
+8 rows selected.
+
+SQL> desc departments;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEPARTMENT_ID                             NOT NULL NUMBER(4)
+ DEPARTMENT_NAME                           NOT NULL VARCHAR2(30)
+ MANAGER_ID                                         NUMBER(6)
+ LOCATION_ID                                        NUMBER(4)
+
+SQL> select * from departments;
+
+DEPARTMENT_ID DEPARTMENT_NAME
+------------- ------------------------------------------------------------
+MANAGER_ID LOCATION_ID
+---------- -----------
+           10 Administration
+       200        1700
+
+           20 Marketing
+       201        1800
+
+           30 Purchasing
+       114        1700
+
+
+DEPARTMENT_ID DEPARTMENT_NAME
+------------- ------------------------------------------------------------
+MANAGER_ID LOCATION_ID
+---------- -----------
+           40 Human Resources
+       203        2400
+
+           50 Shipping
+       121        1500
+
+           60 IT
+       103        1400
+
+
+DEPARTMENT_ID DEPARTMENT_NAME
+------------- ------------------------------------------------------------
+MANAGER_ID LOCATION_ID
+---------- -----------
+           70 Public Relations
+       204        2700
+
+           80 Sales
+       145        2500
+
+           90 Executive
+       100        1700
+
+
+DEPARTMENT_ID DEPARTMENT_NAME
+------------- ------------------------------------------------------------
+MANAGER_ID LOCATION_ID
+---------- -----------
+          100 Finance
+       108        1700
+
+          110 Accounting
+       205        1700
+
+          120 Treasury
+                  1700
+
+
+DEPARTMENT_ID DEPARTMENT_NAME
+------------- ------------------------------------------------------------
+MANAGER_ID LOCATION_ID
+---------- -----------
+          130 Corporate Tax
+                  1700
+
+          140 Control And Credit
+                  1700
+
+          150 Shareholder Services
+                  1700
+
+
+DEPARTMENT_ID DEPARTMENT_NAME
+------------- ------------------------------------------------------------
+MANAGER_ID LOCATION_ID
+---------- -----------
+          160 Benefits
+                  1700
+
+          170 Manufacturing
+                  1700
+
+          180 Construction
+                  1700
+
+
+DEPARTMENT_ID DEPARTMENT_NAME
+------------- ------------------------------------------------------------
+MANAGER_ID LOCATION_ID
+---------- -----------
+          190 Contracting
+                  1700
+
+          200 Operations
+                  1700
+
+          210 IT Support
+                  1700
+
+
+DEPARTMENT_ID DEPARTMENT_NAME
+------------- ------------------------------------------------------------
+MANAGER_ID LOCATION_ID
+---------- -----------
+          220 NOC
+                  1700
+
+          230 IT Helpdesk
+                  1700
+
+          240 Government Sales
+                  1700
+
+
+DEPARTMENT_ID DEPARTMENT_NAME
+------------- ------------------------------------------------------------
+MANAGER_ID LOCATION_ID
+---------- -----------
+          250 Retail Sales
+                  1700
+
+          260 Recruiting
+                  1700
+
+          270 Payroll
+                  1700
+
+
+27 rows selected.
+
+SQL> conn system/1234
+Connected.
+SQL> create user lsw identified by 1234;
+
+User created.
+
+SQL> select username from dba_users;
+
+USERNAME
+------------------------------------------------------------
+LSW
+SYS
+SYSTEM
+ANONYMOUS
+HR
+APEX_PUBLIC_USER
+FLOWS_FILES
+APEX_040000
+OUTLN
+DIP
+ORACLE_OCM
+
+USERNAME
+------------------------------------------------------------
+XS$NULL
+MDSYS
+CTXSYS
+DBSNMP
+XDB
+APPQOSSYS
+
+17 rows selected.
+
+SQL> select username from dba_users where username like '%FREE%';
+
+no rows selected
+
+SQL> conn lsw/1234;
+ERROR:
+ORA-01045: user LSW lacks CREATE SESSION privilege; logon denied
+
+
+Warning: You are no longer connected to ORACLE.
+SQL> conn lsw/1234
+ERROR:
+ORA-01045: user LSW lacks CREATE SESSION privilege; logon denied
+
+
+SQL> conn system/1234
+Connected.
+SQL> conn 12341/lsw;
+ERROR:
+ORA-01017: invalid username/password; logon denied
+
+
+Warning: You are no longer connected to ORACLE.
+SQL> conn 12341/lsw
+ERROR:
+ORA-01017: invalid username/password; logon denied
+
+
+SQL> conn 1234/lsw
+ERROR:
+ORA-01017: invalid username/password; logon denied
+
+
+SQL> conn 1234/lsw;
+ERROR:
+ORA-01017: invalid username/password; logon denied
+
+
+SQL> grant connect, resource to lsw;
+SP2-0640: Not connected
+SQL> grant connect, resource to 1234l
+  2
+SQL> grant connect, resource to 1234;
+SP2-0640: Not connected
+SQL> conn system/1234;
+Connected.
+SQL> grant connect, resource to 1234;
+grant connect, resource to 1234
+                           *
+ERROR at line 1:
+ORA-00987: missing or invalid username(s)
+
+
+SQL> grant connect, resource to lsw;
+
+Grant succeeded.
+
+SQL> conn lsw/1234;
+Connected.
+SQL> show user;
+USER is "LSW"
+SQL> create table dept(d_id varchar2(10) not null);
+
+Table created.
+
+SQL> select * from tab;
+
+TNAME                                                        TABTYPE
+------------------------------------------------------------ --------------
+ CLUSTERID
+----------
+DEPT                                                         TABLE
+
+
+
+SQL> desc dept;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ D_ID                                      NOT NULL VARCHAR2(10)
+
+SQL> drop user test;
+drop user test
+          *
+ERROR at line 1:
+ORA-01918: user 'TEST' does not exist
+
+
+SQL> drop user lsw;
+drop user lsw
+*
+ERROR at line 1:
+ORA-01031: insufficient privileges
+
+
+SQL> conn system/1234;
+Connected.
+SQL> conn lsw/1234
+Connected.
+SQL> drop user lsw;
+drop user lsw
+*
+ERROR at line 1:
+ORA-01031: insufficient privileges
+
+
+SQL> conn system/1234;
+Connected.
+SQL> drop user lsw;
+drop user lsw
+*
+ERROR at line 1:
+ORA-01922: CASCADE must be specified to drop 'LSW'
+
+
+SQL> show user;
+USER is "SYSTEM"
+SQL> drop user lsw;
+drop user lsw
+*
+ERROR at line 1:
+ORA-01922: CASCADE must be specified to drop 'LSW'
+
+
+SQL> grant connect, resource to lsw;
+
+Grant succeeded.
+
+SQL> show user;
+USER is "SYSTEM"
+SQL> drop user lsw cascade;
+
+User dropped.
+
+SQL> alter user hr account unlock;
+
+User altered.
+
+SQL> create tale salgrade(
+  2  grade number,
+  3  losal number,
+  4  hisal number);
+create tale salgrade(
+       *
+ERROR at line 1:
+ORA-00901: invalid CREATE command
+
+
+SQL> create table salgrade(
+  2  grade number,
+  3  losal number,
+  4  hisal number);
+
+Table created.
+
+SQL> insert into salgrade values (1, 700, 1200);
+
+1 row created.
+
+SQL> insert into salgrade values (2, 1201, 1400);
+
+1 row created.
+
+SQL> insert into salgrade values (3, 1401, 2000);
+
+1 row created.
+
+SQL> insert into salgrade values (4, 2001, 3000);
+
+1 row created.
+
+SQL> insert into salgrade values (5, 3001, 9999);
+
+1 row created.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> create user lsw identified by 1234;
+
+User created.
+
+SQL> conn lsw/1234;
+ERROR:
+ORA-01045: user LSW lacks CREATE SESSION privilege; logon denied
+
+
+Warning: You are no longer connected to ORACLE.
+SQL> select * from student;
+SP2-0640: Not connected
+SQL> set pagesize 100
+SQL> set linesize 150;
+SQL> con system/1234;
+SP2-0734: unknown command beginning "con system..." - rest of line ignored.
+SQL> conn system/1234;
+Connected.
+SQL> select * from tab;
+
+TNAME                                                        TABTYPE         CLUSTERID
+------------------------------------------------------------ -------------- ----------
+AQ$DEF$_AQCALL                                               VIEW
+AQ$DEF$_AQERROR                                              VIEW
+AQ$_DEF$_AQCALL_F                                            VIEW
+AQ$_DEF$_AQERROR_F                                           VIEW
+AQ$_INTERNET_AGENTS                                          TABLE
+AQ$_INTERNET_AGENT_PRIVS                                     TABLE
+AQ$_QUEUES                                                   TABLE
+AQ$_QUEUE_TABLES                                             TABLE
+AQ$_SCHEDULES                                                TABLE
+CATALOG                                                      SYNONYM
+COL                                                          SYNONYM
+DEF$_AQCALL                                                  TABLE
+DEF$_AQERROR                                                 TABLE
+DEF$_CALLDEST                                                TABLE
+DEF$_DEFAULTDEST                                             TABLE
+DEF$_DESTINATION                                             TABLE
+DEF$_ERROR                                                   TABLE
+DEF$_LOB                                                     TABLE
+DEF$_ORIGIN                                                  TABLE
+DEF$_PROPAGATOR                                              TABLE
+DEF$_PUSHED_TRANSACTIONS                                     TABLE
+HELP                                                         TABLE
+LOGMNRC_DBNAME_UID_MAP                                       TABLE
+LOGMNRC_GSBA                                                 TABLE
+LOGMNRC_GSII                                                 TABLE
+LOGMNRC_GTCS                                                 TABLE
+LOGMNRC_GTLO                                                 TABLE
+LOGMNRP_CTAS_PART_MAP                                        TABLE
+LOGMNRT_MDDL$                                                TABLE
+LOGMNR_AGE_SPILL$                                            TABLE
+LOGMNR_ATTRCOL$                                              TABLE
+LOGMNR_ATTRIBUTE$                                            TABLE
+LOGMNR_CCOL$                                                 TABLE
+LOGMNR_CDEF$                                                 TABLE
+LOGMNR_COL$                                                  TABLE
+LOGMNR_COLTYPE$                                              TABLE
+LOGMNR_DICTIONARY$                                           TABLE
+LOGMNR_DICTSTATE$                                            TABLE
+LOGMNR_ENC$                                                  TABLE
+LOGMNR_ERROR$                                                TABLE
+LOGMNR_FILTER$                                               TABLE
+LOGMNR_GLOBAL$                                               TABLE
+LOGMNR_GT_TAB_INCLUDE$                                       TABLE
+LOGMNR_GT_USER_INCLUDE$                                      TABLE
+LOGMNR_GT_XID_INCLUDE$                                       TABLE
+LOGMNR_ICOL$                                                 TABLE
+LOGMNR_IND$                                                  TABLE
+LOGMNR_INDCOMPART$                                           TABLE
+LOGMNR_INDPART$                                              TABLE
+LOGMNR_INDSUBPART$                                           TABLE
+LOGMNR_INTEGRATED_SPILL$                                     TABLE
+LOGMNR_KOPM$                                                 TABLE
+LOGMNR_LOB$                                                  TABLE
+LOGMNR_LOBFRAG$                                              TABLE
+LOGMNR_LOG$                                                  TABLE
+LOGMNR_LOGMNR_BUILDLOG                                       TABLE
+LOGMNR_NTAB$                                                 TABLE
+LOGMNR_OBJ$                                                  TABLE
+LOGMNR_OPQTYPE$                                              TABLE
+LOGMNR_PARAMETER$                                            TABLE
+LOGMNR_PARTOBJ$                                              TABLE
+LOGMNR_PROCESSED_LOG$                                        TABLE
+LOGMNR_PROPS$                                                TABLE
+LOGMNR_REFCON$                                               TABLE
+LOGMNR_RESTART_CKPT$                                         TABLE
+LOGMNR_RESTART_CKPT_TXINFO$                                  TABLE
+LOGMNR_SEED$                                                 TABLE
+LOGMNR_SESSION$                                              TABLE
+LOGMNR_SESSION_ACTIONS$                                      TABLE
+LOGMNR_SESSION_EVOLVE$                                       TABLE
+LOGMNR_SPILL$                                                TABLE
+LOGMNR_SUBCOLTYPE$                                           TABLE
+LOGMNR_TAB$                                                  TABLE
+LOGMNR_TABCOMPART$                                           TABLE
+LOGMNR_TABPART$                                              TABLE
+LOGMNR_TABSUBPART$                                           TABLE
+LOGMNR_TS$                                                   TABLE
+LOGMNR_TYPE$                                                 TABLE
+LOGMNR_UID$                                                  TABLE
+LOGMNR_USER$                                                 TABLE
+LOGSTDBY$APPLY_MILESTONE                                     TABLE
+LOGSTDBY$APPLY_PROGRESS                                      TABLE
+LOGSTDBY$EDS_TABLES                                          TABLE
+LOGSTDBY$EVENTS                                              TABLE
+LOGSTDBY$FLASHBACK_SCN                                       TABLE
+LOGSTDBY$HISTORY                                             TABLE
+LOGSTDBY$PARAMETERS                                          TABLE
+LOGSTDBY$PLSQL                                               TABLE
+LOGSTDBY$SCN                                                 TABLE
+LOGSTDBY$SKIP                                                TABLE
+LOGSTDBY$SKIP_SUPPORT                                        TABLE
+LOGSTDBY$SKIP_TRANSACTION                                    TABLE
+MVIEW$_ADV_AJG                                               TABLE
+MVIEW$_ADV_BASETABLE                                         TABLE
+MVIEW$_ADV_CLIQUE                                            TABLE
+MVIEW$_ADV_ELIGIBLE                                          TABLE
+MVIEW$_ADV_EXCEPTIONS                                        TABLE
+
+TNAME                                                        TABTYPE         CLUSTERID
+------------------------------------------------------------ -------------- ----------
+MVIEW$_ADV_FILTER                                            TABLE
+MVIEW$_ADV_FILTERINSTANCE                                    TABLE
+MVIEW$_ADV_FJG                                               TABLE
+MVIEW$_ADV_GC                                                TABLE
+MVIEW$_ADV_INFO                                              TABLE
+MVIEW$_ADV_JOURNAL                                           TABLE
+MVIEW$_ADV_LEVEL                                             TABLE
+MVIEW$_ADV_LOG                                               TABLE
+MVIEW$_ADV_OUTPUT                                            TABLE
+MVIEW$_ADV_PARAMETERS                                        TABLE
+MVIEW$_ADV_PLAN                                              TABLE
+MVIEW$_ADV_PRETTY                                            TABLE
+MVIEW$_ADV_ROLLUP                                            TABLE
+MVIEW$_ADV_SQLDEPEND                                         TABLE
+MVIEW$_ADV_TEMP                                              TABLE
+MVIEW$_ADV_WORKLOAD                                          TABLE
+MVIEW_EVALUATIONS                                            VIEW
+MVIEW_EXCEPTIONS                                             VIEW
+MVIEW_FILTER                                                 VIEW
+MVIEW_FILTERINSTANCE                                         VIEW
+MVIEW_LOG                                                    VIEW
+MVIEW_RECOMMENDATIONS                                        VIEW
+MVIEW_WORKLOAD                                               VIEW
+OL$                                                          TABLE
+OL$HINTS                                                     TABLE
+OL$NODES                                                     TABLE
+PRODUCT_PRIVS                                                VIEW
+PRODUCT_USER_PROFILE                                         SYNONYM
+PUBLICSYN                                                    SYNONYM
+REPCAT$_AUDIT_ATTRIBUTE                                      TABLE
+REPCAT$_AUDIT_COLUMN                                         TABLE
+REPCAT$_COLUMN_GROUP                                         TABLE
+REPCAT$_CONFLICT                                             TABLE
+REPCAT$_DDL                                                  TABLE
+REPCAT$_EXCEPTIONS                                           TABLE
+REPCAT$_EXTENSION                                            TABLE
+REPCAT$_FLAVORS                                              TABLE
+REPCAT$_FLAVOR_OBJECTS                                       TABLE
+REPCAT$_GENERATED                                            TABLE
+REPCAT$_GROUPED_COLUMN                                       TABLE
+REPCAT$_INSTANTIATION_DDL                                    TABLE
+REPCAT$_KEY_COLUMNS                                          TABLE
+REPCAT$_OBJECT_PARMS                                         TABLE
+REPCAT$_OBJECT_TYPES                                         TABLE
+REPCAT$_PARAMETER_COLUMN                                     TABLE
+REPCAT$_PRIORITY                                             TABLE
+REPCAT$_PRIORITY_GROUP                                       TABLE
+REPCAT$_REFRESH_TEMPLATES                                    TABLE
+REPCAT$_REPCAT                                               TABLE
+REPCAT$_REPCATLOG                                            TABLE
+REPCAT$_REPCOLUMN                                            TABLE
+REPCAT$_REPGROUP_PRIVS                                       TABLE
+REPCAT$_REPOBJECT                                            TABLE
+REPCAT$_REPPROP                                              TABLE
+REPCAT$_REPSCHEMA                                            TABLE
+REPCAT$_RESOLUTION                                           TABLE
+REPCAT$_RESOLUTION_METHOD                                    TABLE
+REPCAT$_RESOLUTION_STATISTICS                                TABLE
+REPCAT$_RESOL_STATS_CONTROL                                  TABLE
+REPCAT$_RUNTIME_PARMS                                        TABLE
+REPCAT$_SITES_NEW                                            TABLE
+REPCAT$_SITE_OBJECTS                                         TABLE
+REPCAT$_SNAPGROUP                                            TABLE
+REPCAT$_TEMPLATE_OBJECTS                                     TABLE
+REPCAT$_TEMPLATE_PARMS                                       TABLE
+REPCAT$_TEMPLATE_REFGROUPS                                   TABLE
+REPCAT$_TEMPLATE_SITES                                       TABLE
+REPCAT$_TEMPLATE_STATUS                                      TABLE
+REPCAT$_TEMPLATE_TARGETS                                     TABLE
+REPCAT$_TEMPLATE_TYPES                                       TABLE
+REPCAT$_USER_AUTHORIZATIONS                                  TABLE
+REPCAT$_USER_PARM_VALUES                                     TABLE
+SALGRADE                                                     TABLE
+SQLPLUS_PRODUCT_PROFILE                                      TABLE
+SYSCATALOG                                                   SYNONYM
+SYSFILES                                                     SYNONYM
+TAB                                                          SYNONYM
+TABQUOTAS                                                    SYNONYM
+
+175 rows selected.
+
+SQL> desc salgrade;
+ Name                                                                                Null?    Type
+ ----------------------------------------------------------------------------------- -------- --------------------------------------------------------
+ GRADE                                                                                        NUMBER
+ LOSAL                                                                                        NUMBER
+ HISAL                                                                                        NUMBER
+
+SQL>
+SQL> select * from salgrade;
+
+     GRADE      LOSAL      HISAL
+---------- ---------- ----------
+         1        700       1200
+         2       1201       1400
+         3       1401       2000
+         4       2001       3000
+         5       3001       9999
+
+SQL> conn system/1234
+Connected.
+SQL> conn lsw/1234
+ERROR:
+ORA-01045: user LSW lacks CREATE SESSION privilege; logon denied
+
+
+Warning: You are no longer connected to ORACLE.
+SQL> grant connect, resource to lsw;
+SP2-0640: Not connected
+SQL> grant connect, resource to lsw;
+SP2-0640: Not connected
+SQL> con lsw/1234;
+SP2-0734: unknown command beginning "con lsw/12..." - rest of line ignored.
+SQL> conn lsw/1234;
+ERROR:
+ORA-01045: user LSW lacks CREATE SESSION privilege; logon denied
+
+
+SQL> conn system/1234
+Connected.
+SQL> conn lsw/1234;
+ERROR:
+ORA-01045: user LSW lacks CREATE SESSION privilege; logon denied
+
+
+Warning: You are no longer connected to ORACLE.
+SQL> conn lsw/1234
+ERROR:
+ORA-01045: user LSW lacks CREATE SESSION privilege; logon denied
+
+
+SQL> grant create session to lsw;
+SP2-0640: Not connected
+SQL> conn system/1234
+Connected.
+SQL> conn lsw/1234
+ERROR:
+ORA-01045: user LSW lacks CREATE SESSION privilege; logon denied
+
+
+Warning: You are no longer connected to ORACLE.
+SQL> alter user hr account unlock;
+SP2-0640: Not connected
+SQL> conn lsw/1234
+ERROR:
+ORA-01045: user LSW lacks CREATE SESSION privilege; logon denied
+
+
+SQL>
+SQL>
+SQL> '
+SP2-0042: unknown command "'" - rest of line ignored.
+SQL>
+SQL> grant connent, resource to lsw;
+SP2-0640: Not connected
+SQL> create table salgrade(
+  2  grade number,
+  3  losal number,
+  4  hisal number);
+SP2-0640: Not connected
+SQL> conn system/1234;
+Connected.
+SQL> grant connent, resource to lsw;
+grant connent, resource to lsw
+      *
+ERROR at line 1:
+ORA-01919: role 'CONNENT' does not exist
+
+--------------------------------------------------------
+
+SQL> grant connect, resource to lsw;
+
+Grant succeeded.
+
+SQL> conn lsw/1234
+Connected.
+SQL> create tale salgrade(
+  2  grade number,
+  3  losal number,
+  4  hisal number);
+create tale salgrade(
+       *
+ERROR at line 1:
+ORA-00901: invalid CREATE command
+
+
+SQL> create table salgrade(
+  2  grade number,
+  3  losal number,
+  4  hisal number);
+
+Table created.
+
+SQL> select * from salgrade;
+
+no rows selected
+
+SQL> insert into salgrade values (1, 700, 1200);
+
+1 row created.
+
+SQL> insert into salgrade values (2, 1201, 1400);
+
+1 row created.
+
+SQL> insert into salgrade values (3, 1401, 2000);
+
+1 row created.
+
+SQL> insert into salgrade values (4, 2001, 3000);
+
+1 row created.
+
+SQL> insert into salgrade values (5, 3001, 9999);
+
+1 row created.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> select * from salgrade;
+
+     GRADE      LOSAL      HISAL
+---------- ---------- ----------
+         1        700       1200
+         2       1201       1400
+         3       1401       2000
+         4       2001       3000
+         5       3001       9999
+
+
+//student table------------------------------x
+
+SQL> create table student (
+  2  stu_id     varchar2(10)    not null,
+  3  resident_id        varchar2(14)    not null,
+  4  name       varchar2(20),
+  5  year int,
+  6  address    varchar2(10)
+  7  );
+
+Table created.
+
+SQL> insert into student values('1292001', '900424-1825409', '김광식', 3, '서울');
+
+1 row created.
+
+SQL> insert into student values('1292001', '900424-1825409', '김광식', 3, '서울');
+
+1 row created.
+
+SQL> insert into student values('1292001', '900424-1825409', '김광식', 3, '서울');
+
+1 row created.
+
+SQL> commit;
+
+Commit complete.
