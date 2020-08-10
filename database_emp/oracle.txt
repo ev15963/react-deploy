@@ -1,0 +1,76 @@
+SQL> create table emp (
+  2  no int not null,
+  3  age int,
+  4  name varchar2(10),
+  5  phone varchar2(13),
+  6  gender varchar2(4),
+  7  job varchar2(6),
+  8  pay int,
+  9  code varchar2(4),
+ 10  primary key(no)
+ 11  );
+
+Table created.
+
+SQL> insert into emp (no, age, name, phone, gender, job, pay, code) values (1, 27,  'PJH',   '010-8532-0537',   'F',   'game',    460,  'JP' );
+
+1 row created.
+
+SQL> insert into emp (no, age, name, phone, gender, job, pay, code) values (2, 34,  'JDW',   '010-9672-5257',  'M',   'java',        200,  'FR' );
+
+1 row created.
+
+SQL> insert into emp (no, age, name, phone, gender, job, pay, code) values (3, 28,  'AJH',   '010-9932-4536',   'F',    'mobile',    250,  'JP' );
+
+1 row created.
+
+SQL> insert into emp (no, age, name, phone, gender, job, pay, code) values (4, 26,  'HST',   '010-4117-0975',  'M',   'it',            300,  'US' );
+
+1 row created.
+
+SQL> insert into emp (no, age, name, phone, gender, job, pay, code) values (5, 29,  'HTW',  '011-8975-7892',  'M',    'mobile',   300,  'CN' );
+
+1 row created.
+
+SQL> insert into emp (no, age, name, phone, gender, job, pay, code) values (6, 28,  'LWS',  '010-6251-6976',  'F',     'java',      200,  'DE' );
+
+1 row created.
+
+SQL> insert into emp (no, age, name, phone, gender, job, pay, code) values (7, 27,  'LSD',   '010-9482-6059',  'M',    'game',    350,  'KR' );
+
+1 row created.
+
+SQL> insert into emp (no, age, name, phone, gender, job, pay, code) values (8, 29,  'YJH',   '010-4845-0105',  'M',     'java',     200,  'JP' );
+
+1 row created.
+
+SQL> insert into emp (no, age, name, phone, gender, job, pay, code) values (9, 29,  'JSW',  '010-6283-4849',  'F',     'mobile',   400,  'DE' );
+
+1 row created.
+
+SQL> insert into emp (no, age, name, phone, gender, job, pay, code) values (10, 32,  'LKO',  '010-4510-1609',  'M',    'it',           440,  'KR' );
+
+1 row created.
+
+SQL> show user;
+USER is "LSW"
+SQL> commit;
+
+Commit complete.
+
+SQL> select * from emp;
+
+        NO        AGE NAME                 PHONE                      GENDER   JOB                 PAY CODE
+---------- ---------- -------------------- -------------------------- -------- ------------ ---------- --------
+         1         27 PJH                  010-8532-0537              F        game                460 JP
+         2         34 JDW                  010-9672-5257              M        java                200 FR
+         3         28 AJH                  010-9932-4536              F        mobile              250 JP
+         4         26 HST                  010-4117-0975              M        it                  300 US
+         5         29 HTW                  011-8975-7892              M        mobile              300 CN
+         6         28 LWS                  010-6251-6976              F        java                200 DE
+         7         27 LSD                  010-9482-6059              M        game                350 KR
+         8         29 YJH                  010-4845-0105              M        java                200 JP
+         9         29 JSW                  010-6283-4849              F        mobile              400 DE
+        10         32 LKO                  010-4510-1609              M        it                  440 KR
+
+10 rows selected.

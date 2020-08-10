@@ -34,7 +34,7 @@ public class EMPServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String driver = "oracle.jdbc.driver.OracleDriver";
-		String url="jdbc:oracle:thin@127.0.0.1:1521:XE";
+		String url = "jdbc:oracle:thin:@127.0.0.1:1521:XE";
 		Connection con = null;
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -50,6 +50,7 @@ public class EMPServlet extends HttpServlet {
 			request.setAttribute("result", rs);
 			RequestDispatcher rd=request.getRequestDispatcher("empList.jsp");
 			rd.forward(request, response);
+			
 		} catch (ClassNotFoundException e) {
 			System.out.println("드라이버 err! : "+e.getMessage());
 		} catch (SQLException e) {

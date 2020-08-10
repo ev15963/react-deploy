@@ -1,12 +1,62 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.sql.ResultSet" %>    
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>Employee Update</title>
+	<style>
+		th{
+			text-align: center;
+		}
+		td{
+			text-align: center;
+		}
+		input{
+			color:darkgrey;
+		}
+	</style>
 </head>
-<body>
 
+<body>
+<h3>Employee Update</h3>
+<hr> 
+<% 
+	ResultSet rs=(ResultSet)request.getAttribute("result"); //object에서 다운캐스팅
+	rs.next();
+%>
+
+<form action="EMPServletUpdate" method="post"> <!-- <===  -->
+	<input type="hidden" name="no" value=<%=rs.getInt("no") %> />
+	<table border="0">
+		<tr>
+			<th>Division	</th><th>Required Input</th>
+		</tr>
+		<tr>
+			<td>AGE		</td><td><input type="text" size="15" name="age" value=<%=rs.getInt("age") %> required="required" autofocus="autofocus" /></td>
+		</tr>
+		<tr>
+			<td>NAME		</td><td><input type="text" size="15" name="name" value=<%=rs.getString("name") %> required="required" /></td>
+		</tr>
+		<tr>	
+			<td>PHONE	</td><td><input type="text" size="15" name="phone" value=<%=rs.getString("phone") %> required="required" /></td>
+		</tr>
+		<tr>	
+			<td>GENDER	</td><td><input type="text" size="15" name="gender" value=<%=rs.getString("gender") %> required="required" /></td>
+		</tr>
+		<tr>	
+			<td>JOB		</td><td><input type="text" size="15" name="job" value=<%=rs.getString("job") %> required="required" /></td>
+		</tr>
+		<tr>	
+			<td>PAY		</td><td><input type="text" size="15" name="pay" value=<%=rs.getInt("pay") %> required="required" /></td>
+		</tr>
+		<tr>	
+			<td>CODE		</td><td><input type="text" size="15" name="code" value=<%=rs.getString("code") %> required="required" /></td>
+		</tr>
+		<tr>
+			<td><input type="submit" value="수정" /></td><td><input type="reset" value="취소" /></td> <!-- 수정해달라고 요청 -->
+		</tr>
+	</table>		
+</form>
 </body>
 </html>

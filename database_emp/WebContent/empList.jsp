@@ -50,40 +50,46 @@ a:link, a:visited, a:active {
 			</td>
 			
 			<td>
-				<a href="EMPServletUpdate?n=<%=rs.getInt("age") %>">
+				<a href="EMPServletUpdate?n=<%=rs.getInt("no") %>">
 					<%=rs.getInt("age") %>
 				</a>
 			</td>
 			
 			
 			<td>
-				<a href="EMPServletUpdate?n=<%=rs.getString("name") %>">
+				<a href="EMPServletUpdate?n=<%=rs.getInt("no") %>">
 					<%=rs.getString("name") %>
 				</a>
 			</td>
 			
 			
 			<td>
-				<a href="EMPServletUpdate?n=<%=rs.getString("phone") %>">
+				<a href="EMPServletUpdate?n=<%=rs.getInt("no") %>">
 					<%=rs.getString("phone") %>
 				</a>
 			</td>
 			
 			<td>
-				<a href="EMPServletUpdate?n=<%=rs.getInt("job") %>">
-					<%=rs.getInt("job") %>
+				<a href="EMPServletUpdate?n=<%=rs.getInt("no") %>">
+					<%=rs.getString("gender") %>
 				</a>
 			</td>
 			
 			<td>
-				<a href="EMPServletUpdate?n=<%=rs.getInt("pay") %>">
+				<a href="EMPServletUpdate?n=<%=rs.getInt("no") %>">
+					<%=rs.getString("job") %>
+				</a>
+			</td>
+			
+			<td>
+				<a href="EMPServletUpdate?n=<%=rs.getInt("no") %>">
 					<%=rs.getInt("pay") %>
 				</a>
 			</td>
 			
 			
 			<td>
-				<a href="EMPServletUpdate?n=<%=rs.getString("code") %>">
+				<a href="EMPServletUpdate?n=<%=rs.getInt("no") %>">
 					<%=rs.getString("code") %>
 				</a>
 			</td>
