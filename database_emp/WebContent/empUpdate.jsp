@@ -36,7 +36,7 @@
 			<td>AGE		</td><td><input type="text" size="15" name="age" value=<%=rs.getInt("age") %> required="required" autofocus="autofocus" /></td>
 		</tr>
 		<tr>
-			<td>NAME		</td><td><input type="text" size="15" name="name" value=<%=rs.getString("name") %> required="required" /></td>
+			<td>NAME	</td><td><input type="text" size="15" name="name" value=<%=rs.getString("name") %> required="required" /></td>
 		</tr>
 		<tr>	
 			<td>PHONE	</td><td><input type="text" size="15" name="phone" value=<%=rs.getString("phone") %> required="required" /></td>
@@ -51,7 +51,7 @@
 			<td>PAY		</td><td><input type="text" size="15" name="pay" value=<%=rs.getInt("pay") %> required="required" /></td>
 		</tr>
 		<tr>	
-			<td>CODE		</td><td><input type="text" size="15" name="code" value=<%=rs.getString("code") %> required="required" /></td>
+			<td>CODE	</td><td><input type="text" size="15" name="code" value=<%=rs.getString("code") %> required="required" /></td>
 		</tr>
 		<tr>
 			<td><input type="submit" value="수정" /></td><td><input type="reset" value="취소" /></td> <!-- 수정해달라고 요청 -->
