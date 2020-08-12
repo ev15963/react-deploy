@@ -22,7 +22,7 @@
 <h3>Employee Update</h3>
 <hr> 
 <% 
-	ResultSet rs=(ResultSet)request.getAttribute("result"); //object에서 다운캐스팅
+	ResultSet rs=(ResultSet)request.getAttribute("result"); //object으로 형변환
 	rs.next();
 %>
 
