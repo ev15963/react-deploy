@@ -1,0 +1,639 @@
+create sequence board_seq
+start with 1
+increment by 1
+;
+
+create table board_tbl (
+no number(4) not null,
+subject varchar2(250) not null,
+writer varchar2(50) not null,
+contents clob,
+hit number(4) default 0,
+primary key(no)
+);
+
+create sequence emp_seq
+start with 1
+increment by 1
+;
+
+create table emp_tbl (
+emp_no number(4) primary key,
+ename varchar2(50),
+hiredate date
+);
+
+create table emp_tbl (
+emp_no number(4),
+ename varchar2(50),
+hiredate date,
+primary key(emp_no)
+);
+
+insert into emp_tbl values (emp_seq.nextal, 'kkh', sysdate); //
+
+timestemp => rs.getDate() => Date 클래스 타입
+
+=====================================================================
+
+SQL*Plus: Release 11.2.0.2.0 Production on 수 8월 12 08:25:13 2020
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+SQL>
+SQL> conn system/1234
+Connected.
+SQL> show user;
+USER is "SYSTEM"
+SQL> create sequence board_seq //1씩 증가
+  2  start with 1
+  3  increment by 1
+  4  ;
+
+Sequence created.
+
+SQL> create table board_tbl (
+  2  no number(4) not null,
+  3  subject varchar2(250) not null,
+  4  writer varchar2(50) not null,
+  5  contents clob,
+  6  hit number(4) default 0,
+  7  primary key(no)
+  8  );
+
+Table created.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> desc board_tbl;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ NO                                        NOT NULL NUMBER(4)
+ SUBJECT                                   NOT NULL VARCHAR2(250)
+ WRITER                                    NOT NULL VARCHAR2(50)
+ CONTENTS                                           CLOB
+ HIT                                                NUMBER(4)
+
+SQL> create table board_tbl (
+  2  no number(4) not null,
+  3  subject varchar2(250) not null,
+  4  writer varchar2(50) not null,
+  5  contents clob,
+  6  hit number(4) default 0,
+  7  primary key(no)
+  8  );
+create table board_tbl (
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> conn system/1234
+Connected.
+SQL> create sequence board_seq
+  2  start with 1
+  3  increment by 1
+  4  ;
+create sequence board_seq
+                *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> show user;
+USER is "SYSTEM"
+SQL> lsw/1234
+SP2-0042: unknown command "lsw/1234" - rest of line ignored. //
+SQL> conn lsw/1234
+Connected.
+SQL> create sequence board_seq
+  2  start with 1
+  3  increment by 1
+  4  ;
+
+Sequence created.
+
+SQL> create table board_tbl (
+  2  no number(4) not null,
+  3  subject varchar2(250) not null,
+  4  writer varchar2(50) not null,
+  5  contents clob,
+  6  hit number(4) default 0,
+  7  primary key(no)
+  8  );
+
+Table created.
+
+SQL> insert into emp_tbl values (emp_seq.nextal, 'kkh', sysdate);
+insert into emp_tbl values (emp_seq.nextal, 'kkh', sysdate)
+            *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> conn lsw/1234;
+Connected.
+SQL> create table emp_tbl (
+  2  emp_no number(4) primary key,
+  3  ename varchar2(50),
+  4  hiredate date
+  5  );
+
+Table created.
+
+SQL> insert into emp_tbl values (emp_seq.nextal, 'kkh', sysdate);
+insert into emp_tbl values (emp_seq.nextal, 'kkh', sysdate)
+                                    *
+ERROR at line 1:
+ORA-00984: column not allowed here
+
+
+SQL> create sequence emp_seq
+  2  start with 1
+  3  increment by 1
+  4  ;
+
+Sequence created.
+
+SQL> insert into emp_tbl values (emp_seq.nextal, 'kkh', sysdate);
+insert into emp_tbl values (emp_seq.nextal, 'kkh', sysdate)
+                                    *
+ERROR at line 1:
+ORA-00984: column not allowed here
+
+
+SQL> insert into emp_tbl values (emp_seq.nextval, 'kkh', sysdate);
+
+1 row created.
+
+SQL> insert into emp_tbl values (emp_seq.nextval, 'kkh', sysdate);
+
+1 row created.
+
+SQL> insert into emp_tbl values (emp_seq.nextval, 'kkh', sysdate);
+
+1 row created.
+
+SQL> insert into emp_tbl values (emp_seq.nextval, 'kkh', sysdate);
+
+1 row created.
+
+SQL> insert into emp_tbl values (emp_seq.nextval, 'kkh', sysdate);
+
+1 row created.
+
+SQL> insert into emp_tbl values (emp_seq.nextval, 'kkh', sysdate);
+
+1 row created.
+
+SQL> insert into emp_tbl values (emp_seq.nextval, 'kkh', sysdate);
+
+1 row created.
+
+SQL> insert into emp_tbl values (emp_seq.nextval, 'kkh', sysdate);
+
+1 row created.
+
+SQL> insert into emp_tbl values (emp_seq.nextval, 'kkh', sysdate);
+
+1 row created.
+
+SQL> insert into emp_tbl values (emp_seq.nextval, 'kkh', sysdate);
+
+1 row created.
+
+SQL> select * from emp_seq;
+select * from emp_seq
+              *
+ERROR at line 1:
+ORA-02201: sequence not allowed here
+
+
+SQL> select * from emp_tbl;
+
+    EMP_NO
+----------
+ENAME
+--------------------------------------------------------------------------------
+HIREDATE
+--------
+         1
+kkh
+20/08/12
+
+         2
+kkh
+20/08/12
+
+    EMP_NO
+----------
+ENAME
+--------------------------------------------------------------------------------
+HIREDATE
+--------
+
+         3
+kkh
+20/08/12
+
+         4
+kkh
+
+    EMP_NO
+----------
+ENAME
+--------------------------------------------------------------------------------
+HIREDATE
+--------
+20/08/12
+
+         5
+kkh
+20/08/12
+
+         6
+
+    EMP_NO
+----------
+ENAME
+--------------------------------------------------------------------------------
+HIREDATE
+--------
+kkh
+20/08/12
+
+         7
+kkh
+20/08/12
+
+
+    EMP_NO
+----------
+ENAME
+--------------------------------------------------------------------------------
+HIREDATE
+--------
+         8
+kkh
+20/08/12
+
+         9
+kkh
+20/08/12
+
+    EMP_NO
+----------
+ENAME
+--------------------------------------------------------------------------------
+HIREDATE
+--------
+
+        10
+kkh
+20/08/12
+
+
+10 rows selected.
+
+SQL> select emp_no from emp_tbl where emp_no between 1 and 5; // 1과 5사이
+
+    EMP_NO
+----------
+         1
+         2
+         3
+         4
+         5
+
+SQL> select ename from emp_tbl where ename like '%h';
+
+ENAME
+--------------------------------------------------------------------------------
+kkh
+kkh
+kkh
+kkh
+kkh
+kkh
+kkh
+kkh
+kkh
+kkh
+
+10 rows selected.
+
+
+//위치
+SQL> select * from tab;
+
+TNAME                                                        TABTYPE
+------------------------------------------------------------ --------------
+ CLUSTERID
+----------
+BOARD_TBL                                                    TABLE
+
+
+EMP                                                          TABLE
+
+
+EMP_TBL                                                      TABLE
+
+
+
+TNAME                                                        TABTYPE
+------------------------------------------------------------ --------------
+ CLUSTERID
+----------
+SALGRADE                                                     TABLE
+
+
+STUDENT                                                      TABLE
+
+
+
+SQL> select * from seq;
+
+SEQUENCE_NAME                                                 MIN_VALUE
+------------------------------------------------------------ ----------
+ MAX_VALUE INCREMENT_BY CY OR CACHE_SIZE LAST_NUMBER
+---------- ------------ -- -- ---------- -----------
+BOARD_SEQ                                                             1
+1.0000E+28            1 N  N          20           1
+
+EMP_SEQ                                                               1
+1.0000E+28            1 N  N          20          21
+
+////board_tbl 추가
+
+SQL> insert into board_tbl values (1, 'dd', 'dd2', 1, 1);
+
+1 row created.
+
+SQL> insert into board_tbl values (1, 'dd', 'dd2', 1, 1);
+insert into board_tbl values (1, 'dd', 'dd2', 1, 1)
+*
+
+//ORA-00001: unique constraint () violated . 무결성제약조건 에러
+ERROR at line 1:
+ORA-00001: unique constraint (LSW.SYS_C007044) violated
+
+
+SQL> insert into board_tbl values (2, 'dd', 'dd2', 1, 1);
+
+1 row created.
+
+SQL> insert into board_tbl values (3, 'dd', 'dd2', 1, 1);
+
+1 row created.
+
+SQL> insert into board_tbl values (4, 'dd', 'dd2', 1, 1);
+
+1 row created.
+
+SQL> insert into board_tbl values (5, 'dd', 'dd2', 1, 1);
+
+1 row created.
+
+SQL> insert into board_tbl values (6, 'dd', 'dd2', 1, 1);
+
+1 row created.
+
+SQL> insert into board_tbl values (7, 'dd', 'dd2', 1, 1);
+
+1 row created.
+
+SQL> insert into board_tbl values (8, 'dd', 'dd2', 1, 1);
+
+1 row created.
+
+SQL> select * from board_tbl;
+
+        NO
+----------
+SUBJECT
+--------------------------------------------------------------------------------
+WRITER
+--------------------------------------------------------------------------------
+CONTENTS
+--------------------------------------------------------------------------------
+       HIT
+----------
+         1
+dd
+dd2
+
+        NO
+----------
+SUBJECT
+--------------------------------------------------------------------------------
+WRITER
+--------------------------------------------------------------------------------
+CONTENTS
+--------------------------------------------------------------------------------
+       HIT
+----------
+1
+         1
+
+
+        NO
+----------
+SUBJECT
+--------------------------------------------------------------------------------
+WRITER
+--------------------------------------------------------------------------------
+CONTENTS
+--------------------------------------------------------------------------------
+       HIT
+----------
+         2
+dd
+dd2
+
+        NO
+----------
+SUBJECT
+--------------------------------------------------------------------------------
+WRITER
+--------------------------------------------------------------------------------
+CONTENTS
+--------------------------------------------------------------------------------
+       HIT
+----------
+1
+         1
+
+
+        NO
+----------
+SUBJECT
+--------------------------------------------------------------------------------
+WRITER
+--------------------------------------------------------------------------------
+CONTENTS
+--------------------------------------------------------------------------------
+       HIT
+----------
+         3
+dd
+dd2
+
+        NO
+----------
+SUBJECT
+--------------------------------------------------------------------------------
+WRITER
+--------------------------------------------------------------------------------
+CONTENTS
+--------------------------------------------------------------------------------
+       HIT
+----------
+1
+         1
+
+
+        NO
+----------
+SUBJECT
+--------------------------------------------------------------------------------
+WRITER
+--------------------------------------------------------------------------------
+CONTENTS
+--------------------------------------------------------------------------------
+       HIT
+----------
+         4
+dd
+dd2
+
+        NO
+----------
+SUBJECT
+--------------------------------------------------------------------------------
+WRITER
+--------------------------------------------------------------------------------
+CONTENTS
+--------------------------------------------------------------------------------
+       HIT
+----------
+1
+         1
+
+
+        NO
+----------
+SUBJECT
+--------------------------------------------------------------------------------
+WRITER
+--------------------------------------------------------------------------------
+CONTENTS
+--------------------------------------------------------------------------------
+       HIT
+----------
+         5
+dd
+dd2
+
+        NO
+----------
+SUBJECT
+--------------------------------------------------------------------------------
+WRITER
+--------------------------------------------------------------------------------
+CONTENTS
+--------------------------------------------------------------------------------
+       HIT
+----------
+1
+         1
+
+
+        NO
+----------
+SUBJECT
+--------------------------------------------------------------------------------
+WRITER
+--------------------------------------------------------------------------------
+CONTENTS
+--------------------------------------------------------------------------------
+       HIT
+----------
+         6
+dd
+dd2
+
+        NO
+----------
+SUBJECT
+--------------------------------------------------------------------------------
+WRITER
+--------------------------------------------------------------------------------
+CONTENTS
+--------------------------------------------------------------------------------
+       HIT
+----------
+1
+         1
+
+
+        NO
+----------
+SUBJECT
+--------------------------------------------------------------------------------
+WRITER
+--------------------------------------------------------------------------------
+CONTENTS
+--------------------------------------------------------------------------------
+       HIT
+----------
+         7
+dd
+dd2
+
+        NO
+----------
+SUBJECT
+--------------------------------------------------------------------------------
+WRITER
+--------------------------------------------------------------------------------
+CONTENTS
+--------------------------------------------------------------------------------
+       HIT
+----------
+1
+         1
+
+
+        NO
+----------
+SUBJECT
+--------------------------------------------------------------------------------
+WRITER
+--------------------------------------------------------------------------------
+CONTENTS
+--------------------------------------------------------------------------------
+       HIT
+----------
+         8
+dd
+dd2
+
+        NO
+----------
+SUBJECT
+--------------------------------------------------------------------------------
+WRITER
+--------------------------------------------------------------------------------
+CONTENTS
+--------------------------------------------------------------------------------
+       HIT
+----------
+1
+         1
+
+
+8 rows selected.
+
+SQL>

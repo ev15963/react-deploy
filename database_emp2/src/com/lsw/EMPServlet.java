@@ -55,6 +55,10 @@ public class EMPServlet extends HttpServlet {
 			System.out.println("드라이버 err : "+e.getMessage());
 		} catch (SQLException e) {
 			System.out.println("SQL err : "+e.getMessage());
+		} finally {
+			try (rs != null) {
+				rs.close();
+			}
 		}
 	}
 

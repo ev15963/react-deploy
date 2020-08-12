@@ -7,10 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.lsw.dao.BoardDAO;
+import com.lsw.dto.BoardModel;
+
 /**
  * Servlet implementation class BoardModifyServlet
  */
-@WebServlet("/BoardModifyServlet")
+@WebServlet("/BoardModify")
 public class BoardModifyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -26,7 +29,7 @@ public class BoardModifyServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -34,8 +37,14 @@ public class BoardModifyServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		// boardModify.jsp => "post" => parameter 값들을 저장할 객체
+		// 전달되는 parameter명 : subject, writer
+		BoardModel boardModel = new BoardModel();
+		
+		BoardDAO dao = new BoardDAO();
+		dao.connection();
+		dao.delete(boardModel);
+		dao.close();
 	}
 
 }
