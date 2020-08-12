@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.lsw.dao.BoardDAO;
 import com.lsw.dto.BoardModel;
 
+import jdk.nashorn.internal.ir.RuntimeNode.Request;
+
 /**
  * Servlet implementation class BoardListServlet
  */
@@ -36,6 +38,13 @@ public class BoardListServlet extends HttpServlet {
 		dao.connection();
 		List<BoardModel> list = dao.selectList();
 		dao.close();
+		
+		//////////////
+		
+		
+		request.setAttribute("LIST", list);
+		RequestDispatcher rd = request.getRequestDispatcher("boardList_test.jsp");
+		rd.forward(request, response);
 //		response.getWriter().append("Served at: ").append(request.getContextPath()); //Served at: /board_test
 	}
 	

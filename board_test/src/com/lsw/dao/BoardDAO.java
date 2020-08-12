@@ -57,7 +57,7 @@ public class BoardDAO {
 	 * 
 	 */
 	public BoardModel selectOne(BoardModel boardModel) {
-		String query = select
+		String query = "select no, subject, writer, hit from board_tbl where =?";
 		return null;
 	} // selectOne() end
 
@@ -68,7 +68,8 @@ public class BoardDAO {
 	 * 
 	 */
 	public void insert(BoardModel boardModel) {
-		
+		String query = "insert into board_tbl (no, subject, writer, contents "
+				+ "values(board_seq.nextval, ?, ?, ?)";//
 	} // insert() end
 	
 	/**
@@ -78,7 +79,8 @@ public class BoardDAO {
 	 * 
 	 */
 	public void update(BoardModel boardModel) {
-		
+		String query = "update board_tbl set subject=?, writer=?, contents=?"
+				+ "where no=?";
 	} // update() end
 	
 	/**
@@ -88,6 +90,7 @@ public class BoardDAO {
 	 * 
 	 */
 	public void updateHit(BoardModel boardModel) {
+		String query = "update board_tbl set hit=hit+1 where no=?";
 	} // updateHit() end
 	
 	/**
@@ -97,6 +100,20 @@ public class BoardDAO {
 	 * 
 	 */
 	public void delete(BoardModel boardModel) {
+		connection();
+		String query = "delete from board_tbl where no=?";
+		try {
+			stmt = conn.createStatement();
+			rs=stmt.executeQuery(query);
+			rs.next();
+			close();
+			int nono=rs.getInt(1);
+		} catch (SQLException e) {
+			System.out.println("del err! : "+e.getMessage());
+		}
+		
+		
+		
 	} // delete() end
 	
 	/**

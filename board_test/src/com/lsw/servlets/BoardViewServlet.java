@@ -41,6 +41,17 @@ public class BoardViewServlet extends HttpServlet {
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// boardList.jsp => "get" => parameter no 값을 저장할 객체
+		// 전달되는 parameter 명 : no
+		BoardModel boardModel=new BoardModel();
+		
+		BoardDAO dao = new BoardDAO();
+		dao.connection();
+		dao.updateHit(boardModel);
+		BoardModel boardOne = dao.selectOne(boardModel);
+		dao.close();
+//		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
 
 }
