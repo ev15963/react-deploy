@@ -42,16 +42,53 @@ public class BoardDAO {
 	 * 
 	 * 
 	 */
-	public List<BoardModel> selectList(BoardModel boardModel) { // 매개변수 추가
-		String query = "select no, subject, writer, hit, regdate from board_search_tbl";
+	public List<BoardModel> selectList(BoardModel model) { // 매개변수 추가
+		// String query = "select no, subject, writer, hit, regdate from
+		// board_search_tbl";
+		// List<BoardModel> list = null;
+		//
+		String searchType = model.getSearchType();
+		String searchText = model.getSearchText();
+		String whereSQL = "";
+
+		System.out.println(">>> searchText<<<" + searchText);
+
+		// 검색어 쿼리문 완성
+		if (!searchText.equals("")) { //
+			if (searchType.equals("ALL")) {
+				whereSQL += " WHERE subject LIKE? OR writer LIKE ? OR contents LIKE ? ";
+				System.out.println("ALL" + whereSQL);
+			} else if (searchType.equals("SUBJECT")) {
+				whereSQL += " WHERE subject LIKE ? ";
+			} else if (searchType.equals("WRITER")) {
+				whereSQL += " WHERE writer LIKE ? ";
+			} else if (searchType.equals("CONTENTS")) {
+				whereSQL += " WHERE contents LIKE ? ";
+			}
+		} // 검색어 쿼리문 생성 종료
+
+		String query = "select no, subject, writer, hit, moddate from board_search_tbl" + whereSQL;
+
 		List<BoardModel> list = null;
-
+		// BoardModel model = null;
 		try {
-			this.stmt = this.conn.createStatement();
-			this.rs = this.stmt.executeQuery(query);
+			this.pstmt = this.conn.prepareStatement(query);
 
+			// list = new ArrayList<BoardModel>();
+			// BoardModel model = null;
+
+			if (!"".equals(whereSQL)) {
+				if ("ALL".equals(searchType)) { // 전체검색
+					this.pstmt.setString(1, "%" + searchText + "%");
+					this.pstmt.setString(2, "%" + searchText + "%");
+					this.pstmt.setString(3, "%" + searchText + "%");
+				} else {
+					this.pstmt.setString(1, "%" + searchText + "%");
+				}
+			}
+
+			this.rs = this.pstmt.executeQuery();
 			list = new ArrayList<BoardModel>();
-			BoardModel model = null;
 
 			while (rs.next()) {
 				model = new BoardModel();
@@ -60,9 +97,12 @@ public class BoardDAO {
 				model.setWriter(rs.getString("writer"));
 				model.setHit(rs.getInt("hit"));
 				model.setRegdate(rs.getString("regdate"));
+
+				System.out.println("==>model:members <==" + model.toString());
 				list.add(model);
 				model = null;
 			}
+
 		} catch (SQLException e) {
 			System.out.println("selectList() ERR => " + e.getMessage());
 		}
@@ -75,19 +115,171 @@ public class BoardDAO {
 	 * 
 	 * 
 	 */
-	public int selectCount(BoardModel boardModel) { // 매개변수 추가
+	public int selectCount(BoardModel bm) { // 매개변수 추가 ////
 		int totalCount = 0;
-		List<BoardModel> list = null;
+
+		String searchType = bm.getSearchType();
+		String searchText = bm.getSearchText();
+		String whereSQL = "";
 
 		String query = "select count(no) as total from board_search_tbl";
 
-		if (rs.next()) {
-			totalCount = this.rs.getInt("TOTAL");
+		// 검색어 쿼리문 생성
+		if(!searchText.equals("")) {
+			if(searchType.equals("ALL")) {
+				whereSQL += " where subject like ? or where writer like ? where contents like ? ";
+				System.out.println("ALL"+whereSQL);
+			} else if (searchType.equals("SUBJECT")) {
+				whereSQL += " where subject like ? ";
+//				System.out.println("SUBJECT"+whereSQL);
+			} else if (searchType.equals("WRITER")) {
+				whereSQL += " where writer like ? ";
+//				System.out.println("WRITER"+whereSQL);
+			} else if (searchType.equals("CONTENTS")) {
+				whereSQL += " where contents like ? ";
+//				System.out.println("CONTENTS"+whereSQL);
+			}
+		}
+		query += whereSQL;
+
+		try {
+			this.pstmt = this.conn.prepareStatement(query);
+			// 검색어 쿼리문 생성으로 이용
+			if (!whereSQL.equals("")) {
+				if (searchType.equals("ALL")) {
+					this.pstmt.setString(1, "%" + searchText + "%");
+					this.pstmt.setString(2, "%" + searchText + "%");
+					this.pstmt.setString(3, "%" + searchText + "%");
+					// whereSQL += " WHERE subject LIKE ? OR writer LIKE ? OR contents LIKE ? ";
+				} else {
+					this.pstmt.setString(1, "%" + searchText + "%");
+					// whereSQL += " WHERE subject LIKE ? ";
+					// whereSQL += " WHERE writer LIKE ? ";
+					// whereSQL += " WHERE contents LIKE ? "; 셋중에 하나
+				}
+
+			}
+
+			this.rs = this.pstmt.executeQuery();
+			if (this.rs.next()) {
+				totalCount = this.rs.getInt("TOTAL");
+			}
+		} catch (SQLException e) {
+			System.out.println("select err : " + e.getMessage());
+		}
+		return totalCount;
+	} // selectList() end
+		/////////////////////////////////////////////////////////////////
+
+	/**
+	 * 게시글 상세 조회 : BoardviewServlet의 doGet() 에서 호출
+	 */
+	
+	public  BoardModel selectOne(BoardModel bm) {
+		String sql = "select * from board_tbl  where no=?";
+		BoardModel model = null;
+		try {
+			this.pstmt=this.conn.prepareStatement(sql);
+			this.pstmt.setInt(1, bm.getNo());
+			this.rs=this.pstmt.executeQuery();
+			if (rs.next()) {
+				model = new BoardModel();
+				model.setNo(rs.getInt("no"));
+				model.setSubject(rs.getString("string"));
+				model.setWriter(rs.getString("wrtier"));
+				model.setContents(rs.getString("contents"));
+				model.setHit(rs.getInt("Hit"));
+
+
+			}
+		} catch (SQLException e) {
+			System.out.println("selectOne err : "+e.getMessage());
+		}
+		return model;
+	}
+
+	/**
+	 * 게시글 등록 처리 : BoardWriteServlet의 dopost()에서 호출
+	 * 
+	 * 
+	 */
+	public void insert(BoardModel boardModel) {
+		String query = "insert into board_tbl (no, subject, writer, contents)";
+		query += " values (board_seq.nextval, ?, ?, ?)";
+
+		try {
+			this.pstmt = this.conn.prepareStatement(query);
+			this.pstmt.setString(1, boardModel.getSubject());
+			this.pstmt.setString(2, boardModel.getWriter());
+			this.pstmt.setString(3, boardModel.getContents());
+			this.r = this.pstmt.executeUpdate();
+			if (this.r > 0) {
+				System.out.println("insert 드갔다");
+			}
+		} catch (SQLException e) {
+			System.out.println("insert 오류 : " + e.getMessage());
 		}
 
-		return totalCount;
+	}
 
-	} // selectList() end
+	/**
+	 * 게시글 수정 처리 : BoardModifyServlet의 dopost()에서 호출
+	 */
+
+	public void update(BoardModel bm) {
+		String query = "update board_tbl set subject=?, writer=?, contents=?";
+		query += " where no=?";
+
+		try {
+			this.pstmt = this.conn.prepareStatement(query);
+			this.pstmt.setString(1, bm.getSubject());
+			this.pstmt.setString(2, bm.getWriter());
+			this.pstmt.setString(3, bm.getContents());
+			this.pstmt.setInt(4, bm.getNo());
+			this.r = this.pstmt.executeUpdate();
+			if (this.r > 0) {
+				System.out.println("연결성공");
+			}
+		} catch (SQLException e) {
+			System.out.println("update conn err : " + e.getMessage());
+		}
+
+	}
+
+	/**
+	 * 게시글 조회수증가 처리 및 조회수 수정 : BoardViewServlet의 doGet()에서 더에터 조회 전에 호출
+	 */
+	public void updateHit(BoardModel bm) {
+		String sql = "update board_tbl set hit=hit+1 where no=?";
+		try {
+			this.pstmt = this.conn.prepareStatement(sql);
+			this.pstmt.setInt(1, bm.getNo());
+			this.r = pstmt.executeUpdate();
+			if (this.r > 0) {
+				System.out.println("updateHit 연결");
+			}
+		} catch (SQLException e) {
+			System.out.println("updateHit err" + e.getMessage());
+		}
+	}
+
+	/**
+	 * 게시글 삭제 처리 : BoardDeleteServlet의 deGet()에서 호출
+	 */
+
+	public void delete(BoardModel bm) {
+		String sql = "delete from board_tbl where no=?";
+		try {
+			this.pstmt = conn.prepareStatement(sql);
+			this.pstmt.setInt(1, bm.getNo());
+			this.r = this.pstmt.executeUpdate();
+			if (this.r > 0) {
+				System.out.println("delete 연결 성공");
+			}
+		} catch (SQLException e) {
+			System.out.println("delete err : " + e.getMessage());
+		}
+	}
 
 	/**
 	 * 게시글 검색 처리
@@ -97,7 +289,7 @@ public class BoardDAO {
 	 */
 	public void search() {
 		String query = "select * from board_search_tbl where subject like '%4'";
-		
+
 		try {
 			this.stmt = this.conn.createStatement();
 			this.rs = this.stmt.executeQuery(query);
@@ -107,7 +299,9 @@ public class BoardDAO {
 			while (rs.next()) {
 				bm = new BoardModel();
 				bm.setNo(rs.getInt("no"));
-
+				bm.setSubject(rs.getString("subject"));
+				bm.setWriter(rs.getString("subject"));
+				bm.setHit(rs.getInt("hit"));
 			}
 
 		} catch (SQLException e) {

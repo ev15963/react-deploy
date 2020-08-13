@@ -33,7 +33,7 @@ public class BoardDAO {
 			Class.forName(ORACLE_DRIVER);
 			System.out.println("==> 드라이버 로딩 성공!");
 
-			this.conn = DriverManager.getConnection(ORACLE_URL, "freeflux", "free");
+			this.conn = DriverManager.getConnection(ORACLE_URL, "lsw", "1234");
 			System.out.println("==> DB접속성공!");
 
 		} catch (ClassNotFoundException e) {

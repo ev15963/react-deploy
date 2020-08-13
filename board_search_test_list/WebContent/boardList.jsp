@@ -4,7 +4,8 @@
 <!--  -->
 <%@ page import="java.util.*, com.lsw.dto.*"%>
 <%
-	List<BoardModel> list = (ArrayList<BoardModel>) request.getAttribute("LIST");
+BoardModel searchModel = (BoardModel)request.getAttribute("MODEL");
+List<BoardModel> list = (ArrayList<BoardModel>) request.getAttribute("LIST");
 %>
 <!--  -->
 <!DOCTYPE html>
@@ -28,15 +29,15 @@ table thead tr th {
 }
 </style>
 </head>
-<h3>게시판 목록 화면</h3>
 <body>
-	<%
+<h3>게시판 목록 화면</h3>
+<hr>
+	<%--
 	BoardModel md = new BoardModel();
-	%>
-	<table border="1" summary="게시판 목록">
+	--%>
 	<form style="text-align:right;" action ="boardList">
 	<select name ="search">
-	<option value="choice">전체검색</option>
+	<option value="ALL" selected>전체검색</option> <!-- boardList.jsp 검색부분 -->
 	<option value="SUBJECT">제목</option> <!-- <md.getSubject() > -->
 	<option value="WRITER">작성자</option> <!-- <md.getWriter() %> -->
 	<option value="CONTENTS">내용</option> <!-- <md.getContents() %> -->
@@ -46,6 +47,7 @@ table thead tr th {
 	</form>
 	
 	
+	<table border="1" summary="게시판 목록">
 		<caption>게시판 목록</caption>
 		<colgroup>
 			<col width="50" />
@@ -85,7 +87,7 @@ table thead tr th {
 
 			<tr>
 				<td align="center"><%=model.getNo() %></td>
-				<td><a href="boardView?no=<%=model.getNo() %>" /><%= model.getSubject() %></a></td>
+				<td><a href="boardView?no=<%=model.getNo() %>" ><%= model.getSubject() %></a></td>
 				<td align="center"><%=model.getWriter() %></td> <!-- 작성자 출력 부분 -->
 				
 				<td align="center"><%=model.getRegdate().substring(0,10) %></td>
@@ -104,8 +106,10 @@ table thead tr th {
 
 		<tfoot>
 			<tr>
-				<td align="center" colspan="5">Copyright ⓒ freeflux Corp. All
-					Rights Reserved</td>
+			
+			<!-- 	<td align="center" colspan="5">Copyright ⓒ freeflux Corp. All
+					Rights Reserved</td> -->
+					<td align="center" colspan="5">${pageNavigator}</td>
 			</tr>
 		</tfoot>
 	</table>

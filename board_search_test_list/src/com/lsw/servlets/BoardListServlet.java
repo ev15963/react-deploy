@@ -18,7 +18,7 @@ import oracle.net.aso.p;
 /**
  * Servlet implementation class BoardListServlet
  */
-@WebServlet("/BoardList")
+@WebServlet("/boardList")
 public class BoardListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -50,28 +50,28 @@ public class BoardListServlet extends HttpServlet {
     	//DTO
     	BoardModel bm = new BoardModel();
     	bm.setPageNum(pageNum);
+    	bm.setSearchType(searchType);
+    	bm.setSearchText(searchText);
     	
+    	//DAO    	
     	BoardDAO dao = new BoardDAO();
-		BoardModel dto = new BoardModel();
 		dao.connection();
-		List<BoardModel> list = dao.selectList(dto);
+		
+		//게실물 목록ㅇㄹ 얻는 쿼시 실행
+		List<BoardModel> list = dao.selectList(bm);
 		dao.close();
 		
 		//////////////
 		
-		
+		//view 사용될 객체  설정
 		request.setAttribute("LIST", list);
+		request.setAttribute("MODEL", bm);
+		
+		//view 보내기
 		RequestDispatcher rd = request.getRequestDispatcher("boardList.jsp");
 		rd.forward(request, response);
 //		response.getWriter().append("Served at: ").append(request.getContextPath()); //Served at: /board_test
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
 
 }

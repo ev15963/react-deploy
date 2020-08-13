@@ -5,6 +5,9 @@
 <head>
 	<meta charset="UTF-8">
 	<title>게시글 등록 폼</title>
+
+<script src="//cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script>
+
 </head>
 
 <body>
@@ -35,7 +38,12 @@
 			
 			<tr>
 				<td colspan="2">
-					<textarea name="contents" cols="80" rows="10" required></textarea>
+					<textarea name="contents" id="editor1"  cols="80" rows="10" required>
+					
+					</textarea>
+					<script>
+						CKEDITOR.replace('editor1');
+					</script>
 				</td>
 			</tr>
 		</tbody>
