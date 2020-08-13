@@ -115,6 +115,15 @@ public class BoardDAO {
 		
 		
 	} // delete() end
+
+	/**
+	 * 게시글 검색
+	 * 
+	 */
+	
+	public void search(BoardModel boardModel) {
+		String query = "select * from board_search_tbl where subject like '%14'";
+	} // search end()
 	
 	/**
 	 * 사용이 끝난 자원 해제 : 각 Servlet 에서 가장 나중에 호출

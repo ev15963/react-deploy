@@ -96,12 +96,12 @@ public class BoardModel {
 		this.regdate = regdate;
 	}
 
-	public String getMoodate() {
-		return moodate;
+	public String getModdate() {
+		return moddate;
 	}
 
-	public void setMoodate(String moodate) {
-		this.moodate = moodate;
+	public void setModdate(String moddate) {
+		this.moddate = moddate;
 	}
 
 	public String getPageNum() {

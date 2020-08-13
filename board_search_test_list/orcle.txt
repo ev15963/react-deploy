@@ -1,0 +1,103 @@
+
+SQL*Plus: Release 11.2.0.2.0 Production on 목 8월 13 08:00:23 2020
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+SQL> conn lsw/1234;
+Connected.
+SQL> create sequence board_search_seq
+  2  start with 1
+  3  increment by 1
+  4  ;
+
+Sequence created.
+
+SQL> create table board_search_tbl (
+  2  no number(4) not null,
+  3  subject varchar2(250) not null,
+  4  writer varchar2(50) not null,
+  5  contents clob,
+  6  hit number(4) default 0,
+  7  regdate date default sysdate,
+  8  moddate date default sysdate,
+  9  primary key(no)
+ 10  );
+
+//테이블 생성
+Table created.
+
+SQL> select * from board_search_tbl;
+
+no rows selected
+
+SQL> insert into board_search_tbl (no, subject, writer, contents)  values ( board_search_seq.nextval, 'test', 'test', 'test');
+
+1 row created.
+
+SQL> insert into board_search_tbl (no, subject, writer, contents)  values ( board_search_seq.nextval, 'test1', 'test1', 'test1');
+
+1 row created.
+
+SQL> insert into board_search_tbl (no, subject, writer, contents)  values ( board_search_seq.nextval, 'test2', 'test2', 'test2');
+
+1 row created.
+
+SQL> insert into board_search_tbl (no, subject, writer, contents)  values ( board_search_seq.nextval, 'test3', 'test3', 'test3');
+
+1 row created.
+
+SQL> insert into board_search_tbl (no, subject, writer, contents)  values ( board_search_seq.nextval, 'test4', 'test4', 'test4');
+
+1 row created.
+
+SQL> insert into board_search_tbl (no, subject, writer, contents)  values ( board_search_seq.nextval, 'test5', 'test5', 'test5');
+
+1 row created.
+
+SQL> insert into board_search_tbl (no, subject, writer, contents)  values ( board_search_seq.nextval, 'test6', 'test6', 'test6');
+
+1 row created.
+
+SQL> insert into board_search_tbl (no, subject, writer, contents)  values ( board_search_seq.nextval, 'test7', 'test7', 'test7');
+
+1 row created.
+
+SQL> insert into board_search_tbl (no, subject, writer, contents)  values ( board_search_seq.nextval, 'test8', 'test8', 'test8');
+
+1 row created.
+
+SQL> insert into board_search_tbl (no, subject, writer, contents)  values ( board_search_seq.nextval, 'test9', 'test9', 'test9');
+
+1 row created.
+
+SQL> insert into board_search_tbl (no, subject, writer, contents)  values ( board_search_seq.nextval, 'test10', 'test10', 'test10');
+
+1 row created.
+
+SQL> insert into board_search_tbl (no, subject, writer, contents)  values ( board_search_seq.nextval, 'test11', 'test11', 'test11');
+
+1 row created.
+
+SQL> insert into board_search_tbl (no, subject, writer, contents)  values ( board_search_seq.nextval, 'test12', 'test12', 'test12');
+
+1 row created.
+
+SQL> insert into board_search_tbl (no, subject, writer, contents)  values ( board_search_seq.nextval, 'test13', 'test13', 'test13');
+
+1 row created.
+
+SQL> insert into board_search_tbl (no, subject, writer, contents)  values ( board_search_seq.nextval, 'test14', 'test14', 'test14');
+
+1 row created.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> select * from board_search_tbl where subject like '%14';
+
+        NO	SUBJECT	WRITER	CONTENTS       HIT REGDATE  MODDATE
+----------------------------         ---------- -------- --------
+        15  test14  test14  test14      0 20/08/13 20/08/13
+
+ 

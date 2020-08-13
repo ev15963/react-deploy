@@ -30,8 +30,22 @@ table thead tr th {
 </head>
 <h3>게시판 목록 화면</h3>
 <body>
-	
+	<%
+	BoardModel md = new BoardModel();
+	%>
 	<table border="1" summary="게시판 목록">
+	<form style="text-align:right;" action ="boardList">
+	<select name ="search">
+	<option value="choice">전체검색</option>
+	<option value="SUBJECT">제목</option> <!-- <md.getSubject() > -->
+	<option value="WRITER">작성자</option> <!-- <md.getWriter() %> -->
+	<option value="CONTENTS">내용</option> <!-- <md.getContents() %> -->
+	</select>
+	<input type="text" name="search" required="required" />
+	<input type="submit"  value="검색" /> <!-- button아닌 submit -->
+	</form>
+	
+	
 		<caption>게시판 목록</caption>
 		<colgroup>
 			<col width="50" />
@@ -45,7 +59,8 @@ table thead tr th {
 				<th>번호</th>
 				<th>제목</th>
 				<th>작성자</th>
-				<th>등록 일시</th>
+				<!-- <th>등록 일시</th> -->
+				<th>작성일</th>
 				<th>조회수</th>
 			</tr>
 
@@ -70,10 +85,13 @@ table thead tr th {
 
 			<tr>
 				<td align="center"><%=model.getNo() %></td>
-				<td><a href="boardView?no=<%=model.getNo() %>" /></a><%= model.getContents() %></td>
+				<td><a href="boardView?no=<%=model.getNo() %>" /><%= model.getSubject() %></a></td>
 				<td align="center"><%=model.getWriter() %></td> <!-- 작성자 출력 부분 -->
-				<!-- <td align="center">등록 날짜 출력 부분</td> -->
-				<td align="center"><%= model.getHit() %></td> <!-- 조회수 출력 부분 -->
+				
+				<td align="center"><%=model.getRegdate().substring(0,10) %></td>
+				
+				<td align="center"><%=model.getHit() %></td> <!--  조회수 -->
+				 <!-- 조회수 출력 부분 -->
 			</tr>
 			
 			<%
@@ -86,7 +104,7 @@ table thead tr th {
 
 		<tfoot>
 			<tr>
-				<td align="center" colspan="4">Copyright ⓒ freeflux Corp. All
+				<td align="center" colspan="5">Copyright ⓒ freeflux Corp. All
 					Rights Reserved</td>
 			</tr>
 		</tfoot>
