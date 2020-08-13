@@ -43,7 +43,7 @@ public class BoardModifyServlet extends HttpServlet {
 		dao.close();
 		
 		request.setAttribute("MODEL", boardOne);
-		RequestDispatcher rd=request.getRequestDispatcher("boardModify_test.jsp");
+		RequestDispatcher rd=request.getRequestDispatcher("boardModify.jsp");
 		rd.forward(request, response);
 		
 //		response.getWriter().append("Served at: ").append(request.getContextPath());

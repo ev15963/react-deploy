@@ -13,7 +13,7 @@ import com.lsw.dto.BoardModel;
 /**
  * Servlet implementation class BoardViewServlet
  */
-@WebServlet("/BoardViewServlet")
+@WebServlet("/BoardView")
 public class BoardViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
