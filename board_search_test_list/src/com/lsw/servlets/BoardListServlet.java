@@ -84,7 +84,7 @@ public class BoardListServlet extends HttpServlet {
 		
 		//view 보내기
 		RequestDispatcher rd = request.getRequestDispatcher("boardList.jsp");
-		rd.forward(request, response); //은닉성, sendRedirect 
+		rd.forward(request, response); //은닉성, sendRedirect와 반대 성향 (기능은 같음)
 //		response.getWriter().append("Served at: ").append(request.getContextPath()); //Served at: /board_test
 	}
 
