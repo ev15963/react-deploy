@@ -6,6 +6,7 @@
 <%
 BoardModel searchModel = (BoardModel)request.getAttribute("MODEL");
 List<BoardModel> list = (ArrayList<BoardModel>) request.getAttribute("LIST");
+String pageNavigator=(String)request.getAttribute("PAGE_NAVIGATOR");
 %>
 <!--  -->
 <!DOCTYPE html>
@@ -36,13 +37,13 @@ table thead tr th {
 	BoardModel md = new BoardModel();
 	--%>
 	<form style="text-align:right;" action ="boardList">
-	<select name ="search">
+	<select name ="searchType">
 	<option value="ALL" selected>전체검색</option> <!-- boardList.jsp 검색부분 -->
 	<option value="SUBJECT">제목</option> <!-- <md.getSubject() > -->
 	<option value="WRITER">작성자</option> <!-- <md.getWriter() %> -->
 	<option value="CONTENTS">내용</option> <!-- <md.getContents() %> -->
 	</select>
-	<input type="text" name="search" required="required" />
+	<input type="text" name="searchText" required="required" />
 	<input type="submit"  value="검색" /> <!-- button아닌 submit -->
 	</form>
 	
@@ -109,7 +110,7 @@ table thead tr th {
 			
 			<!-- 	<td align="center" colspan="5">Copyright ⓒ freeflux Corp. All
 					Rights Reserved</td> -->
-					<td align="center" colspan="5">${pageNavigator}</td>
+					<td align="center" colspan="5"><%= pageNavigator %></td>
 			</tr>
 		</tfoot>
 	</table>

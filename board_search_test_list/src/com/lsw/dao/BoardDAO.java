@@ -67,9 +67,10 @@ public class BoardDAO {
 			}
 		} // 검색어 쿼리문 생성 종료
 
-		String query = "select no, subject, writer, hit, moddate from board_search_tbl" + whereSQL;
+		String query = "select no, subject, writer, hit, regdate from board_search_tbl" + whereSQL;
 
 		List<BoardModel> list = null;
+		System.out.println("sqlllllllllllllllllllll"+query);
 		// BoardModel model = null;
 		try {
 			this.pstmt = this.conn.prepareStatement(query);
@@ -120,6 +121,9 @@ public class BoardDAO {
 
 		String searchType = bm.getSearchType();
 		String searchText = bm.getSearchText();
+		System.out.println(">>>>searchType<<<"+searchType);
+		System.out.println(">>>>searchText<<<"+searchText);
+		
 		String whereSQL = "";
 
 		String query = "select count(no) as total from board_search_tbl";
@@ -131,22 +135,22 @@ public class BoardDAO {
 				System.out.println("ALL"+whereSQL);
 			} else if (searchType.equals("SUBJECT")) {
 				whereSQL += " where subject like ? ";
-//				System.out.println("SUBJECT"+whereSQL);
+				System.out.println("SUBJECT"+whereSQL);
 			} else if (searchType.equals("WRITER")) {
 				whereSQL += " where writer like ? ";
-//				System.out.println("WRITER"+whereSQL);
+				System.out.println("WRITER"+whereSQL);
 			} else if (searchType.equals("CONTENTS")) {
 				whereSQL += " where contents like ? ";
-//				System.out.println("CONTENTS"+whereSQL);
+				System.out.println("CONTENTS"+whereSQL);
 			}
 		}
 		query += whereSQL;
-
+		System.out.println("sqlllllllllllllllllllll22222"+query);
 		try {
 			this.pstmt = this.conn.prepareStatement(query);
 			// 검색어 쿼리문 생성으로 이용
-			if (!whereSQL.equals("")) {
-				if (searchType.equals("ALL")) {
+			if (!"".equals(whereSQL)) {
+				if ("ALL".equals(searchType)) {
 					this.pstmt.setString(1, "%" + searchText + "%");
 					this.pstmt.setString(2, "%" + searchText + "%");
 					this.pstmt.setString(3, "%" + searchText + "%");
@@ -160,9 +164,12 @@ public class BoardDAO {
 
 			}
 
-			this.rs = this.pstmt.executeQuery();
+			this.rs = this.pstmt.executeQuery(); //쿼리 실행 (날리면 안된다) 테이블 생성 할 때 execute()
+			
 			if (this.rs.next()) {
-				totalCount = this.rs.getInt("TOTAL");
+				totalCount = this.rs.getInt("TOTAL"); //as total로 꺼내옴
+				
+				System.out.println("=====> d=====> totalCount "+ totalCount);
 			}
 		} catch (SQLException e) {
 			System.out.println("select err : " + e.getMessage());
