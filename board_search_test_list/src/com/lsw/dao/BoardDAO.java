@@ -56,24 +56,72 @@ public class BoardDAO {
 		// 검색어 쿼리문 완성
 		if (!searchText.equals("")) { //
 			if (searchType.equals("ALL")) {
-				whereSQL += " WHERE subject LIKE? OR writer LIKE ? OR contents LIKE ? ";
+				whereSQL += " subject LIKE? OR writer LIKE ? OR contents LIKE ? AND ";
 				System.out.println("ALL" + whereSQL);
 			} else if (searchType.equals("SUBJECT")) {
-				whereSQL += " WHERE subject LIKE ? ";
+				whereSQL += " subject LIKE ? AND ";
 			} else if (searchType.equals("WRITER")) {
-				whereSQL += " WHERE writer LIKE ? ";
+				whereSQL += " writer LIKE ? AND ";
 			} else if (searchType.equals("CONTENTS")) {
-				whereSQL += " WHERE contents LIKE ? ";
+				whereSQL += " contents LIKE ? AND";
 			}
 		} // 검색어 쿼리문 생성 종료
 
-		String query = "select no, subject, writer, hit, regdate from board_search_tbl" + whereSQL;
+		/** 실행할 query문**/
+		/**
+		 * 검색하지 않을 경우
+		 * SELECT no, subject, writer, hit, moddate from board_search_tbl
+		 * WHERE subject LIKE '%t%' and no between 1 and 5 order by no desc;
+		 * 
+		 * 기본 Query
+		 * SELECT no, subject, writer, hit, moddate FROM  board
+		 
+		 *
+		 *
+		 * between 시작번호 and 끝번호
+		 * between ? and ?
+		 *
+		 * int listCount=10;			한화면 출력 갯수
+		 * int pageNum=1;				페이지번호
+		 * int startNo=(pageNum-1)*listCount+1 최종수직
+		 * int endNo=startNo+9
+		 * 
+		 * between 시작번호 and 번호
+		 * 
+		 * 1 page  1	:	10
+		 * 2 page 11	:	20
+		 * 3 page 21	:	30
+		 * 4 page 31	:	40
+		 * 5 page 41	:	50
+		 * 
+		 * startNo					endNo
+		 * (pageNo-1)*listCount+1 : startNo+9
+		 * (1-1)*10+1 =>  1		  : 10
+		 * (2-1)*10+1 => 11		  : 20
+		 * (3-1)*10+1 => 21		  : 30
+		 * 
+		 *
+		 *
+		 */
+		
 
+		String basic_query = "select no, subject, writer, hit, regdate from board_search_tbl";
+		String last_query = " where no between ? and ? order by no desc";
+		String sql_querry=basic_query+last_query;
+		
+		System.out.println("여기보세요"+model.getPageNum());
+		int pNo=Integer.parseInt(model.getPageNum());
+		
+		int startNo=(pNo-1)*model.getListCount()+1;
+		int endNo=startNo+9;
+		
+		System.out.println("PAGE_START_END===>"+startNo+"==="+endNo);
+		
 		List<BoardModel> list = null;
-		System.out.println("sqlllllllllllllllllllll"+query);
+		System.out.println("sqlllllllllllllllllllll"+sql_querry);
 		// BoardModel model = null;
 		try {
-			this.pstmt = this.conn.prepareStatement(query);
+			this.pstmt = this.conn.prepareStatement(sql_querry);
 
 			// list = new ArrayList<BoardModel>();
 			// BoardModel model = null;
@@ -83,14 +131,19 @@ public class BoardDAO {
 					this.pstmt.setString(1, "%" + searchText + "%");
 					this.pstmt.setString(2, "%" + searchText + "%");
 					this.pstmt.setString(3, "%" + searchText + "%");
+					this.pstmt.setInt(4, startNo); //추가 between ?
+					this.pstmt.setInt(5, endNo);
 				} else {
 					this.pstmt.setString(1, "%" + searchText + "%");
+					this.pstmt.setInt(2, startNo);	//추가 : between
+					this.pstmt.setInt(3, endNo);	//추가 : and?
 				}
 			}
 
+			
 			this.rs = this.pstmt.executeQuery();
 			list = new ArrayList<BoardModel>();
-
+			
 			while (rs.next()) {
 				model = new BoardModel();
 				model.setNo(rs.getInt("no"));
@@ -98,7 +151,7 @@ public class BoardDAO {
 				model.setWriter(rs.getString("writer"));
 				model.setHit(rs.getInt("hit"));
 				model.setRegdate(rs.getString("regdate"));
-
+				
 				System.out.println("==>model:members <==" + model.toString());
 				list.add(model);
 				model = null;
@@ -129,7 +182,7 @@ public class BoardDAO {
 		String query = "select count(no) as total from board_search_tbl";
 
 		// 검색어 쿼리문 생성
-		if(!searchText.equals("")) {
+		if(!searchText.equals("")) { //검색어가 없을시
 			if(searchType.equals("ALL")) {
 				whereSQL += " where subject like ? or where writer like ? where contents like ? ";
 				System.out.println("ALL"+whereSQL);
@@ -144,7 +197,7 @@ public class BoardDAO {
 				System.out.println("CONTENTS"+whereSQL);
 			}
 		}
-		query += whereSQL;
+		query += whereSQL; ///////////////
 		System.out.println("sqlllllllllllllllllllll22222"+query);
 		try {
 			this.pstmt = this.conn.prepareStatement(query);

@@ -52,13 +52,15 @@ public class PageNavigator {
 				isPrev = false;													//111213
 			}
 			//////////////////////////////////////////////////////////////////
+			
+//			"<a href="boardList?pageNum=1&searchType="+전체검색/제목/작성자/내용+"&searchText="+searchText" title="<<"><<</a> ");
 			if(pageNum > 1){
 				sb.append("<a href=\"").append("boardList?pageNum=1&amp;searchType="+searchType+"&amp;searchText="+searchText); //검색까지 해줘야한다 &-> &amp;
 				sb.append("\" title=\"<<\"><<</a>&nbsp;");	//&nbsp; 띄어쓰기  "title="<<"><<
 			}
 			if (isPrev) {
 				int goPrevPage = startPage - pagePerBlock;			
-				sb.append("&nbsp;&nbsp;<a href=\"").append("boardListServlet?pageNum="+goPrevPage+"&amp;searchType="+searchType+"&amp;searchText="+searchText);
+				sb.append("&nbsp;&nbsp;<a href=\"").append("boardList?pageNum="+goPrevPage+"&amp;searchType="+searchType+"&amp;searchText="+searchText);
 				sb.append("\" title=\"<\"><</a>"); //  
 			} else {
 				
@@ -67,7 +69,7 @@ public class PageNavigator {
 				if (i == pageNum) {
 					sb.append("<a href=\"#\"><strong>").append(i).append("</strong></a>&nbsp;&nbsp;");
 				} else {
-					sb.append("<a href=\"").append("boardListServlet?pageNum="+i+"&amp;searchType="+searchType+"&amp;searchText="+searchText);
+					sb.append("<a href=\"").append("boardList?pageNum="+i+"&amp;searchType="+searchType+"&amp;searchText="+searchText);
 					sb.append("\" title=\""+i+"\">").append(i).append("</a>&nbsp;&nbsp;");
 				}
 			}

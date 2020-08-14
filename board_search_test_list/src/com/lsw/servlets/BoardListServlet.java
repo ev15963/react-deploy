@@ -14,8 +14,6 @@ import com.lsw.dao.BoardDAO;
 import com.lsw.dto.BoardModel;
 import com.lsw.util.PageNavigator;
 
-import oracle.net.aso.p;
-
 /**
  * Servlet implementation class BoardListServlet
  */
@@ -73,8 +71,8 @@ public class BoardListServlet extends HttpServlet {
 		request.setAttribute("MODEL", bm);
 		
 		//페이지 번호 얻어내는 부분
-		PageNavigator pageNavigator= new PageNavigator();
-		String pageNums = pageNavigator.getPageNavigator
+		PageNavigator pageNavigator= new PageNavigator(); // pagenavigater에서 불러옴
+		String pageNums = pageNavigator.getPageNavigator // pagenavigeter class안에 getPageNavigater 메서드 사용
 				(totalCount, bm.getListCount(), bm.getPagePerBlock(), 
 						Integer.parseInt(pageNum), searchType, searchText);
 		//totalCount, listCount, pagePerBlock, pageNum, searchType, searchText)
@@ -86,7 +84,7 @@ public class BoardListServlet extends HttpServlet {
 		
 		//view 보내기
 		RequestDispatcher rd = request.getRequestDispatcher("boardList.jsp");
-		rd.forward(request, response); //은닉성, send뭐시기는 확인 가능 
+		rd.forward(request, response); //은닉성, sendRedirect 
 //		response.getWriter().append("Served at: ").append(request.getContextPath()); //Served at: /board_test
 	}
 
