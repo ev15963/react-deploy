@@ -245,7 +245,7 @@ public class BoardDAO {
 			if (rs.next()) {
 				model = new BoardModel();
 				model.setNo(rs.getInt("no"));
-				model.setSubject(rs.getString("string"));
+				model.setSubject(rs.getString("subject"));
 				model.setWriter(rs.getString("wrtier"));
 				model.setContents(rs.getString("contents"));
 				model.setHit(rs.getInt("Hit"));
