@@ -15,8 +15,8 @@ String siteName = request.getParameter("siteName");
 
 <hr>
 <jsp:include page = "includeSub2.jsp">
-<jsp:param value="siteName2" name="네이버" />
-</jsp:include>
-includeMain.jsp의 내용입니다.
+<jsp:param value="네이버" name="siteName2" />
+</jsp:include> <hr>
+includeMain2.jsp의 내용입니다.
 </body> 
 </html>
