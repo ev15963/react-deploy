@@ -7,6 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<h1>포워딩되는 페이지(ab.jsp)</h1>
+	<%
+	String name = request.getParameter("name");
+	String bloodType = request.getParameter("bloodType");
+	%>
+	
+	<b> <%=name %></b>님의 혈액형은
+	<b><%=bloodType %></b>형이고
+	<p>정확한 판단력을 가진 완벽주의자입니다.
 </body>
 </html>

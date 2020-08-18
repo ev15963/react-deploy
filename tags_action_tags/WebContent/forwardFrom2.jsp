@@ -7,6 +7,16 @@
 <title>forwardFrom</title>
 </head>
 <body>
-
+	<h1>포워딩하는 페이지 : forwardFrom2.jsp</h1>
+	
+	<%
+		request.setCharacterEncoding("UTF-8");
+		String bloodType = request.getParameter("bloodType")+".jsp"; //name으로 가져와 value 값으로
+		//A형 선택시 String bloodType = "a.jsp";
+	%>
+	
+	<jsp:forward page = "<%= bloodType %>" />
+	<!-- forword 액션 태그 때문에 이 파일의 내용은 화면 출력 안된다.
+	ex) bloodType = a.jsp -->
 </body>
 </html>
