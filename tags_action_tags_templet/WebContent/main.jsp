@@ -2,6 +2,6 @@
     pageEncoding="UTF-8"%>
 <jsp:forward page= "templateTest.jsp">
 	<jsp:param value="content.jsp" name="CONTENTPAGE" />
-	<!--<jsp:param value="goods_forward.jsp" name="GOODS"/>-->
+	<jsp:param value="goods_forward.jsp" name="GOODS"/>
 </jsp:forward>
 <!--  -->

@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%
 	String contentPage = request.getParameter("CONTENTPAGE");
-	String goods = request.getParameter("GOODS");
 	//templateTest.jsp?CONTENTPAGE=content.jsp
 	// String contentPage="content.jsp"
 %>
