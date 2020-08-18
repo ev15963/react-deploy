@@ -4,15 +4,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>forward_Form1.jsp</title>
+<title>forwardFrom</title>
 </head>
 <body>
-	<h1>Forward 사용법 예제</h1>
+	<h2>포워딩하는 메시지 : forwardForm1.jsp</h2>
+	<%-- <% request.setCharacterEncoding("UTF-8"); %> --%>
 	
-	<form action="forwardFrom1.jsp" method="post" >
-		아이디 : <input type="text" name="id"> <p>
-		비밀번호 : <input type = "password" name="password"> <p>
-		<input type="submit" value= "보내기" >
-	</form>
+	forwardFrom1.jsp의 내용입니다. <br>
+	화면에 절대 표시 안됩니다.
+	<%-- 아래 forward 태그 때문에 --%>
+	<jsp:forward page="forwardTo1.jsp" />
 </body>
 </html>
