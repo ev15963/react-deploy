@@ -7,11 +7,16 @@
 <title>forwardFrom</title>
 </head>
 <body>
+<h2>포워딩하는 페이지 : forwardTagFrom2.jsp</h2>
 	<%
 		request.setCharacterEncoding("UTF-8");
-		String color = request.getParameter("color") + ".jsp"; //name값으로 가져와 value로
+		String name =request.getParameter("name");
+		String selectedColor = request.getParameter("color"); //name값으로 가져와 value로
 	%>
-	<jsp:forward page="<%=color%>" />
-
+	<!-- 별도의 파라미터와 값을 전달하고 싶은 경우 -->
+	<jsp:forward page="<%=selectedColor+\".jsp\"%>" >
+	<jsp:param value="<%=selectedColor %>" name="selectedColor" />
+	<jsp:param value="<%=name %>" name="name" />
+	</jsp:forward>
 </body>
 </html>
