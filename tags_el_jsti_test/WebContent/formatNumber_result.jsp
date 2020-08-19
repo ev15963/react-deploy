@@ -12,8 +12,8 @@
 <pre>
 ko_KR /en_US
 <fmt:setLocale value="ko_KR"/>
-number : <fmt:formatNumber value="9876543.61" type="number"/>
-currency : <fmt:formatNumber value="9876543.61" type="currnency"/>
+number : <fmt:formatNumber value="9876543.61" type="number"/> 
+currency : <fmt:formatNumber value="9876543.61" type="currency"/>
 percent :  <fmt:formatNumber type="percent"> 9876543.61 </fmt:formatNumber>
 pattern=".000" :  <fmt:formatNumber value="9876543.61" pattern=".000" />
 pattern="#.#00.0#" :  <fmt:formatNumber value="9876543.612345" pattern="#,#00.0#"/>
