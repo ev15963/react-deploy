@@ -19,5 +19,7 @@
 <%--	<c:remove var="info"/> --%>
 	회원이름 : ${info.name } <br>
 	나이 : ${info.age } <br>
+	
+	<%= info.getName() %>
 </body>
 </html>
