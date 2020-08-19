@@ -1,15 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>redirect_result.jsp</title>
+<title>timezone_result.jsp</title>
 </head>
 <body>
-네이버로 이동합니다.
-<hr>
-<c:redirect url="https://www.naver.com"></c:redirect>
+<pre>
+ko_KR / en_US
+<fmt:setLocale value="ko_KR" />
+<jsp:useBean id="now" class="java.util.Date"/>
+
+<h4>
+<fmt:formatDate value="${now}" dateStyle="full" /> &#149;
+<fmt:formatDate value="${now}" type="time" />
+</h4>
+</pre>
 </body>
 </html>
