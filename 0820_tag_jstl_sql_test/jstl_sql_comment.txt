@@ -129,6 +129,11 @@
 	
 </sql:update>
 
+<sql:dateParam/>은 java.sql.PreparedStatement.setTimestamp() 역할을 하고,
+<sql:param/>은 java.sql.PreparedStatement.setString()의 역할을 한다.
+
+바인드변수의 순서에 따라서 써주면 된다.
+
 ===========================================================================================
 
 body에 있는 <sql:query var="emp" ~~>
