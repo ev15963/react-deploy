@@ -21,7 +21,7 @@
 	<hr>
 	<%-- person 으로 반복해서 email과 phone 출력 --%>
 	<table border="1">
-		<x:forEach select="$xdata//person">
+		<x:forEach select="$xdata//person"> <%-- 삼항연산 --%>
 		<tr>
 		<td><x:out select="email"/></td>
 		<td><x:out select="phone"/></td>

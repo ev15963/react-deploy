@@ -1,0 +1,69 @@
+board_search_test_list_include1.war
+
+첫 번째 수정 : 
+menu3_sub5_forwoard.jsp 의 내부 코드 변경 (value= "boardList")
+
+       <jsp:forward page= "layout.jsp" >  
+	<jsp:param name= "CONTENT_PAGE"  value= "boardList" /> 
+	<jsp:param name= "LEFT_PAGE"  value= "sub3.jsp" />
+       </jsp:forward> 
+
+
+두 번째 수정 : 
+BoardListServlet.java 의 내부 코드 변경 (forward() => include())
+(requestDispatcher.include(request, response);
+
+       RequestDispatcher requestDispatcher = request.getRequestDispatcher("boardList.jsp");
+       requestDispatcher.include(request, response);
+
+==========================================
+board_search_test_list_include2.war
+
+첫 번째 수정 :
+menu3_sub5_forwoard.jsp (jsp:forward page= "boardMain.jsp" />  )
+
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
+    	pageEncoding="UTF-8"%>
+    
+	   
+	<%--   
+	원래코드 
+	<jsp:forward page= "boardList" >  
+		<jsp:param name= "CONTENT_PAGE"  value= "boardList" /> 
+		<jsp:param name= "LEFT_PAGE"  value= "sub3.jsp" />
+	</jsp:forward>
+	 --%> 
+
+	<%-- 수정 코드 --%>
+	<jsp:forward page= "boardMain.jsp" /> 
+
+
+두 번째 수정 : 
+boardList.jsp 의 내부 구조를 layout.jsp 와 동일하게 수정
+
+<body>
+	<table width="1200" border="1" cellpadding="0" cellspacing="0"  align="center">   
+	   <tr height="80" >    
+		   <td colspan= "2"  align="center"> <!-- 상단 영역 --> 
+		   		<jsp:include page= "top.jsp" flush= "false" />    
+		   </td>   
+	   </tr>   
+	   
+	   <tr height="180">    <!-- 가운데 영역 -->
+		   <td width= "150" valign= "top"  align="center"> <!-- 좌측 영역 --> 
+		   		<jsp:include page= "sub3.jsp" flush= "false" />    <!--  이 부분을 고정 -->
+		   </td>    
+		   
+		   <td width= "1020" valign= "top"  align="center"> <!-- 본문 내용 --> 
+		   		여기에 원래  boardList.jsp 의 <table></table>을 삽입
+		   </td>   
+	   </tr>   
+	   
+	   <tr height="80" >    
+		   <td colspan= "2"  align="center"> <!-- 하단 영역 --> 
+		   		<jsp:include page= "bottom.jsp" flush= "false" />    
+		   </td>   
+	   </tr> 
+	</table>
+</body>
+
