@@ -5,9 +5,6 @@
         <dependent-module archiveName="ojdbc5.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/ojdbc5/ojdbc5">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="ojdbc6_g.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/ojdbc6_g/ojdbc6_g">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <dependent-module archiveName="ojdbc6.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/ojdbc6/ojdbc6">
             <dependency-type>uses</dependency-type>
         </dependent-module>

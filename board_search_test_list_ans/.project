@@ -4,7 +4,6 @@
 	<comment></comment>
 	<projects>
 		<project>ojdbc5</project>
-		<project>ojdbc6_g</project>
 		<project>ojdbc6</project>
 	</projects>
 	<buildSpec>
