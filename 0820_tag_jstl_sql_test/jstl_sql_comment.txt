@@ -1,0 +1,130 @@
+*JSTL sql 
+
+-SQL 관련 기능을 제공해주는 JSTL 라이브러리 
+-sql 라이브러리 이용해서 데이터베이스 서버에 접근 할 수 있고, SQL문을 전송할 수 도 있음 
+- 트렌젝션 처리도 가능함. 트렌젝션 개념을 정리해서 넣어두기 
+- 이 라이브러리를 사용하기위해서는 JSP페이지에 태그 라이브러리로 등록을 해야한다.
+
+===========================================================================================
+
+/** 태그 라이브러리 등록 **/
+
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %> //jsp에 관련된 jstl
+
+//prefix의 sql: 태그를 사용할 때 항상 붙는 접두어 "<sql:setDataSource>" //외우기
+
+//uri : 태그 라이브러리가 존재하는 위치
+
+===========================================================================================
+
+* JSTL core 라이브러리에 존재하는 태그
+
+1. 데이터베이스 연결 태그 : <sql:setDataSource>
+
+2. 쿼리 전송 관련 태그 : <sql:query> select, <sql:update> 인딜업(insert, delete, update),
+ <sql:param> 날짜정보데이터 외 문자숫자등등, <sql:dateParam> 날짜정보데이터 전송 -> 해당 데이터를 ?, ?로 처리
+//관계형 DB 정형화된 data
+날짜 / 시간
+
+숫자 / 문자
+
+3. 트랜잰션 태그 : <sql:transaction>
+
+===========================================================================================
+
+1. 데이터베이스 연결 태그 : <sql:setDataSource>
+
+- 데이터베이스 서버에 접근하기 위해 존재
+
+- 접근방법 1) dataSource 속성 이용하기
+				-> 미리 작성해둔 JNDI 리소스가 존재해야함
+		   2) driver, url, user, password 속성 이용하기
+		   		-> 직접 드라이버 이름, url, 아이디, 비밀번호 설정해서 접근
+
+- var : 접속하여 얻어진 연결 정보를 변수에 저장 : 쿼리 전송 태그를 사용할 때 이 변수를 사용
+
+<sql:setDataSource 	var="변수명" 
+					scope="범위" 
+					dataSource="dataSource"
+					driver="driver" 
+					url="url" user="user" 
+					password="password" />
+					
+/** JNDI 리소스가 없을 경우 **/
+<sql:setDataSource var= "dataSource"
+				   scope="application" //사용범위
+				   driver="oracle.jdbc.driver.OracleDriver"
+				   url="jdbc:oracle:thin:@127.0.0.1:1521:XE"
+				   user="freeflux"
+				   password="free" />
+				   
+				   
+
+===========================================================================================
+
+1) <sql:query>
+
+- 데이터베이스 서버에 쿼리를 전송할 때 사용
+
+- dataSource : <sql:setDataSource>로 DB서버에 접속한 연결 정보를 얻어온 변수
+
+- sql : SQL문, var : SQL 쿼리가 실행된 결과를 저장
+
+	startRow : 얻어온 쿼리 결과의 시작 행의 값(1번째 레코드 값부터 시작하려면 0으로 설정),
+	maxRows : 얻어온 쿼리 결과의 레코드의 최대 수 (srartRow와 maxRows는 자주 사용 x)
+	
+<sql:query var="변수명"
+		   scope="범위"
+		   sql="sql"
+		   dataSource="dataSource"
+		   startRow="startRow"
+		   maxRows="maxRows" >
+</sql:query>
+
+<sql:query var="emp"
+			scope="page"
+			dataSource="${dataSource}"
+			startRow="0"
+			maxRows="10" >
+			
+		SELECT EMPNO AS 사원번호, ENAME AS 이름
+		SAL AS 월급여, HIREDATE AS 입사일 //쉼표 기준 각각 조회
+		FROM employee_tbl
+		
+</sql:query>
+
+생략가능 부분
+<sql:query var="emp" //resultset 형식으로 변수에 반환
+			(scope="page")
+			dataSource="${dataSource}"
+			(startRow="0")
+			(maxRows="10") >
+			
+		SELECT EMPNO AS 사원번호, ENAME AS 이름
+		SAL AS 월급여, HIREDATE AS 입사일 //쉼표 기준 각각 조회
+		FROM employee_tbl
+		
+</sql:query>
+
+//Result rs = ~.executeQuery()
+
+
+===========================================================================================
+
+2) <sql:update>
+
+-레코드의 추가, 수정, 삭제 기능을 사용할 때 사용
+
+- var : 레코드를 업데이트한 결과를 변수 값에 저장, sql : 레코드를 업데이트할 sql문,
+  dataSource : <sql:setDataSource>로 연결할 DB변수
+  
+<sql:update var="변수명" scope="범위" sql="sql" dataSource="dataSource">
+
+<sql:update var="result" dataSource="${dataSource}">
+
+	update employee_tbl set ENAME=? where EMPNO=?
+	
+	<sql:param value="test" />
+	<sql:param value="1" />
+	
+</sql:update>
