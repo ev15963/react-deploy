@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
+<%
+	response.setContentType("text/html;");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,26 +12,20 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	<sql:setDataSource url="jdbc:oracle:thin:@127.0.0.1:1521:XE"
-	                   driver= "oracle.jdbc.driver.OracleDriver"
-    	               user= "lsw"
-        	           password="1234"
-            	       var="dataSource"
-                   	   scope="application"/>
-						
-	<fmt:setLocale value="ko_kr" />
-	<sql:query var="emp" dataSource="${dataSource }">
-	SELECT EMPNO AS 사원번호, ENAME AS 이름, SAL AS 월급여, HIREDATE AS 입사일
-	FROM employee_tbl
-	</sql:query>
+	<%-- 파라이터 받아서 출력 
+		만역 전달되는 name 파라미터 값이 있으면
+		name 파라미터 값을  출력
+		따라서 처음 실행하면 출력값이 없고,
+		아래의 <input>에 의해 값이 전달 될 경우에만 출력.. --%>
+	<c:if test="${!empty param.name }"> <%-- 비어있으면 true --%>
+		param: <x:out select="$param:name" />
+	</c:if>
 	
-	<table border="1">
-	<tr>
-	<%-- 필드의 정보를 출력 --%>
-	<c:forEach var="columnName" items="${emp.columnNames }">
-	<th><c:out value="${columnName }"/></th>
-	</c:forEach>
-	</table>
+	<%-- <form>의 action 속성값을 설정 하지 않으면 자기 자신에게 전달 --%>
+	<form>
+		name: <input type="text" name="name" required="required" />
+		 <input type="submit" value="자신에게 전송" />
+	</form>
+
 </body>
 </html>

@@ -6170,3 +6170,9 @@ Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING
 
 !ENTRY org.eclipse.jface.text 2 0 2020-08-20 12:08:23.894
 !MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.jface.text 2 0 2020-08-20 14:11:24.178
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2020-08-20 14:11:24.185
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
