@@ -128,3 +128,30 @@
 	<sql:param value="1" />
 	
 </sql:update>
+
+===========================================================================================
+
+body에 있는 <sql:query var="emp" ~~>
+sql문을 실행 한 결과는 emp 라는 변수에 담겨서 이후에 사용이 된다.
+이 변수는 ResultSet과 동일한데, JSTL에서 확장한 ResultSet 이고,
+javax.servlet.jsp.jstl.sql public interface Result 클래스로 내부적으로 정의된다.
+
+지원하는 메소드는 다음과 같다.
+
+	public java.util.SortedMap[] getRows()
+	public Object[][] getRowsByIndex()		<== 2차원 배열
+	public String[] getColumnNames()
+	public int getRowCount()
+	public boolean isLimitedByMaxRows()
+	
+<c:forEach/> 의 items에 있는 ${emp.columnNames}는
+getColumnNames() 메소드를 불렀다는 것을 알 수 있다.
+ResultSetMetaData를 활용해서 뽑아낸 정보와 같은 효과를 볼 수 있다.
+
+테이블 내용을 반환하는 ${emp.rowsByIndex} 는 
+한 행을 row라는 변수에 넣은 뒤에
+다음의 <c:forEach/>에서 이 row 변수의 컬럼별로 내용을 출력한다.
+
+column이라는 변수에 넣은 뒤에 column의 index가 3일 경우
+날짜형식을 출력하기 위해서
+<fmt:formatDate/> 태그를 

@@ -36,7 +36,7 @@
 					<%-- 필드의 길이만큼 반복 --%>
 					<c:forEach var="column" items="${row }" varStatus="i">
 						<c:choose>
-							<c:when test="${i.index==3 }">
+							<c:when test="${i.index==2 }">
 								<td><fmt:formatDate value="${column}" pattern="yyyy/MM/dd" /></td>
 							</c:when>
 							<c:otherwise>
