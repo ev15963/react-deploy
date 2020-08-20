@@ -12,11 +12,11 @@
 <body>
 
 	<sql:setDataSource url="jdbc:oracle:thin:@127.0.0.1:1521:XE"
-						driver="oracle.jdbc.driver.OracleDirver"
-						user="lsw"
-						password="1234"
-						var="dataSource"
-						scope="application" />
+	                   driver= "oracle.jdbc.driver.OracleDriver"
+    	               user= "lsw"
+        	           password="1234"
+            	       var="dataSource"
+                   	   scope="application"/>
 						
 	<fmt:setLocale value="ko_kr" />
 	<sql:query var="emp" dataSource="${dataSource }">
@@ -28,7 +28,7 @@
 	<tr>
 	<%-- 필드의 정보를 출력 --%>
 	<c:forEach var="columnName" items="${emp.columnNames }">
-	<th><c:out value="${columName }"/></th>
+	<th><c:out value="${columnName }"/></th>
 	</c:forEach>
 	</table>
 </body>
