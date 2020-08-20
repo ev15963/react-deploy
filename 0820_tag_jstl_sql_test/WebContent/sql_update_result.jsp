@@ -18,9 +18,44 @@
 	<fmt:setLocale value="ko_kr" />
 	<sql:update var="result" dataSource="${dataSource }">
 	update employee_tbl set ENAME=? where EMPNO=?
-	<sql:param value="test" /> <!-- 첫번째 와일드카드 -->
-	<sql:param value="1" /> <!-- 두번째 와일드카드 -->
+	<sql:param value="test" /> <%-- 첫번째 와일드카드 --%>
+	<sql:param value="1" /> <%-- 두번째 와일드카드 --%>
 	</sql:update>
+	
+	
+	
+		<sql:query var="emp" dataSource="${dataSource }">
+	SELECT EMPNO AS 사원번호, ENAME AS 이름, SAL AS 월급여, HIREDATE AS 입사일
+	FROM employee_tbl
+	</sql:query>
+
+	<table border="1">
+		<tr>
+			<%-- 필드의 정보를 출력 --%>
+			<c:forEach var="columnName" items="${emp.columnNames }">
+				<th><c:out value="${columnName }" /></th>
+			</c:forEach>
+
+
+			<%-- 데이터를 한 줄씩 출력 --%>
+			<c:forEach var="row" items="${emp.rowsByIndex }">
+				<tr>
+
+					<%-- 필드의 길이만큼 반복 --%>
+					<c:forEach var="column" items="${row }" varStatus="i">
+						<c:choose>
+							<c:when test="${i.index==3 }">
+								<td><fmt:formatDate value="${column}" pattern="yyyy/MM/dd" /></td>
+							</c:when>
+							<c:otherwise>
+								<td><c:out value="${column }" /></td>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+				</tr>
+			</c:forEach>
+			
+	</table>
 
 	<%--
 		아래의 <c:forEach /> 에서 ${emp.row} 는

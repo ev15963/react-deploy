@@ -1,0 +1,36 @@
+JSTL XML 태그 라이브러리
+
+xml 태그와 XPath
+xml 태그를 사용하기 위해서는 XPath를 먼저 이해할 필요가 있다.
+xml 소스 트리의 정확한 위치를 지정해주기 위한 경로지정 문법이며
+XSLT와 XPointer를 위해서 만들어진 것이다.
+
+xml 엘리펀트들을 노드(node)로 접근한다.
+파일 시스템과 유사하며 다음과 같은 특성이 있다.
+
+/로 시작하면 절대경로처럼 root node 에서 시작도니다.
+//로 시작할 경우는 모든 영역에서 해당 엘리먼트를 선택하게 된다.
+표현은 이전 엘리먼ㅌ, 아래의 모든 자식 엘리먼트를 나타낸다.
+
+동잉ㄹ한 엘리먼트들이 있을 경우, [] 안에 포함된 숫자는 엘리먼트의 순번이다.
+조건식이 올 경우 해당하는 것이 선택된다.
+last()일 경우는 맨 마지막 엘리먼트를 표시한다.
+
+속성은 @로 시작된다.
+normalize-space() 함수는 앞뒤 공백을 제거하는 trim() 역할을 한다.
+
+
+
+
+
+
+xml 태그는 다음과 같은 것들이 있다.
+기능 태그 prefix
+기본	  out. parse, set x
+흐름 제어 choose (when, otherwise), forEach, if
+변환	  transform (param)
+
+xml 태그를 사용하기 위해서 페이지 상단에 다음과 같이 선언되어야 한다.
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/xml" prefix="x"%>
+<x:out />
+<x:choose> </x:choose>
