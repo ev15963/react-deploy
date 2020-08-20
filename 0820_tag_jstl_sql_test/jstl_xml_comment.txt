@@ -20,7 +20,24 @@ last()일 경우는 맨 마지막 엘리먼트를 표시한다.
 normalize-space() 함수는 앞뒤 공백을 제거하는 trim() 역할을 한다.
 
 
-
+JSTL에서 XPath를 통해서 내장객체에 쉽게 접근할 수 있다.
+표현 매핑
+$foo pageContext.findAttribute("foo")
+$param:foo request.getParameter("foo")
+$header:foo request.getHeader("foo")
+$cookie:foo maps to the cookie's value for name foo
+$initParam:foo application.getInitParameter("foo")
+$pageScope:foo pageContext.getAttribute("foo", PageContext.PAGE_SCOPE)
+$requestScope:foo pageContext.getAttribute("foo", PageContext.REQUEST_SCOPE)
+$sessionScope:foo pageContext.getAttribute("foo", PageContext.SESSION_SCOPE)
+$applicationScope:foo pageContext.getAttribute("foo", PageContext.APPLICATION_SCOPE)
+예를 들어서
+다음 문장은 parameter 로 받은 "name"의 값이 ?name=~~
+bar엘리먼트의 x속성의 값과 같은 것들을 선택하게 된다.
+<foo>
+<bar x=""></bar>
+</foo>
+/foo/bar[@x=$param:name]
 
 
 
