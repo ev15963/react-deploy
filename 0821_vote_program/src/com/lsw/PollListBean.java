@@ -1,6 +1,6 @@
 package com.lsw;
 
-public class PollListBean {
+public class PollListBean {	//설문주제 설문시작일 종료일 설문작성 날짜 저장시킬 용도
 
 	private int num; // 설문 번호
 	private String question; // 설문 내용

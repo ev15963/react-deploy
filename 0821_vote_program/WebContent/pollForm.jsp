@@ -6,7 +6,7 @@
 <%
 	// 투표할 각 항목에 관련되 코드 입력 위치
 %>
-
+<%--  결과버튼을 눌렀을때 나오는 화면 --%>
 <link href="style.css" rel="stylesheet" type="text/css">
 <form method="post" action="pollFormProc.jsp">
 <table border="1" width="300">

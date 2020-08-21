@@ -1,23 +1,24 @@
 BODY {
-	FONT-SIZE: 9pt; COLOR: black; LINE-HEIGHT: 160%; FONT-FAMILY: ±º∏≤,verdana,tahoma
+	FONT-SIZE: 9pt; COLOR: black; LINE-HEIGHT: 160%; FONT-FAMILY: Íµ¥Î¶º,verdana,tahoma
 }
 TD {
-	FONT-SIZE: 9pt; COLOR: black; LINE-HEIGHT: 160%; FONT-FAMILY: ±º∏≤,verdana,tahoma
+	FONT-SIZE: 9pt; COLOR: black; LINE-HEIGHT: 160%; FONT-FAMILY: Íµ¥Î¶º,verdana,tahoma
 }
 SELECT {
-	FONT-SIZE: 9pt; COLOR: black; LINE-HEIGHT: 160%; FONT-FAMILY: ±º∏≤,verdana,tahoma
+	FONT-SIZE: 9pt; COLOR: black; LINE-HEIGHT: 160%; FONT-FAMILY: Íµ¥Î¶º,verdana,tahoma
 }
 DIV {
-	FONT-SIZE: 9pt; COLOR: black; LINE-HEIGHT: 160%; FONT-FAMILY: ±º∏≤,verdana,tahoma
+	FONT-SIZE: 9pt; COLOR: black; LINE-HEIGHT: 160%; FONT-FAMILY: Íµ¥Î¶º,verdana,tahoma
 }
 FORM {
-	FONT-SIZE: 9pt; COLOR: black; LINE-HEIGHT: 160%; FONT-FAMILY: ±º∏≤,verdana,tahoma
+	FONT-SIZE: 9pt; COLOR: black; LINE-HEIGHT: 160%; FONT-FAMILY: Íµ¥Î¶º,verdana,tahoma
 }
 TEXTAREA {
-	BORDER-RIGHT: 1px solid #999999; BORDER-TOP: 1px solid #999999; FONT-SIZE: 9pt; BORDER-LEFT: 1px solid #999999 ; COLOR: BLACK; BORDER-BOTTOM: 1px solid #999999; FONT-FAMILY: ±º∏≤,verdana; BACKGROUND-COLOR: white
+	BORDER-RIGHT: 1px solid #999999; BORDER-TOP: 1px solid #999999; FONT-SIZE: 9pt; BORDER-LEFT: 1px solid #999999 ; COLOR: BLACK; BORDER-BOTTOM: 1px solid #999999; FONT-FAMILY: Íµ¥Î¶º,verdana; BACKGROUND-COLOR: white
+/*Í∞ÄÏû• Ïñ¥ÎëêÏö¥ ÌöåÏÉâ #999999 */
 }
 INPUT {
-	BORDER-RIGHT: 1px solid #999999; BORDER-TOP: 1px solid #999999; FONT-SIZE: 9pt; BORDER-LEFT: 1px solid #999999; COLOR: BLACK; BORDER-BOTTOM: 1px solid #999999; FONT-FAMILY: ±º∏≤,verdana; HEIGHT: 19px; BACKGROUND-COLOR: white
+	BORDER-RIGHT: 1px solid #999999; BORDER-TOP: 1px solid #999999; FONT-SIZE: 9pt; BORDER-LEFT: 1px solid #999999; COLOR: BLACK; BORDER-BOTTOM: 1px solid #999999; FONT-FAMILY: Íµ¥Î¶º,verdana; HEIGHT: 19px; BACKGROUND-COLOR: white
 }
 
 A:link {text-decoration:none;color:#696969}

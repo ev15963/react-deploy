@@ -17,7 +17,7 @@ public class PollItemBean {
 		str+=this.poll_list_num+" : 설문 번호__";
 		str+=this.poll_item_num+" : 아이템 번호__";
 		str+=Arrays.toString(this.poll_item)+" : 아이템 내용__";
-		str+=this.poll_count+" : 투표수__";
+		str+=this.poll_count+" : 투표수__"; //필드명과 일치해야함
 
 		return str;
 	}

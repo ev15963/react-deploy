@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +13,7 @@
 		<br />
 		<h2>투표프로그램</h2>
 		<hr width="600" />
-		
+
 		<b>설문작성</b>
 		<hr width="600" />
 		<form action="pollInsertProc.jsp">
@@ -23,62 +24,82 @@
 				</tr>
 				<tr>
 					<td rowspan="10"><b>항목</b></td>
+					<%-- 10줄 합병 --%>
+				<tr>
 					<%
 						//설문항목들을 출력하기 위한 for() 위치
+						
+						for (int i = 1; i <= 4; i++) {
+							out.println("<td><input type='text' name='item' value=/></td>");
+							out.println("<td><input type='text' name='item' value=/></td>");
+							out.println("</tr>");
+						}
+						out.println("</tr>");
+						if (i==9) {
+							out.println("");
+						} else {
+							out.println("<tr>");
+						}
 					%>
+				</tr>
 				<tr>
 					<td>시작일</td>
-					<td colspan="2">
-						<select name="sdateY">
+					<td colspan="2"><select name="sdateY">
 							<option value="2020">2020
+								<%-- value 실제로 나타나는 값 --%>
 							<option value="2021">2021
-						</select>년 
-						<select name="sdateM">
-								<%
-									// 설문 시작 1~12월 까지 <option></option>을 작성하기 위한 for()
-								%>
-						</select>월 
-						<select name="sdateD">
-								<%
-									// 설문 시작 1~31일 까지 <option></option>을 작성하기 위한 for()
-									// 28 / 30은 일단 무시...
-								%>
-						</select>일
-					</td>
+					</select>년 <select name="sdateM">
+							<%
+								// 설문 시작 1~12월 까지 <option></option>을 작성하기 위한 for()
+								for (int i = 1; i <= 12; i++) {
+									out.println("<option value='" + i + "'>" + i + "</option>");
+								}
+							%>
+					</select>월 <select name="sdateD">
+							<%
+								// 설문 시작 1~31일 까지 <option></option>을 작성하기 위한 for()
+								// 28 / 30은 일단 무시...
+								for (int i = 1; i <= 31; i++) {
+									out.println("<option value='" + i + "'>" + i + "</option>");
+								}
+							%>
+					</select>일</td>
 				</tr>
 				<tr>
 					<td>종료일</td>
-					<td colspan=2>
-						<select name="edateY">
+					<td colspan=2><select name="edateY">
 							<option value="2020">2020
 							<option value="2021">2021
-						</select>년 
-						<select name="edateM">
+					</select>년 <select name="edateM">
 							<%
 								// 설문 종료 1~12월 까지 <option></option>을 작성하기 위한 for()
+								for (int i = 1; i <= 12; i++) {
+									out.println("<option value='" + i + "'>" + i + "</option>");
+								}
 							%>
-						</select>월 
-						<select name="edateD">
+					</select>월 <select name="edateD">
 							<%
 								// 설문 종료 1~31일 까지 <option></option>을 작성하기 위한 for()
 								// 28 / 30은 일단 무시...
+								for (int i = 1; i <= 31; i++) {
+									out.println("<option value='" + i + "'>" + i + "</option>");
+								}
 							%>
-						</select>일
-					</td>
+					</select>일</td>
 				</tr>
 				<tr>
 					<td>복수투표</td>
 					<td colspan=2>
-						<input type="radio" name="type" value="1" checked>yes 
-						<input type="radio" name="type" value="0">no
+						<%-- name명이 같아야한다. checked 기본 체크 selected 기본선택--%> <input
+						type="radio" name="type" value="1" checked>yes <input
+						type="radio" name="type" value="0">no
 					</td>
 				</tr>
 				<tr>
-					<td colspan=3>
-						<input type="submit" value="작성하기"> 
-						<input type="reset" value="다시쓰기"> 
-						<input type="button" value="리스트" onClick="javascript:location.href='pollList.jsp'">
-					</td>
+					<td colspan=3><input type="submit" value="작성하기"> <input
+						type="reset" value="다시쓰기"> <input type="button"
+						value="리스트" onClick="javascript:location.href='pollList.jsp'">
+						<%-- onclick라고 써도 무방 --%> <%-- javascrpt:mailTo 메일로 전송 --%></td>
 				</tr>
 			</table>
 		</form>
