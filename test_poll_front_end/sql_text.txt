@@ -1,0 +1,62 @@
+SQL> DROP TABLE  tblPollList;
+
+Table dropped.
+
+SQL> DROP TABLE  tblPollItem;
+
+Table dropped.
+
+SQL> DROP sequence  seqPollList;
+
+Sequence dropped.
+
+SQL>
+SQL> CREATE SEQUENCE seqPollList
+  2  start with 1
+  3  increment by 1
+  4  ;
+
+Sequence created.
+
+SQL>
+SQL> CREATE TABLE tblPollList (
+  2    num number(4) NOT NULL ,
+  3    question varchar2(100)  DEFAULT '' NOT NULL,
+  4    sdate date DEFAULT NULL,
+  5    edate date DEFAULT NULL,
+  6    wdate date DEFAULT NULL,
+  7    type number(4)  DEFAULT 1 NOT NULL,
+  8    active number(4) DEFAULT 1,
+  9    PRIMARY KEY (num)
+ 10  );
+
+Table created.
+
+SQL>
+SQL> CREATE TABLE tblPollItem (
+  2    listnum number(4) NOT NULL,
+  3    itemnum number(4) DEFAULT 0 NOT NULL ,
+  4    item varchar2(50) DEFAULT '' NOT NULL ,
+  5    count number(4) DEFAULT 0 NOT NULL,
+  6    PRIMARY KEY (listnum, itemnum)
+  7  );
+
+Table created.
+
+SQL>
+SQL>
+SQL> SELECT * FROM tblPollList;
+
+no rows selected
+
+SQL>
+SQL> SELECT * FROM tblPollItem;
+
+no rows selected
+
+SQL>
+SQL> commit;
+
+Commit complete.
+
+SQL>

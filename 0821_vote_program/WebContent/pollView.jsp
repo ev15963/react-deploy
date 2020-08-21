@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="com.lsw.*,java.util.*"%>
+<%@ page import="com.lsw.*, java.util.*"%>
 
 <jsp:useBean id="pMgr" class="com.lsw.DBConnectionMgr" />
 
@@ -55,7 +55,7 @@
 				int ratio = (new Double(Math.ceil((double) count / sum * 100))).intValue();
 				//ratio : <table>의 크기를 값에 따라 자동 변경
 				//Double객체.intValue() <= double 값을 정수로 반환하는 메서드
-			}
+		
 			%>
 			
 			<tr>
@@ -71,7 +71,7 @@
 				<td width="40"><%=count %></td> <!-- 각 항목에 대한 투표수 출력 -->
 			</tr>
 			
-			<%// for() END %>
+			<%	}// for() END %>
 		</table>
 		
 		<p />
