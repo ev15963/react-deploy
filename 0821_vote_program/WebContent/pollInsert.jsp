@@ -33,13 +33,13 @@
 							out.println("<td><input type='text' name='item' value=/></td>");
 							out.println("<td><input type='text' name='item' value=/></td>");
 							out.println("</tr>");
-						}
 						out.println("</tr>");
 						if (i==9) {
 							out.println("");
 						} else {
 							out.println("<tr>");
 						}
+					}
 					%>
 				</tr>
 				<tr>
