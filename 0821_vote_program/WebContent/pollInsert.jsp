@@ -1,67 +1,87 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<title>JSP Poll</title>
+<link href="style.css" rel="stylesheet" type="text/css">
 </head>
-<body>
-<h1>투표프로그램</h1><hr><br>
-설문작성<hr><br>
-<tr>
 
-<table border="1">
-<td>질문</td>
-<td colspan="2"><input type ="text" ></td>
-</tr>
-
-<tr>
-<td rowspan="8">항목</td>
-<td>1:<input type ="text" ></td>
-<td>2:<input type ="text" ></td>
-</tr>
-
-<tr>
-<td>3:<input type ="text" ></td>
-<td>4:<input type ="text" ></td>
-</tr>
-<tr>
-<td>5:<input type ="text" ></td>
-<td>6:<input type ="text" ></td>
-</tr>
-<tr>
-<td>7:<input type ="text" ></td>
-<td>8:<input type ="text" ></td>
-</tr>
-<tr>
-<td>시작일</td>
-<td>
-<form>
-<select name ="sdateY">
-<option value = ""></option>
-</select>
-</form>
-</td>
-</tr>
-<tr>
-<td>종료일</td>
-<td></td>
-</tr>
-<tr>
-<td>복수투표</td>
-<td>
-<input type ="radio" name="type" value="yes"> yes
-<input type ="radio" name="type" value="no"> no
-</td>
-</tr>
-<tr>
-<td colspan="2"> 
-<input type ="submit" value="작성하기" action="pollInsertProc.jsp"> 
-<input type ="submit" value="다시쓰기"> 
-<input type ="submit" value="리스트" onClick="javascript:location.href='pollList.jsp'">
-</td>
-</tr>
-</table>
+<body bgcolor="#FFFFCC">
+	<div align="center">
+		<br />
+		<h2>투표프로그램</h2>
+		<hr width="600" />
+		
+		<b>설문작성</b>
+		<hr width="600" />
+		<form action="pollInsertProc.jsp">
+			<table border="1" width="500">
+				<tr>
+					<td><b>질문</b></td>
+					<td colspan="2"><input name="question" size="30" /></td>
+				</tr>
+				<tr>
+					<td rowspan="10"><b>항목</b></td>
+					<%
+						//설문항목들을 출력하기 위한 for() 위치
+					%>
+				<tr>
+					<td>시작일</td>
+					<td colspan="2">
+						<select name="sdateY">
+							<option value="2020">2020
+							<option value="2021">2021
+						</select>년 
+						<select name="sdateM">
+								<%
+									// 설문 시작 1~12월 까지 <option></option>을 작성하기 위한 for()
+								%>
+						</select>월 
+						<select name="sdateD">
+								<%
+									// 설문 시작 1~31일 까지 <option></option>을 작성하기 위한 for()
+									// 28 / 30은 일단 무시...
+								%>
+						</select>일
+					</td>
+				</tr>
+				<tr>
+					<td>종료일</td>
+					<td colspan=2>
+						<select name="edateY">
+							<option value="2020">2020
+							<option value="2021">2021
+						</select>년 
+						<select name="edateM">
+							<%
+								// 설문 종료 1~12월 까지 <option></option>을 작성하기 위한 for()
+							%>
+						</select>월 
+						<select name="edateD">
+							<%
+								// 설문 종료 1~31일 까지 <option></option>을 작성하기 위한 for()
+								// 28 / 30은 일단 무시...
+							%>
+						</select>일
+					</td>
+				</tr>
+				<tr>
+					<td>복수투표</td>
+					<td colspan=2>
+						<input type="radio" name="type" value="1" checked>yes 
+						<input type="radio" name="type" value="0">no
+					</td>
+				</tr>
+				<tr>
+					<td colspan=3>
+						<input type="submit" value="작성하기"> 
+						<input type="reset" value="다시쓰기"> 
+						<input type="button" value="리스트" onClick="javascript:location.href='pollList.jsp'">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
 </body>
 </html>
