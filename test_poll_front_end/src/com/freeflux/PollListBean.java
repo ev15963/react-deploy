@@ -2,12 +2,12 @@ package com.freeflux;
 
 public class PollListBean {
 
-	private int num; // 설문 번호
+	private int num; // 설문 번호 ~~~nextval 자동증가하여 생성 x
 	private String question; // 설문 내용
-	private String sdate; // 투표 시작 날짜
-	private String edate; // 투표 종료 날짜
-	private String wdate; // 설문 작성 날짜
-	private int type; // 중복투표 허용 여부
+	private String sdate; // 투표 시작 날짜 sdateYMD로 설정되서 값이 안들어옴
+	private String edate; // 투표 종료 날짜 edateYMD로 설정되서 값이 안들어옴
+	private String wdate; // 설문 작성 날짜 값이 안들어옴/ 오라클에서 자동생성
+	private int type; // 중복투표 허용 여부 O
 	private int active; // 설문 활성화 여부
 
 	public PollListBean() {

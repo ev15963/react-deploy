@@ -30,7 +30,7 @@ public class DBConnectionMgr {
 			Class.forName(ORACLE_DRIVER);
 			System.out.println("==> 드라이버 로딩 성공!");
 
-			this.conn = DriverManager.getConnection(ORACLE_URL, "freeflux", "free");
+			this.conn = DriverManager.getConnection(ORACLE_URL, "lsw", "1234");
 			System.out.println("==> DB접속성공!");
 
 		} catch (ClassNotFoundException e) {
@@ -48,9 +48,22 @@ public class DBConnectionMgr {
 	 * @return
 	 */
 	public int getMaxNum() {
-		String sql = "select max(num) from tblPollList";
+		String sql = null;
 		int maxNum = 0;
-
+		this.connect();
+		sql = "select max(num) from tblPollList"; //max(num)은 필드명이 아니여서 
+		try {
+			this.pstmt=this.conn.prepareStatement(sql);
+			this.rs=this.pstmt.executeQuery();
+			
+			if(this.rs.next()) {
+				maxNum= this.rs.getInt(1); //가장 높은 num값  직접 부여
+			}
+		} catch (SQLException e) {
+			System.out.println("getMaxNum() err => "+e.getMessage());
+		}
+		
+		
 
 		return maxNum;
 	}
@@ -63,9 +76,52 @@ public class DBConnectionMgr {
 	 * @param plBean, piBean
 	 */
 	public boolean insertPoll(PollListBean plBean, PollItemBean piBean) {
-		boolean flag = false;
-		String sql = "insert into tblPollList (num, question, sdate, edate, wdate, type) values (seqPollList.nextval, ?, ?, ?, sysdate, ?)";
-
+		boolean flag = false; //최종 성공 여부
+		String sql = null;
+		
+		try {
+			this.connect();
+			this.pstmt=null;
+		
+			sql = "insert into tblPollList (num, question, sdate, edate, wdate, type) "
+					+ "values (seqPollList.nextval, ?, ?, ?, sysdate, ?)";
+		
+			this.pstmt=this.conn.prepareStatement(sql);
+			this.pstmt.setString(1, plBean.getQuestion());
+			this.pstmt.setString(2, plBean.getSdate());
+			this.pstmt.setString(3, plBean.getEdate());
+			this.pstmt.setInt(4, plBean.getType());
+			
+			int result = this.pstmt.executeUpdate();
+			
+			this.pstmt = null; //비우고 다시 객체 생성
+			
+			if(result == 1) {
+				String[] item = piBean.getItem();
+				int itemnum = this.getMaxNum();
+				
+				sql="insert into tblPollItem (listnum, itemnum, item, count)b"
+						+"values ("+itemnum+",?,?,0)";
+				this.pstmt=this.conn.prepareStatement(sql); //전쿼리와 다름
+				
+				int j = 0;
+				for(int i=0; i< item.length; i++) {
+					if(item[i] == null || item[i].length()==0) { //null 
+						break;
+					}
+					
+					this.pstmt.setInt(1, i);
+					this.pstmt.setString(2, item[i]); //항목이름 채워둠
+					
+					j=this.pstmt.executeUpdate(); //업데이트 메소드로 insert
+				}
+				if(j>0) {
+					flag = true;
+				}
+			}
+		} catch (SQLException e) {
+			System.out.println("insertPoll() ERR =>"+e.getMessage());
+		}
 
 		return flag;
 	}

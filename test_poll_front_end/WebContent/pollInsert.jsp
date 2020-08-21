@@ -36,7 +36,7 @@
 				<tr>
 					<td>시작일</td>
 					<td colspan="2">
-						<select name="sdateY">
+						<select name="sdateY"> <!-- sdateY 값 넘어옴  -->
 							<option value="2020">2020
 							<option value="2021">2021
 						</select>년 
@@ -80,7 +80,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td>복수투표</td>
+					<td>복수투표</td> <!-- type 값도 넘어옴 -->
 					<td colspan=2>
 						<input type="radio" name="type" value="1" checked>yes 
 						<input type="radio" name="type" value="0">no

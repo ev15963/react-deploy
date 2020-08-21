@@ -4,10 +4,10 @@ import java.util.Arrays;
 
 public class PollItemBean {
 
-	private int listnum; // 설문 번호
-	private int itemnum; // 아이템 번호
-	private String [] item; // 아이템 내용
-	private int count; // 투표수
+	private int listnum; // 설문 번호	num 중 가장 큰 값
+	private int itemnum; // 아이템 번호		item의 index
+	private String [] item; // 아이템 내용  O (다중값이 들어온다)
+	private int count; // 투표수 O
 	
 	public PollItemBean() {
 	}

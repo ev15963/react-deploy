@@ -3,16 +3,18 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 %>
-
-<jsp:useBean id="pMgr" class="com.freeflux.DBConnectionMgr" />
+<%-- 자동맵핑 --%>
+<jsp:useBean id="pMgr" class="com.freeflux.DBConnectionMgr" /> <%-- dbconnectionmgr을 이용하여 pMgr객체 만듬 --%>
 
 <jsp:useBean id="plBean" class="com.freeflux.PollListBean" />
-<jsp:setProperty property="*" name="plBean" />
+<jsp:setProperty property="*" name="plBean" /> <%--  property value 안만들어도 됌 --%>
 
 <jsp:useBean id="piBean" class="com.freeflux.PollItemBean" />
 <jsp:setProperty property="*" name="piBean" />
-
+<%-- --%>
 <%
+	// String[] tt = request.getParameterValues("item"); //값을 여러개 꺼낼때
+	
 	String sdate="";
 	sdate += request.getParameter("sdateY") + "-";
 	sdate += request.getParameter("sdateM") + "-";
@@ -41,7 +43,9 @@
 		url = "pollList.jsp";
 	}
 %>
-<script>
+
+<%-- script를 이용해서 js 기능 사용 --%>
+<script> 
    alert("<%=msg%>");
    location.href="<%=url%>";
 </script>
