@@ -1,0 +1,57 @@
+
+SQL*Plus: Release 11.2.0.2.0 Production on 금 8월 21 09:06:41 2020
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+SQL> conn lsw/1234;
+Connected.
+SQL> DROP sequence seqPollList;
+DROP sequence seqPollList
+              *
+ERROR at line 1:
+ORA-02289: sequence does not exist
+
+
+SQL> DROP TABLE tblPollList;
+DROP TABLE tblPollList
+           *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> DROP TABLE tblPollItem;
+DROP TABLE tblPollItem
+           *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> CREATE SEQUENCE seqPollList
+  2  start with 1
+  3  increment by 1
+  4  ;
+
+Sequence created.
+
+SQL> CREATE TABLE tblPollList (
+  2  num number NOT NULL ,
+  3  question varchar2(100) DEFAULT '' NOT NULL,
+  4  sdate date DEFAULT NULL,
+  5  edate date DEFAULT NULL,
+  6  wdate date DEFAULT NULL,
+  7  types number DEFAULT 1 NOT NULL,
+  8  active number DEFAULT 1,
+  9  PRIMARY KEY (num)
+ 10  );
+
+Table created.
+
+SQL> CREATE TABLE tblPollItem (
+  2  poll_list_num number NOT NULL,
+  3  poll_item_num number DEFAULT 0 NOT NULL ,
+  4  poll_item varchar2(50) DEFAULT '' NOT NULL ,
+  5  poll_count number DEFAULT 0 NOT NULL,
+  6  PRIMARY KEY (poll_list_num, poll_item_num)
+  7  );
+
+Table created.
