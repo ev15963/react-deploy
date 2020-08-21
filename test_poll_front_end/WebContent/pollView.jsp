@@ -7,9 +7,9 @@
 	if (request.getParameter("num") != null) {
 		num = Integer.parseInt(request.getParameter("num"));
 	}
-	int sum = pMgr.sumCount(num);
-	List<PollItemBean> vlist = pMgr.getView(num);
-	PollListBean plBean = pMgr.getList(num);
+	int sum = pMgr.sumCount(num);					//해당 설문 count 필드 합
+	List<PollItemBean> vlist = pMgr.getView(num);	//item, count 값들을 조회
+	PollListBean plBean = pMgr.getList(num);		//해당 설문 제목을 추출하기 위한
 	
 	String question = plBean.getQuestion();
 	Random r = new Random();
@@ -32,7 +32,7 @@
 				<td colspan="3"><b>총 투표자 : <%=sum%>명</b></td>
 				<td width="40">count</td>
 			</tr>
-			
+			<%-- 색깔 만들어주는 부분 --%>
 			<%
 				for (int i = 0; i < vlist.size(); i++) {
 					PollItemBean piBean = vlist.get(i);
@@ -42,6 +42,7 @@
 					String hRGB = "#" + rgbt;
 					int count = piBean.getCount();//투표수
 					int ratio = (new Double(Math.ceil((double) count / sum * 100))).intValue();
+					// 테이블로 그래프 색깔
 			%>
 			
 			<tr>

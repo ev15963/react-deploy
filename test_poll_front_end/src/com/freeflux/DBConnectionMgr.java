@@ -100,7 +100,8 @@ public class DBConnectionMgr {
 				String[] item = piBean.getItem();
 				int itemnum = this.getMaxNum();
 
-				sql = "insert into tblPollItem (listnum, itemnum, item, count)b" + "values (" + itemnum + ",?,?,0)";
+				sql = "insert into tblPollItem (listnum, itemnum, item, count)"
+				+ "values (" + itemnum + ",?,?,0)";
 				this.pstmt = this.conn.prepareStatement(sql); // 전쿼리와 다름
 
 				int j = 0;
@@ -255,9 +256,34 @@ public class DBConnectionMgr {
 	 * @return
 	 */
 	public List<PollItemBean> getView(int num) {
-		String sql = "select item, count from tblPollItem where listnum=?";
+		String sql = null;
 		List<PollItemBean> vlist = new ArrayList<PollItemBean>();
 
+		try {
+			this.connect();
+			sql="select item, count from tblPollItem where listnum=?";
+			this.pstmt=this.conn.prepareStatement(sql);
+			
+			if(num==0) {
+				this.pstmt.setInt(1, this.getMaxNum());
+			} else {
+				this.pstmt.setInt(1, num);
+			}
+			
+			this.rs=this.pstmt.executeQuery();
+			while (this.rs.next()) {
+				PollItemBean piBean=new PollItemBean();
+				
+				String item[] = new String[1];
+				item[0] = this.rs.getString(1);		//tblPollItem 테이블의 item 필드 값
+				piBean.setItem(item);				//private String[] item; //아이템 내용
+				piBean.setCount(this.rs.getInt(2));	//tblPollItem 테이블의 count 필드 값
+				
+				vlist.add(piBean);
+			}
+		} catch (SQLException e) {
+			System.out.println("update() err => "+e.getMessage());
+		}
 		return vlist;
 	}
 
