@@ -30,8 +30,8 @@
 						//설문항목들을 출력하기 위한 for() 위치
 						
 						for (int i = 1; i <= 4; i++) {
-							out.println("<td><input type='text' name='item' value=/></td>");
-							out.println("<td><input type='text' name='item' value=/></td>");
+							out.println("<td>"+(i*2-1)+"<input type='text' name='item' value=/></td>");
+							out.println("<td>"+(i*2)+"<input type='text' name='item' value=/></td>");
 							out.println("</tr>");
 						out.println("</tr>");
 						if (i==9) {
