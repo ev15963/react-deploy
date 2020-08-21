@@ -270,8 +270,26 @@ public class DBConnectionMgr {
 	 */
 	public int sumCount(int num) {
 
-		String sql = "select sum(count) from tblPollItem where listnum=?";
+		String sql = null;
 		int count = 0;
+		
+		try {
+			this.connect();
+			sql = "select sum(count) from tblPollItem where listnum=?";
+			this.pstmt=this.conn.prepareStatement(sql);
+			if(num==0) {
+				this.pstmt.setInt(1, getMaxNum());
+			} else {
+				this.pstmt.setInt(1, num);
+			}
+			
+			this.rs=this.pstmt.executeQuery();
+			if(this.rs.next()) {
+				count = this.rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			System.out.println("sumCount() err : "+e.getMessage());
+		}
 
 		return count;
 	}
