@@ -10,6 +10,7 @@
 	int sum = pMgr.sumCount(num);
 	List<PollItemBean> vlist = pMgr.getView(num);
 	PollListBean plBean = pMgr.getList(num);
+	
 	String question = plBean.getQuestion();
 	Random r = new Random();
 %>

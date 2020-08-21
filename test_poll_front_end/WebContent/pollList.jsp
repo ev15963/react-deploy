@@ -16,7 +16,7 @@
 		<b>설문폼</b>
 		
 		<!--폴 리스트 폼 자리-->
-		<jsp:include page="pollForm.jsp" />
+		<jsp:include page="pollForm.jsp" /> <!-- num이란 파라미터 없음 -->
 		<hr width="600"/>
 		<b>설문리스트</b>
 		

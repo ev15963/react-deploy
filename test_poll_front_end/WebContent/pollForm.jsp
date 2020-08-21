@@ -8,8 +8,9 @@
 		 num = Integer.parseInt(request.getParameter("num"));
 	  }
 	
-	  PollListBean plBean = pMgr.getList(num);
-	  List<String> vlist = pMgr.getItem(num);
+	  PollListBean plBean = pMgr.getList(num); //tblPollList 테이블 쿼리를 실행해줌 //쿼리가 두번 실행됨 //질문 타입 활성화명
+	  List<String> vlist = pMgr.getItem(num); //tblPollItem 테이블 해당 값을 꺼내주는 메서드
+	  //항목명을 가져와야게 때문에 list로
 
 	  String question = plBean.getQuestion();
 	  int type = plBean.getType();
@@ -25,14 +26,14 @@
 	<tr>
 		<td colspan="2">
 			<%
-				for(int i=0; i<vlist.size(); i++){
+				for(int i=0; i<vlist.size(); i++){ //i는 value 값
 					String itemList = vlist.get(i);
-					if(type==1){
+					if(type==1){ //type 1이면 다중선택
 						out.println("<input type=checkbox name='itemnum' value='"+i+"'>");
 					}else{
 						out.println("<input type=radio name='itemnum' value='"+i+"'>");
 					}
-					out.println(itemList+"<br>");
+					out.println(itemList+"<br>"); //String itemList = vlist.get(i);에서 가져온글자 찍어줌
 				}	//for END
 			%>
 		</td>
@@ -51,7 +52,7 @@
 		</td>
 		<td>
 			<input type="button" value="결과" 
-					   onclick="javascript:window.open('pollView.jsp?num=<%=num%>', 'PollView','width=500, height=350')">
+					   onclick="javascript:window.open('pollView.jsp?num=<%=num%>', 'PollView','width=500, height=350')"> <!-- view로 이동 -->
 		</td>
 	</tr>
 </table>
