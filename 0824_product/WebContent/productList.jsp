@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<form action= "/product" method="post">
 <table border="1" width="" height="">
 <tr>
 <td colspan="center">상품명</td>
@@ -14,7 +15,9 @@
 </tr>
 <tr>
 <td colspan="center">가격</td>
-<td><input type="number" name="price" size="80" maxlength="80" required="required"></td>
+<td><input type="number" name="price" size="80" maxlength="80" required="required">
+
+</td>
 </tr>
 <tr>
 <td>사진</td>
@@ -27,9 +30,10 @@
 
 </table>
 <p>
-<input type ="submit" value="제출">
+<input type ="submit" value="제출" >
 <input type = "reset" value="다시작성">
 <input type = "button" value="목록" onclick = "location.href='productList2.jsp'">
 </p>
+</form>
 </body>
 </html>
