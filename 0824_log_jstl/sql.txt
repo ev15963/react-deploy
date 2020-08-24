@@ -1,0 +1,21 @@
+SQL*Plus: Release 11.2.0.2.0 Production on 월 8월 24 09:04:30 2020
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+SQL> conn lsw/1234;
+Connected.
+SQL> CREATE TABLE tbljoin (
+  2    id varchar2(40) NOT NULL,
+  3    pass varchar2(40) NOT NULL,
+  4    name varchar2(40) NOT NULL,
+  5    email varchar2(40) DEFAULT NULL,
+  6    hp varchar2(40) DEFAULT NULL,
+  7    grade varchar2(2) DEFAULT '0',
+  8    PRIMARY KEY (id)
+  9  );
+
+Table created.
+
+SQL> commit;
+
+Commit complete.

@@ -1,0 +1,12 @@
+CREATE TABLE tbljoin (
+  id varchar2(40) NOT NULL,
+  pass varchar2(40) NOT NULL,
+  name varchar2(40) NOT NULL,
+  email varchar2(40) DEFAULT NULL,
+  hp varchar2(40) DEFAULT NULL,
+  grade varchar2(2) DEFAULT '0',
+  PRIMARY KEY (id)
+);
+
+
+drop table tbljoin;
