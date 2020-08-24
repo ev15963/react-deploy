@@ -4,9 +4,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>로그인 폼 : sessionLoginForm.jsp</title>
 </head>
 <body>
 
+	<form action = "sessionLoginCheck.jsp" method="post">
+		아이디 <input type="text" name="id" size="10" required="required" />
+		암호 <input type="password" name="password" size="10" required="required" />
+		<input type = "submit" value="로그인">
+	
+	</form>
 </body>
 </html>
