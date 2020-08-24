@@ -30,6 +30,11 @@
 <td><input type="email" name="email" required="required" /></td>
 </tr>
 
+<tr>
+<td>홈페이지</td>
+<td><input type="url" name="hp" required="required" /></td>
+</tr>
+
 
 <tr>
 <td colspan="2">

@@ -6,7 +6,7 @@
 <%-- loginProc.jsp --%>
 
 <sql:setDataSource
-	url="jdbc.oracle:thin:@127.0.0.1:1521:XE"
+	url="jdbc:oracle:thin:@127.0.0.1:1521:XE"
 	driver="oracle.jdbc.driver.OracleDriver"
 	user="lsw"
 	password="1234"

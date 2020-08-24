@@ -19,3 +19,13 @@ Table created.
 SQL> commit;
 
 Commit complete.
+
+SQL> desc tblJoin;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                        NOT NULL VARCHAR2(40)
+ PASS                                      NOT NULL VARCHAR2(40)
+ NAME                                      NOT NULL VARCHAR2(40)
+ EMAIL                                              VARCHAR2(40)
+ HP                                                 VARCHAR2(40)
+ GRADE                                              VARCHAR2(2)
