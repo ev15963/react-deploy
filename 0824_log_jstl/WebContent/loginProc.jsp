@@ -20,9 +20,9 @@ Connection db=DriverManeger.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:XE",
 --%>
 
 
- <%-- request.getParameter("mode") //login --%>
+ <%-- request.getParameter("mode") //login --%>  <!-- resultset을 확장한.. -->
 <c:if test = "${param.mode=='login' }">
-	<sql:query var="login" dataSource= "${db }"> <!-- resultset을 확장한.. -->
+	<sql:query var="login" dataSource= "${db }">
 		select id from tblJoin where id=? and pass=?
 		<sql:param value="${param.id }" />
 		<sql:param value="${param.pass }" />
