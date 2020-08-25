@@ -8,7 +8,7 @@
 	String filename1=request.getParameter("filename1");
 	String filename2=request.getParameter("filename2");
 	
-	System.out.println(name); //파일 출력해보기
+	System.out.println("name"+name); //파일 출력해보기
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

@@ -26,7 +26,7 @@ public class ProductDAO {
 	
 	public void updateProduct(ProductVO pVo) {
 	}	
-	public void deleteProduct(Sting code) {
+	public void deleteProduct(String code) {
 			
 	}
 	}
