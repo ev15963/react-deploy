@@ -81,7 +81,7 @@ public class ProductWriteServlet extends HttpServlet {
 		
 		ProductDAO pDao = ProductDAO.getInstance();
 		pDao.insertProduct(pVo); //실제로는 파일명이 저장
-		response.sendRedirect("productList.do"); //list로 돌아감
+		response.sendRedirect("/productList.do"); //list로 돌아감
 		//오류테스트시 연동되는 구간 막고 실행
 	}
 
