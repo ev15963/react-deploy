@@ -8,12 +8,14 @@
 </head>
 <body>
 
-	<form action="upload.do" method="post" enctype="multipart/form-data">
+	<form action="upload2.do" method="post" enctype="multipart/form-data">
 		글쓴이 : 
 		<input type="text" name="name"><br>
 		제 &nbsp; 목 : 
 		<input type="text" name="title"><br>
-		파일 지정하기 : <input type ="file" name="uploadFile"><br>
+		파일 지정하기 : <input type ="file" name="uploadFile1"><br>
+		파일 지정하기 : <input type ="file" name="uploadFile2"><br>
+		파일 지정하기 : <input type ="file" name="uploadFile3"><br>
 		<input type="submit" value="전송">
 	</form>
 </body>
