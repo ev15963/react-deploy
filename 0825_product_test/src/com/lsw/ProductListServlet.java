@@ -1,6 +1,9 @@
 package com.lsw;
 
 import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,8 +29,13 @@ public class ProductListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		ProductDAO pDao = ProductDAO.getInstance();
+		
+		List<ProductVO> productList = pDao.selectAllProducts();
+		
+		request.setAttribute("productList", productList);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("productList.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**

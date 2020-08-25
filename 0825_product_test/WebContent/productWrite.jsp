@@ -32,9 +32,9 @@
 		</tr>
 		</table>
 		<br>
-		<input type="submit" value="등록" onclick="return productCheck()">
+		<input type="submit" value="등록" onclick="return productCheck()"> <!-- 함수에 대한 결과값 -->
 		<input type="reset" value="다시작성">
-		<input type="button" value="목록" onclick="return productCheck()">
+		<input type="button" value="목록" onclick="location.href='productList.do'">
 	
 	
 	
