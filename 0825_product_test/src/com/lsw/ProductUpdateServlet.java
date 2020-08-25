@@ -38,6 +38,7 @@ public class ProductUpdateServlet extends HttpServlet {
 		
 		request.setAttribute("product", pVo);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("productUpdate.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**

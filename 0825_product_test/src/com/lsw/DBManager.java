@@ -1,10 +1,14 @@
 package com.lsw;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 
 public class DBManager {
 	public static Connection getConnection() {
@@ -12,13 +16,19 @@ public class DBManager {
 		final String dri = "oracle.jdbc.driver.OracleDriver";
 		final String url = "jdbc:oracle:thin:@127.0.0.1:1521:XE";
 		
-		Connection conn = null;
-		
+	
+		Connection conn =null;
 		try {
-			Class.forName(dri);
-			conn = DriverManager.getConnection(url, "lsw", "1234");
+			Context initContext = new InitialContext(); // InitialContext : context가 초기화 될때 
+			Context envContext  = (Context)initContext.lookup("java:/comp/env");
 			
-		} catch (ClassNotFoundException e) {
+			//jdbc.myoracle이란 이름을 객체를 찾아서 DataSource가 받는다.
+			DataSource ds = (DataSource)envContext.lookup("jdbc/myoracle");
+			
+			//ds가 생성되었으므로 connection을 구합니다.
+			conn = ds.getConnection();
+			//etc.
+		} catch (NamingException e) {
 			System.out.println("dri load err => " +e.getMessage());
 		} catch (SQLException e) {
 			System.out.println("conn err => "+e.getMessage());

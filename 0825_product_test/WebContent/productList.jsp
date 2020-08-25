@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,13 +24,16 @@
 				<th>수정</th>
 				<th>삭제</th>
 			</tr>
-
+			<!-- request.setAttribute("productList", productList); -->
+			<!-- request.getRequestDispatcher("productList.jsp"); -->
 			<c:forEach var="product" items="${productList}">
 				<tr class="record">
 					<td>${product.code}</td>
 					<td>${product.name}</td>
 					<td>${product.price} 원</td>
 					<td>
+					<!-- request.setAttribute("product", pVo);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("productUpdate.jsp"); -->
 						<a href="productUpdate.do?code=${product.code}">상품 수정</a>
 					</td>
 					<td>
