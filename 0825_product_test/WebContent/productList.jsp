@@ -7,33 +7,31 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action= "/product" method="post">
-<table border="1" width="" height="">
+<div id="wrap" align="center">
+<h1> 상품리스트 - 관리자 페이지</h1>
+<table class="list">
 <tr>
-<td colspan="center">상품명</td>
-<td><input type="text" name="product" size="80" maxlength="80" required="required"> </td>
+<td colspan="5" style="border: white; text-algin: right">
+<a href="productWrite.do"> 상품 등록</a></td>
 </tr>
 <tr>
-<td colspan="center">가격</td>
-<td><input type="number" name="price" size="80" maxlength="80" required="required">
+<th>번호</th><th>이름</th><th>가격</th><th>수정</th><th>삭제</th>
+</tr>
 
+<c:forEach var="product" items="${productList }">
+<tr class="record">
+<td>${product.code }</td>
+<td>${product.name }</td>
+<td>${product.price }원</td>
+<td>
+<a href="productUpdate.do?code=${product.code }">상품 수정</a>
+</td>
+<td>
+<a href="productUpdate.do?code=${product.code }">상품 삭제</a>
 </td>
 </tr>
-<tr>
-<td>사진</td>
-<td>파일선택</td>
-</tr>
-<tr>
-<td>설명</td>
-<td><textarea row="5" cols="80" name="product" required="required" ></textarea></td>
-</tr>
-
+</c:forEach>
 </table>
-<p>
-<input type ="submit" value="제출" >
-<input type = "reset" value="다시작성">
-<input type = "button" value="목록" onclick = "location.href='productList2.jsp'">
-</p>
-</form>
+</div>
 </body>
 </html>
