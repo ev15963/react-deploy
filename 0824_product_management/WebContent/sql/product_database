@@ -1,0 +1,23 @@
+create table product(
+code number(5),
+name varchar2(100),
+price number(8),
+pictureurl varchar2(50),
+description varchar2(1000),
+primary key(code)
+);
+
+code 상품번호
+name 상품명
+price 가격
+pictureurl 사진url
+description 내용
+
+
+create sequence product_seq start with 1 increment by 1;
+
+insert into product values (product_seq.nextval, '개념을 콕콕 잡아주는 데이터베이스', 27000, 'db.jpg', '데이터베이스에 관한 모든 것을 정리한 교재...');
+
+select * from product; 
+
+drop sequence product_seq;

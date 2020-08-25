@@ -1,0 +1,26 @@
+SQL> CREATE TABLE product (
+  2    code NUMBER(5),
+  3    name VARCHAR2(100),
+  4    price NUMBER(8),
+  5    pictureurl VARCHAR2(50),
+  6    description VARCHAR2(1000),
+  7    PRIMARY KEY (code)
+  8  );
+
+Table created.
+
+SQL> CREATE SEQUENCE product_seq
+  2    START WITH 1
+  3    INCREMENT BY 1;
+
+Sequence created.
+
+SQL> INSERT INTO product VALUES (product_seq.NEXTVAL, '개념을 콕콕 잡아주는 데이터베이스', 27000, 'db.jpg', '데이터베이스에 관한 모든 것을 쉽고 재 미있게 정리한 교재...');
+
+1 row created.
+
+SQL> SELECT * FROM product;
+
+      CODE	NAME																				PRICE		PICTUREURL																			DESCRIPTION
+----------	--------------------------------------------------------------------------------	----------	--------------------------------------------------------------------------------	--------------------------------------------------------------------------------
+         1	개념을 콕콕 잡아주는 데이터베이스												     27000		db.jpg																				데이터베이스에 관한 모든 것을 쉽고 재미있게 정리한 교재...
