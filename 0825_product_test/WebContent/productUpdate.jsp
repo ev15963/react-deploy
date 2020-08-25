@@ -13,8 +13,8 @@
 <h1> 상품 수정 - 관리자 페이지</h1>
 
 <form method="post" enctype="multipart/form-data" name="frm">
-	<input type="hidden" name="code" value="${product.code }">
-	<input type="hidden" name="normakeImg" value="${product.pictureUrl }">
+	<input type="hidden" name="code" value="${product.code }"> <!--  -->
+	<input type="hidden" name="normakeImg" value="${product.pictureUrl }"> <!--  -->
 	
 			<table>
 				<tr>
@@ -24,7 +24,7 @@
 								<img src="upload/noimage.gif">
 							</c:when>
 							<c:otherwise>
-								<img src="upload/${product.pictureUrl}">
+								<img src="upload/${product.pictureUrl}"> <!-- 실제파일 -->
 							</c:otherwise>
 						</c:choose>
 					</td>
