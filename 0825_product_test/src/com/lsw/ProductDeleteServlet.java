@@ -1,6 +1,8 @@
 package com.lsw;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,8 +28,13 @@ public class ProductDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String code = request.getParameter("code");
+		ProductDAO pDao = ProductDAO.getInstance();
+		ProductVO pVo = pDao.selectProductByCode(code);
+		
+		request.setAttribute("product", pVo);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("productUpdate.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**

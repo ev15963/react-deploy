@@ -66,6 +66,15 @@ public class ProductUpdateServlet extends HttpServlet {
 		
 		ProductVO pVo = new ProductVO();
 		pVo.setCode(Integer.parseInt(code));
+		pVo.setDescription(name);
+		pVo.setPrice(price);
+		pVo.setPictureUrl(pictureUrl);
+		pVo.setDescription(description);
+		
+		ProductDAO pDao = ProductDAO.getInstance();
+		pDao.updateProduct(pVo);
+		response.sendRedirect("productList.do");
+		
 	}
 
 }
