@@ -63,16 +63,20 @@ public class ProductDAO {
 		PreparedStatement pstmt = null;
 		
 		conn = DBManager.getConnection();
-		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, pVo.getName());
-		pstmt.setInt(2, pVo.getPrice());
-		pstmt.setString(3, pVo.getPictureUrl());
-		pstmt.setString(4, pVo.getDescription());
-		pstmt.executeUpdate();
-		////////////////////////
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, pVo.getName());
+			pstmt.setInt(2, pVo.getPrice());
+			pstmt.setString(3, pVo.getPictureUrl());
+			pstmt.setString(4, pVo.getDescription());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("conn err"+e.getMessage());
+		}
 	}
 
 	public ProductVO selectProductByCode(String code) {
+		return null;
 		
 	}
 
@@ -82,4 +86,4 @@ public class ProductDAO {
 	public void deleteProduct(String code) {
 			
 	}
-}}
+}

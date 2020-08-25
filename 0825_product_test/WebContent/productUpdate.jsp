@@ -16,19 +16,60 @@
 	<input type="hidden" name="code" value="${product.code }">
 	<input type="hidden" name="normakeImg" value="${product.pictureUrl }">
 	
-	<table>
-	<tr>
-	<td>
-	<c:choose>
-	<c:when>
-	
-	</c:when>
-	</c:choose>
-	</td>
-	</tr>
-	</table>
-	
-	</form>
-</div>
+			<table>
+				<tr>
+					<td>
+						<c:choose>
+							<c:when test="${empty product.pictureUrl}">
+								<img src="upload/noimage.gif">
+							</c:when>
+							<c:otherwise>
+								<img src="upload/${product.pictureUrl}">
+							</c:otherwise>
+						</c:choose>
+					</td>
+					
+					<td>
+						<table>
+							<tr>
+								<th style="width: 80px">상품명</th>
+								<td>
+									<input type="text" name="name" value="${product.name}" size="80" required />
+								</td>
+							</tr>
+							
+							<tr>
+								<th>가 격</th>
+								<td>
+									<input type="text" name="price" value="${product.price}"  required  /> 원
+								</td>
+							</tr>
+							
+							<tr>
+								<th>사 진</th>
+								<td>
+									<input type="file" name="pictureUrl" /><br/>
+									(주의사항 : 이미지를 변경하고자 할때만 선택하시오)
+									</td>
+							</tr>
+							
+							<tr>
+								<th>설 명</th>
+								<td>
+									<textarea cols="90" rows="10" name="description">${product.description}</textarea>
+								</td>
+							</tr>
+						</table>
+						
+					</td>
+				</tr>
+			</table>
+			
+			<br/> 
+			<input type="submit" value="수정" onclick="return productCheck()" /> 
+			<input type="reset" value="다시작성" /> 
+			<input type="button" value="목록" onclick="location.href='productList.do'" />
+		</form>
+	</div>
 </body>
 </html>

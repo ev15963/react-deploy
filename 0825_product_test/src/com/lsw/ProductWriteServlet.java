@@ -50,7 +50,10 @@ public class ProductWriteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		ServletContext context = getServletContext(); //현재 실행하고 있는 웹 어플리케이션이 설정되서
+		ServletContext context = getServletContext(); 
+		//현재 실행하고 있는 웹 어플리케이션이 설정되므로
+		//먼저 웹어플리케이션 경로추출하고
+		
 		String path= context.getRealPath("upload");
 		String encType="UTF-8";
 		int sizeLimit = 20 * 1024* 1024;
