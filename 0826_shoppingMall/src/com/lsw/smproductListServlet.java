@@ -3,6 +3,7 @@ package com.lsw;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,7 +32,14 @@ public class smproductListServlet extends HttpServlet {
 		smproductDAO smDAO = new smproductDAO();
 		
 		List<shoppingMallVO> smproduct = smDAO.selectAllPro(); //select sql 꺼내옴
+		System.out.println("ㅇㅇㅇ"+smproduct);
 		request.setAttribute("smproductList", smproduct);
+		RequestDispatcher disp = request.getRequestDispatcher("smproductList.jsp");
+		disp.forward(request, response); //요청한걸 응답
+
+//		for (shoppingMallVO smproductList : smproduct) {
+//		System.out.println(smproduct);
+//		}
 	}
 
 	/**

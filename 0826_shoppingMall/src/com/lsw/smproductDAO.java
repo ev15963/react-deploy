@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,28 +14,12 @@ public class smproductDAO {
 	String dri = "oracle.jdbc.driver.OracleDriver";
 	String url = "jdbc:oracle:thin:@127.0.0.1:1521:XE";
 
+	DBsetting dbse = new DBsetting();
+	
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	
-	public void closeMethod(Connection conn, Statement stmt, ResultSet rs) {
-		try {
-			rs.close();
-			stmt.close();
-			conn.close();
-		} catch (SQLException e) {
-			System.out.println("closeMethod err1 : "+e.getMessage());
-		}
-	}
-	
-	public void closeMethod(Connection conn, Statement stmt) {
-		try {
-			stmt.close();
-			conn.close();
-		} catch (SQLException e) {
-			System.out.println("closeMethod err2 : "+e.getMessage());
-		}
-	}
 	
 	public List<shoppingMallVO> selectAllPro() {
 		//전체조회
@@ -45,6 +28,7 @@ public class smproductDAO {
 		
 		
 		try {
+			Class.forName(dri);
 			conn = DriverManager.getConnection(url, "lsw", "1234");
 			pstmt = conn.prepareStatement(sql);
 			rs=pstmt.executeQuery();
@@ -58,10 +42,12 @@ public class smproductDAO {
 				list.add(smvo);
 			}
 			
+		} catch (ClassNotFoundException e) {
+			System.out.println("selectAllPro dir err : "+ e.getMessage());
 		} catch (SQLException e) {
-			System.out.println("selectAllPro : "+e.getMessage());
+			System.out.println("selectAllPro err: "+e.getMessage());
 		} finally {
-			closeMethod(conn, pstmt, rs);
+			dbse.closeMethod(conn, pstmt, rs);
 		}
 		return list;
 		
@@ -72,6 +58,7 @@ public class smproductDAO {
 		//SQL> INSERT INTO smproduct VALUES
 		//2  (product_seq.NEXTVAL, '스니커즈', 15000, 20000, '2013-06-15', '사용');
 		try {
+			Class.forName(dri);
 			conn = DriverManager.getConnection(url, "lsw", "1234");
 			pstmt = conn.prepareStatement(sql);
 
@@ -82,10 +69,12 @@ public class smproductDAO {
 			pstmt.setString(5, spVO.getUse());
 			pstmt.executeUpdate();
 			
+		} catch (ClassNotFoundException e) {
+			System.out.println("insert dri err : "+e.getMessage());
 		} catch (SQLException e) {
 			System.out.println("insert into err : "+e.getMessage());
 		} finally {
-			closeMethod(conn, pstmt);
+			dbse.closeMethod(conn, pstmt);
 		}
 	}
 	
