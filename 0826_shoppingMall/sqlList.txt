@@ -134,4 +134,6 @@ SQL> SELECT * FROM smproduct;
 
 13 rows selected.
 
-commit
+SQL> commit;
+
+Commit complete.
