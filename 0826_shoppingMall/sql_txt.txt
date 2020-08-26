@@ -1,0 +1,31 @@
+CREATE TABLE smproduct (
+  code NUMBER(5),
+  proName VARCHAR2(100),
+  price NUMBER(8),
+  sale NUMBER(8),
+  datenum VARCHAR2(100),
+  use VARCHAR2(100),
+  PRIMARY KEY (code)
+);
+
+CREATE SEQUENCE smproduct_seq
+  START WITH 1
+  INCREMENT BY 1;
+
+INSERT INTO smproduct VALUES
+(product_seq.NEXTVAL, '스니커즈', 15000, 20000, '2013-06-15', '사용');
+
+SELECT * FROM smproduct;
+
+
+INSERT INTO smproduct VALUES
+(product_seq.NEXTVAL, '샌달', 5000, 5500, '2013-06-15', '사용');
+
+INSERT INTO smproduct VALUES
+(product_seq.NEXTVAL, '슬리퍼', 5000, 5500, '2013-06-15', '사용');
+
+INSERT INTO smproduct VALUES
+(product_seq.NEXTVAL, '핑크센달', 5000, 20000, '2013-06-15', '사용');
+
+INSERT INTO smproduct VALUES
+(product_seq.NEXTVAL, '스니커즈', 15000, 20000, '2013-06-15', '사용');

@@ -43,8 +43,8 @@ public class ProductDAO {
 			pVo.setCode(rs.getInt("code"));
 			pVo.setName(rs.getString("name"));
 			pVo.setPrice(rs.getInt("price"));
-			pVo.setName(rs.getString("pictureUrl"));
-			pVo.setName(rs.getString("description"));
+			pVo.setPictureUrl(rs.getString("pictureUrl"));
+			pVo.setDescription(rs.getString("description"));
 			list.add(pVo);
 		}//while문
 		
@@ -57,7 +57,7 @@ public class ProductDAO {
 }	//selectAllProducts()
 
 	public void insertProduct(ProductVO pVo) {
-		String sql= "insert into product values (product_seq.nextval, ?, ?, ? ?)";
+		String sql= "insert into product values (product_seq.nextval, ?, ?, ?, ?)";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
