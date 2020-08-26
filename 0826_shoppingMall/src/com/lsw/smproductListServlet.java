@@ -32,14 +32,11 @@ public class smproductListServlet extends HttpServlet {
 		smproductDAO smDAO = new smproductDAO();
 		
 		List<shoppingMallVO> smproduct = smDAO.selectAllPro(); //select sql 꺼내옴
-		System.out.println("ㅇㅇㅇ"+smproduct);
+		System.out.println("ㅇㅇㅇ"+smproduct); //테스트
 		request.setAttribute("smproductList", smproduct);
 		RequestDispatcher disp = request.getRequestDispatcher("smproductList.jsp");
 		disp.forward(request, response); //요청한걸 응답
 
-//		for (shoppingMallVO smproductList : smproduct) {
-//		System.out.println(smproduct);
-//		}
 	}
 
 	/**

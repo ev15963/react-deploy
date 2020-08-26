@@ -36,6 +36,7 @@ public class smproductDAO {
 			while (rs.next()) {
 				shoppingMallVO smvo = new shoppingMallVO();
 				smvo.setCode(rs.getInt("code"));
+				smvo.setProName(rs.getString("proName"));
 				smvo.setPrice(rs.getInt("price"));
 				smvo.setSale(rs.getInt("sale"));
 				smvo.setUse(rs.getString("use"));
@@ -53,7 +54,7 @@ public class smproductDAO {
 		
 	}
 	
-	public void insertsmproduct(shoppingMallVO spVO) {
+	public void insertsmproduct(shoppingMallVO s) {
 		String sql = "INSERT INTO smproduct VALUES (product_seq.NEXTVAL, ?, ?, ?, ?, ?)";
 		//SQL> INSERT INTO smproduct VALUES
 		//2  (product_seq.NEXTVAL, '스니커즈', 15000, 20000, '2013-06-15', '사용');

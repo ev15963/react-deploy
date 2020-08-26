@@ -1,6 +1,9 @@
 package com.lsw;
 
 import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,8 +29,13 @@ public class smproductInsertServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		smproductDAO smDAO = new smproductDAO();
+		shoppingMallVO smvo = new shoppingMallVO();
+		List<shoppingMallVO> smproduct = smDAO.insertsmproduct(smvo.getProName()); //select sql 꺼내옴
+		System.out.println("ㅇㅇㅇ"+smproduct);
+		request.setAttribute("smproductList", smproduct);
+		RequestDispatcher disp = request.getRequestDispatcher("smproductList.jsp");
+		disp.forward(request, response); //요청한걸 응답
 	}
 
 	/**
