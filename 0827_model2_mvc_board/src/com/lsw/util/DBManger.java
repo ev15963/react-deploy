@@ -8,19 +8,22 @@ import java.sql.Statement;
 
 public class DBManger {
 	private static String url = "jdbc:oracle:thin:@localhost:1521:XE";
+	private static String dri = "oracle.jdbc.driver.OracleDriver";
 	private static String id = "lsw";
 	private static String pwd = "1234";
 	
-	public void Connection() {
+	public static Connection getConnecton() {
+		Connection conn = null;
 		try {
-			Class.forName(url);
-			Connection conn = DriverManager.getConnection(url, id, pwd);
+			Class.forName(dri);
+			conn = DriverManager.getConnection(url, id, pwd);
 		} catch (ClassNotFoundException e) {
 			System.out.println(e.getMessage()+"");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return conn;
 	}
 	
 

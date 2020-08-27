@@ -12,7 +12,7 @@ public class BoardVO {
 	private Integer readcount;
 	private Timestamp writedate;
 	
-	private BoardVO() {
+	public BoardVO() {
 		
 	}
 	@Override
