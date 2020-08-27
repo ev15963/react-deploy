@@ -35,9 +35,15 @@ public class BoardServlet extends HttpServlet {
 		
 		Action action=af.getAction(command); //if else가 엄청 많음
 		
-		if(action != null) {
+		if(action != null) {		//전체 데이터를 넘겨줌
 			action.execute(request, response);
 			System.out.println("action"+action);
 		}
+	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		doGet(request, response);
+	
 	}
 }

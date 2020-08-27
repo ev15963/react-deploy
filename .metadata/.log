@@ -9231,3 +9231,9 @@ Java Model Exception: Java Model Status [Index out of bounds]
 
 !ENTRY org.eclipse.jface.text 2 0 2020-08-27 12:17:05.969
 !MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.jface.text 2 0 2020-08-27 14:19:55.339
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2020-08-27 14:19:55.345
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
