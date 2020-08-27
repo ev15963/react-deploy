@@ -33,7 +33,7 @@ public class BoardServlet extends HttpServlet {
 		
 		ActionFactory af = ActionFactory.getInstance(); //
 		
-		Action action=af.getAction(command);
+		Action action=af.getAction(command); //if else가 엄청 많음
 		
 		if(action != null) {
 			action.execute(request, response);
