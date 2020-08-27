@@ -17,46 +17,36 @@ public class ActionFactory {
 	public Action getAction(String command) {
 		Action action = null;
 		System.out.println("ActionFactory : " + command);
-
-		/* 추가된 부분 */
+		/* 추가 된 부분 */
 		if (command.equals("board_list")) {
-			action = new BoardListAction();
-			
-		} else if (command.equals("board_view")) { //상세보기
-			action = new BoardViewAction();
-			
-		} else if (command.equals("board_check_pass_form")) { //수정 삭제시 비밀번호 입력
-			action = new BoardCheckPassFormAction();
-			
-		} else if (command.equals("board_check_pass")) {	//수정 삭제시 비밀번호 확인
-			action = new BoardCheckPassAction();
-			
-		} else if (command.equals("board_update_form")) {
-			action = new BoardWriteFormAction();
-			
+			action = new BoardListAction(); // 목록
+
+		} else if (command.equals("board_write_form")) {
+			action = new BoardWriteFormAction(); // 등록 화면
+
 		} else if (command.equals("board_write")) {
-			action = new BoardWriteAction();
-			
+			action = new BoardWriteAction(); // 실제 등록
+
 		} else if (command.equals("board_view")) {
-			action = new BoardViewAction();
-			
+			action = new BoardViewAction(); // 상세보기
+
 		} else if (command.equals("board_check_pass_form")) {
-			action = new BoardCheckPassFormAction();
-			
+			action = new BoardCheckPassFormAction(); // 수정, 삭제 시 비밀번호 입력
+
 		} else if (command.equals("board_check_pass")) {
-			action = new BoardCheckPassAction();
-			
+			action = new BoardCheckPassAction(); // 수정, 삭제 시 비밀번호 확인
+
 		} else if (command.equals("board_update_form")) {
-			action = new BoardUpdateFormAction();
-			
+			action = new BoardUpdateFormAction(); // 수정 화면
+
 		} else if (command.equals("board_update")) {
-			action = new BoardUpdateAction();
-			
+			action = new BoardUpdateAction(); // 실제 수정
+
 		} else if (command.equals("board_delete")) {
-			action = new BoardDeleteAction();
+			action = new BoardDeleteAction(); // 실제 삭제
+
 		}
-
 		return action;
-	}
 
+	}
 }

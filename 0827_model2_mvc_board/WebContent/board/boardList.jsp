@@ -27,7 +27,7 @@
 		<th>작성일</th>
 		<th>조회</th>
 		</tr>
-		<%-- List<BoardVO를 출력 JSTL --%>
+		<%-- List<BoardVO>를 출력 JSTL --%>
 		<c:forEach var="board" items="${boardList }">
 		<tr class="record">
 		<td>${board.num}</td>
@@ -38,7 +38,7 @@
 		</td>
 		<td>${board.name }</td>
 		<td><fmt:formatDate value="${board.writedate }"/></td>
-		<td>"&{board.readcount}"</td>
+		<td>${board.readcount}</td>
 		</tr>
 		</c:forEach>
 		</table>

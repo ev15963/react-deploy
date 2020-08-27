@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,7 +16,7 @@ public class BoardListAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
-			throws SecurityException, IOException {
+			throws ServletException, IOException {
 
 		String url = "/board/boardList.jsp";
 		System.out.println(url+"---------------"); //점검심 웹브라우져 확인 
@@ -29,6 +30,7 @@ public class BoardListAction implements Action{
 		
 		request.setAttribute("boardList", boardList);
 		RequestDispatcher disp = request.getRequestDispatcher(url);
+		disp.forward(request, response);
 	}
 
 }
