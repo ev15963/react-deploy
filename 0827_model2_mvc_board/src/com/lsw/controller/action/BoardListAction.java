@@ -30,6 +30,9 @@ public class BoardListAction implements Action{
 		
 		request.setAttribute("boardList", boardList);
 		RequestDispatcher disp = request.getRequestDispatcher(url);
+		System.out.println("request"+request);
+		System.out.println("url"+url);
+		System.out.println("disp"+disp);
 		disp.forward(request, response);
 	}
 

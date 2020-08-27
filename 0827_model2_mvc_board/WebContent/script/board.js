@@ -14,7 +14,7 @@ function boardCheck() {
 	return true;
 }
 function open_win(url, name) {
-	window.open(url, name, "width=500, height=230");
+	window.open(url, name, "width=500, height=230"); //세창 띄우기 url 이름 "width=500, height=230" 새창에 대한 가로 크기 세로크기
 }
 function passCheck() {
 	if (document.frm.pass.value.length == 0) {

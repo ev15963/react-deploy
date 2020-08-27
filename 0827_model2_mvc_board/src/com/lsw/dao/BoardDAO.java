@@ -46,12 +46,13 @@ public class BoardDAO {
 				bVo.setContent(rs.getString("content"));
 				bVo.setReadcount(rs.getInt("readcount"));
 				bVo.setWritedate(rs.getTimestamp("writedate"));
-
+				
+				list.add(bVo);
 			}
 		} catch (SQLException e) {
 			System.out.println("selectAllBoards err"+e.getMessage());
 		}
-		return null;
+		return list;
 
 	}
 
@@ -82,18 +83,56 @@ public class BoardDAO {
 				System.out.println("등록 실패");
 			}
 		} catch (SQLException e) {
+			System.out.println("insertboard err"+e.getMessage());
+		}
+	}
+
+	public void updateReadCount(String num) {
+		String sql = "update board set readcount=readcount+1 where num=?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		conn=DBManger.getConnecton();
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, num);
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	public void updateReadCount(String num) {
-
-	}
-
 	// 게시판 글 상세 내용 보기 : 글번호로 찾아온다 : 실패 null
 	public BoardVO selectOneBoardByNum(String num) {
-		return null;
+		String sql="select * from board where num = ?";
+		
+		BoardVO bVo=null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		conn = DBManger.getConnecton();
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, num);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				bVo=new BoardVO();
+				bVo.setNum(rs.getInt("num"));
+				bVo.setName(rs.getString("name"));
+				bVo.setPass(rs.getString("pass"));
+				bVo.setEmail(rs.getString("email"));
+				bVo.setTitle(rs.getString("title"));
+				bVo.setContent(rs.getString("content"));
+				bVo.setWritedate(rs.getTimestamp("writedate"));
+				bVo.setReadcount(rs.getInt("readcount"));
+			}
+		} catch (SQLException e) {
+			System.out.println("selectOneBoardByNum err"+e.getMessage());
+		}
+		return bVo;
 
 	}
 
