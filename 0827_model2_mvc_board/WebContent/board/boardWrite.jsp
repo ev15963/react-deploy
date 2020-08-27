@@ -6,12 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-</
+<link rel="stylesheet" type="text/css" href="css/shopping.css">
 </head>
 <body>
 <div id="wrap" align="center">
 <h1>게시글 등록</h1>
-<form name="frm" ,method="post" action="BoardServlet">
+<form name="frm" method="post" action="BoardServlet">
 <input type="hidden" name="command" value="board_write">
 <table>
 <tr>

@@ -56,7 +56,35 @@ public class BoardDAO {
 	}
 
 	public void insertBoard(BoardVO bVo) {
-
+		String sql ="insert into board (num, name, email, pass, title, content) "
+				+ "values(board_seq.nextval, ?, ?, ?, ?, ?)";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		
+		conn = DBManger.getConnecton();
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, bVo.getName());
+			pstmt.setString(2, bVo.getEmail());
+			pstmt.setString(3, bVo.getPass());
+			pstmt.setString(4, bVo.getTitle());
+			pstmt.setString(5, bVo.getContent());
+			
+			pstmt.executeUpdate();
+			
+			int r=pstmt.executeUpdate();
+			if(r>0) {
+				System.out.println("등록 성공");
+			} else {
+				System.out.println("등록 실패");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void updateReadCount(String num) {
