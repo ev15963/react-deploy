@@ -4,9 +4,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>수정, 삭제가 성공했을 경우 checkSuccess.jsp</title>
 </head>
 <body>
-
+<script type="text/javascript">
+if (window.name== "update") {
+	window.opener.paerent.location.href = 
+		"BoardServlet?command=board_update_form&num=${param.num}";
+} else if (window.name == "delete") {
+	alert("삭제되었습니다.");
+	window.opener.parent.locaton.href = 
+		"BoardServlet?command=board_delete&num=${param.num}";
+}
+</script>
 </body>
 </html>
