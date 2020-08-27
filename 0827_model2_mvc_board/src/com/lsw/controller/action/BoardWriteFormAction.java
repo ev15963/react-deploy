@@ -17,6 +17,7 @@ public class BoardWriteFormAction implements Action{
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url="/board/boardWrite.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(url);
+		System.out.println("BoardUpdateFormAction    "+url);
 		rd.forward(request, response);
 	}
 

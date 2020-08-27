@@ -28,7 +28,7 @@
 		<th>조회</th>
 		</tr>
 		<%-- List<BoardVO>를 출력 JSTL --%>
-		<c:forEach var="board" items="${boardList }">
+		<c:forEach var="board" items="${boardList}">
 		<tr class="record">
 		<td>${board.num}</td>
 		<td>

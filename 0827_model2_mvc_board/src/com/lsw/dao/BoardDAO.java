@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -98,6 +99,14 @@ public class BoardDAO {
 		try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, num);
+			
+			int r = pstmt.executeUpdate();
+			if (r>0) {
+				System.out.println("updateReadCount 완료");
+			} else {
+				System.out.println("updateReadCount 미완료");
+			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -116,8 +125,9 @@ public class BoardDAO {
 		conn = DBManger.getConnecton();
 		try {
 			pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, num);
-			rs=pstmt.executeQuery();
+			pstmt.setString(1, num); //////
+			
+			rs=pstmt.executeQuery(); //////////////
 			if(rs.next()) {
 				bVo=new BoardVO();
 				bVo.setNum(rs.getInt("num"));
@@ -128,7 +138,18 @@ public class BoardDAO {
 				bVo.setContent(rs.getString("content"));
 				bVo.setWritedate(rs.getTimestamp("writedate"));
 				bVo.setReadcount(rs.getInt("readcount"));
+				System.out.println("while 성공");
+		
 			}
+			
+			
+			int r = pstmt.executeUpdate();
+			if (r>0) {
+				System.out.println("getConnecton 완료");
+			} else {
+				System.out.println("getConnecton 미완료");
+			}
+			
 		} catch (SQLException e) {
 			System.out.println("selectOneBoardByNum err"+e.getMessage());
 		}
@@ -137,10 +158,38 @@ public class BoardDAO {
 	}
 
 	public void updateBoard(BoardVO bVo) {
+		String sql = "update board set name=?, email=?, pass=?, "
+				+ "title=?, content=? where num =?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt =null;
+		
+		conn = DBManger.getConnecton();
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, bVo.getName());
+			pstmt.setString(2, bVo.getEmail());
+			pstmt.setString(3, bVo.getPass());
+			pstmt.setString(4, bVo.getTitle());
+			pstmt.setString(5, bVo.getContent());
+			pstmt.setInt(6, bVo.getNum());
+			
+			int r = pstmt.executeUpdate();
+			if (r>0) {
+				System.out.println("updateBoard 완료");
+			} else {
+				System.out.println("updateBoard 미완료");
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("updateBoard err"+e.getMessage());
+		}
 
 	}
 
 	public BoardVO checkPassWord(String pass, String num) {
+		
 		return null;
 
 	}
@@ -155,6 +204,14 @@ public class BoardDAO {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, num);
 			pstmt.executeUpdate();
+			
+			int r = pstmt.executeUpdate();
+			if (r>0) {
+				System.out.println("deleteBoard 완료");
+			} else {
+				System.out.println("deleteBoard 미완료");
+			}
+			
 		} catch (SQLException e) {
 			System.out.println("delete err + "+e.getMessage());
 		}

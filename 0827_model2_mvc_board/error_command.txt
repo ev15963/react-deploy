@@ -1,0 +1,121 @@
+oardServlet에서 요청을 받음을 확인 : null
+ActionFactory : null
+8월 27, 2020 8:02:06 오후 org.apache.catalina.core.StandardWrapperValve invoke
+심각: Servlet.service() for servlet [com.lsw.controller.BoardServlet] in context with path [/0827_model2_mvc_board] threw exception
+java.lang.NullPointerException
+	at com.lsw.controller.ActionFactory.getAction(ActionFactory.java:21)
+	at com.lsw.controller.BoardServlet.doGet(BoardServlet.java:36)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:622)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:94)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:620)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:502)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1132)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:684)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1539)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1495)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Unknown Source)
+
+BoardServlet에서 요청을 받음을 확인 : null
+ActionFactory : null
+8월 27, 2020 8:04:49 오후 org.apache.catalina.core.StandardWrapperValve invoke
+심각: Servlet.service() for servlet [com.lsw.controller.BoardServlet] in context with path [/0827_model2_mvc_board] threw exception
+java.lang.NullPointerException
+	at com.lsw.controller.ActionFactory.getAction(ActionFactory.java:21)
+	at com.lsw.controller.BoardServlet.doGet(BoardServlet.java:36)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:622)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:94)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:620)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:502)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1132)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:684)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1539)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1495)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Unknown Source)
+
+BoardServlet에서 요청을 받음을 확인 : board_view
+ActionFactory : board_view
+action  com.lsw.controller.action.BoardViewAction@1df28fce
+updateReadCount 완료
+while 성공
+getConnecton 완료
+actioncom.lsw.controller.action.BoardViewAction@1df28fce
+BoardServlet에서 요청을 받음을 확인 : board_view
+ActionFactory : board_view
+action  com.lsw.controller.action.BoardViewAction@4cac6642
+updateReadCount 완료
+while 성공
+getConnecton 완료
+actioncom.lsw.controller.action.BoardViewAction@4cac6642
+BoardServlet에서 요청을 받음을 확인 : board_view
+ActionFactory : board_view
+action  com.lsw.controller.action.BoardViewAction@57793258
+updateReadCount 완료
+while 성공
+getConnecton 완료
+actioncom.lsw.controller.action.BoardViewAction@57793258
+BoardServlet에서 요청을 받음을 확인 : board_list
+ActionFactory : board_list
+action  com.lsw.controller.action.BoardListAction@25b047bc
+/board/boardList.jsp---------------
+requestorg.apache.catalina.connector.RequestFacade@3a5ea152
+url/board/boardList.jsp
+disporg.apache.catalina.core.ApplicationDispatcher@5fa2da8d
+actioncom.lsw.controller.action.BoardListAction@25b047bc
+BoardServlet에서 요청을 받음을 확인 : board_view
+ActionFactory : board_view
+action  com.lsw.controller.action.BoardViewAction@6cd31ec5
+updateReadCount 완료
+while 성공
+getConnecton 완료
+actioncom.lsw.controller.action.BoardViewAction@6cd31ec5
+BoardServlet에서 요청을 받음을 확인 : board_write_form
+ActionFactory : board_write_form
+action  com.lsw.controller.action.BoardWriteFormAction@4a4425af
+BoardUpdateFormAction    /board/boardWrite.jsp
+actioncom.lsw.controller.action.BoardWriteFormAction@4a4425af
+BoardServlet에서 요청을 받음을 확인 : board_list
+ActionFactory : board_list
+action  com.lsw.controller.action.BoardListAction@7c2d3860
+/board/boardList.jsp---------------
+requestorg.apache.catalina.connector.RequestFacade@3a5ea152
+url/board/boardList.jsp
+disporg.apache.catalina.core.ApplicationDispatcher@653e2067
+actioncom.lsw.controller.action.BoardListAction@7c2d3860
+BoardServlet에서 요청을 받음을 확인 : board_check_pass_form
+ActionFactory : board_check_pass_form
+action  com.lsw.controller.action.BoardCheckPassFormAction@2b462839
+actioncom.lsw.controller.action.BoardCheckPassFormAction@2b462839
+BoardServlet에서 요청을 받음을 확인 : board_check_pass_form
+ActionFactory : board_check_pass_form
+action  com.lsw.controller.action.BoardCheckPassFormAction@5d26ec1d
+actioncom.lsw.controller.action.BoardCheckPassFormAction@5d26ec1d
+BoardServlet에서 요청을 받음을 확인 : null
+ActionFactory : null

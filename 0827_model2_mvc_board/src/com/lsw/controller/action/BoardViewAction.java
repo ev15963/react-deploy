@@ -17,12 +17,12 @@ public class BoardViewAction implements Action{
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String url="/board/boardView.jsp";
-		String num = request.getParameter("null");
+		String num = request.getParameter("num");
 		
 		BoardDAO bDao=BoardDAO.getInstance();
 		bDao.updateReadCount(num);
 		BoardVO bVo=bDao.selectOneBoardByNum(num);
-		
+	
 		request.setAttribute("board", bVo);
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);

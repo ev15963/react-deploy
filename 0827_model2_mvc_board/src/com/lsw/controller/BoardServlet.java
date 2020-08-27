@@ -34,7 +34,7 @@ public class BoardServlet extends HttpServlet {
 		ActionFactory af = ActionFactory.getInstance(); //
 		
 		Action action=af.getAction(command); //if else가 엄청 많음
-		
+		System.out.println("action  "+action);
 		if(action != null) {		//전체 데이터를 넘겨줌
 			action.execute(request, response);
 			System.out.println("action"+action);
