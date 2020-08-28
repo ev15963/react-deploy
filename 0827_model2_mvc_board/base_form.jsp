@@ -62,8 +62,8 @@
 						<%
 							//DB접속 정보
 							String url = "jdbc:oracle:thin:@127.0.0.1:1521:XE";	
-							String user = "freeflux";
-							String passwd = "free";
+							String user = "lsw";
+							String passwd = "1234";
 							Connection con;
 							Statement stat;
 							Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -86,7 +86,7 @@
 							<input type="checkbox" name="check" value="<%=rs.getString(3)%>" />
 							</td>
 						</tr>
-
+							<!-- 다중값으로 확인하는 배열?? -->
 						<%
 							}
 						%>

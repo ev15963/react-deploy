@@ -125,7 +125,7 @@
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
       
-      <Context docBase="0827_model2_mvc_board" path="/0827_model2_mvc_board" reloadable="true" source="org.eclipse.jst.jee.server:0827_model2_mvc_board"/></Host>
+      <Context docBase="0827_model2_mvc_board" path="/0827_model2_mvc_board" reloadable="true" source="org.eclipse.jst.jee.server:0827_model2_mvc_board"/><Context docBase="0828_resultset_test" path="/0828_resultset_test" reloadable="true" source="org.eclipse.jst.jee.server:0828_resultset_test"/></Host>
     </Engine>
   </Service>
 </Server>
