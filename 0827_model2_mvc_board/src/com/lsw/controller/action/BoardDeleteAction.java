@@ -36,8 +36,9 @@ public class BoardDeleteAction implements Action{
 		//호출
 		dao.deleteBoard(num);
 		
-		//excute로 보내고
-		excute.
+		
+		new BoardListAction().execute(request, response);
+		
 		
 		
 //		System.out.println(boardList.size());//값의 크기 확인 
