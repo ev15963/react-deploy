@@ -9,12 +9,15 @@
 <body>
 <script type="text/javascript">
 if (window.name== "update") {
-	window.opener.paerent.location.href = 
+	window.opener.parent.location.href = 
 		"BoardServlet?command=board_update_form&num=${param.num}";
+	//BoardUpdateAction.java
+	
 } else if (window.name == "delete") {
 	alert("삭제되었습니다.");
-	window.opener.parent.locaton.href = 
+	window.opener.parent.location.href = 
 		"BoardServlet?command=board_delete&num=${param.num}";
+	//BoardDeleteAction.java
 }
 window.close();
 </script>

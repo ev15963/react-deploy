@@ -28,6 +28,12 @@
 </td>
 </tr>
 <tr>
+<th>작성자</th>
+<td>
+<input type = "text" name="writer" required="required" />
+</td>
+</tr>
+<tr>
 <th>제목</th>
 <td>
 <input type="text" size="70" name="title" required="required">
