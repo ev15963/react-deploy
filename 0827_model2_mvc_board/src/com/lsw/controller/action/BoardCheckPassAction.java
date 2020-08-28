@@ -33,4 +33,3 @@ public class BoardCheckPassAction implements Action {
 	}
 
 }
-v
