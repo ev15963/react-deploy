@@ -9,7 +9,7 @@
 <title>에러 페이지 : error.jsp</title>
 </head>
 <body>
-다음고 같은 에러가 발생했습니다. </br>
+다음고 같은 에러가 발생했습니다. <br>
 <%= exception.getMessage() %> <br>
 동일한 메일주소가 있습니다.
 </body>
