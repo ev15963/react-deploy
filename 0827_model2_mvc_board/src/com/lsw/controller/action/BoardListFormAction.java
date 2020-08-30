@@ -21,7 +21,7 @@ public class BoardListFormAction implements Action{
 		
 		BoardDAO bDao=BoardDAO.getInstance();
 		bDao.selectOneBoardByNum(num);
-		BoardVO bVo=bDao.selectOneBoardByNum(num);
+		BoardVO bVo=bDao.selectOneBoardByNum(num); //
 	
 		request.setAttribute("board", bVo);
 		RequestDispatcher rd = request.getRequestDispatcher(url);
