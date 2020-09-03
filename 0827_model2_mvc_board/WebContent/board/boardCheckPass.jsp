@@ -23,7 +23,6 @@
 </table>
 
 <br> <input type="submit" value="확인" /> <br>
-<br> document.write("자바스크립트");
 <br> ${message }
 </form>
 </div>

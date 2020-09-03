@@ -30,7 +30,7 @@
 <tr>
 <th>작성자</th>
 <td>
-<input type = "text" name="writer" required="required" />
+<input type = "text" name="name" required="required" />
 </td>
 </tr>
 <tr>
