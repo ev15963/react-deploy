@@ -21,6 +21,7 @@ Connection db=DriverManeger.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:XE",
 
 
  <%-- request.getParameter("mode") //login --%>  <!-- resultset을 확장한.. -->
+ <%-- 로그인 버튼 실행 시 mode=login이라는 파라미터명을 넘겨받음 --%>
 <c:if test = "${param.mode=='login' }">
 	<sql:query var="login" dataSource= "${db }">
 		select id from tblJoin where id=? and pass=?
@@ -36,7 +37,7 @@ Connection db=DriverManeger.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:XE",
 	첫번째 ? : 전달받은 파라미터를 이용하여 값 설정 pstmt
  --%>
 	<c:choose>
-		<c:when test="${login.rowCount==0 }">
+		<c:when test="${login.rowCount==0 }"> <%-- rowCount 쿼리문을 실행하여 얻은 열의 개수 확인 --%>
 			<c:set var="msg" value="로그인에 실패 하였습니다." scope="session" />
 		</c:when>
 		
