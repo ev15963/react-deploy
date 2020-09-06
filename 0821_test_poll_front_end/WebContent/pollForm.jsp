@@ -53,6 +53,8 @@
 		<td>
 			<input type="button" value="결과" 
 					   onclick="javascript:window.open('pollView.jsp?num=<%=num%>', 'PollView','width=500, height=350')"> <!-- view로 이동 -->
+						<!-- window.open : 자바스크립트를 이용해서 새 창을 띄워주는 것, 첫 번째 값은 필수입력 -->
+						<!-- 두번째 값은 새창에 대한 이름, 세번째 네번째 가로 세로 크기 -->
 		</td>
 	</tr>
 </table>
