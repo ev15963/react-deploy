@@ -23,6 +23,17 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 
+		//[1] dotnet이라는 단어가 들어가는 링크에 배경을 red로 설정
+		$("a[href*='dotnet']").addClass("red");
+		
+		//[2] aspx로 끝나는 링크의 배경 green으로 설정
+		$('a[href$="aspx"]').addClass("green");
+		
+		//[3] mailto:로 시작하는 링크의 배경을 silver로 설정
+		jQuery("a[href^='mailto:']").addClass("silver");
+		
+		//$('a[href$="com"]')
+		
 	});
 </script>
 </head>

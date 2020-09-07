@@ -1456,3 +1456,9 @@ Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING
 
 !ENTRY org.eclipse.equinox.p2.repository 2 0 2020-09-07 09:44:37.522
 !MESSAGE Server returned lastModified <= 0 for https://raw.github.com/guari/eclipse-ui-theme/master/com.github.eclipseuitheme.themes.updatesite/content.jar
+
+!ENTRY org.eclipse.jface.text 2 0 2020-09-07 10:15:53.431
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2020-09-07 10:15:53.453
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
