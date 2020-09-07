@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>DOM요소의 attrubute 읽어오기</title>
+
+<script src = "jquery-1.6.2.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		  //[1] get            
+        alert($('a').attr('href')); // get
+
+        //attr('속성명', '속성값') : 설정 가능
+        
+        //[2] img에 마우스 오버시 이미지 변경
+        $("#logo").mouseover(function() {
+            $(this).attr("src", "http://www.dotnetkorea.com/website/portals/0/dotnetkorealogo.gif");
+        });
+
+        //[3] 마우스오버/아웃시 다른 이미지 표시
+        $("#copy").mouseover(function() {
+            $(this).attr("src", "icon_members.gif");
+        });
+
+        $("#copy").mouseout(function() {
+            $(this).attr("src", "icon_home.gif");
+        });
+        
+        //참고 : 현재까지 이벤트 함수 종류
+        
+        //click(자동 호출 함수) : 마우스 왼쪽 버튼 클릭 (모든 요소 사용가능)
+        //change(자동 호출 함수) : 값에 변화가 일어났을 때 (주로 <select>)
+        //keyup(자동 호출 함수) : 키보드가 눌렀다 때지면
+        //keydown(자동 호출 함수) : 키보드가 눌러지면
+        //mouseout(자동 호출 함수) : 해당 요소에 마우스 커서가 올라가면 (모든 요소 사용가능)
+        //mouseover(자동 호출 함수) : 해당 요소로부터 마우스 커서가 빠져나가면 (모든 요소 사용가능)
+        //hover() : mouseover()와 mouseout() 기능을 포함 (모든 요소 사용가능)
+		//bind('이벤트명', 자동호출함수) : 이벤트를 동적으로 부여 (모든 요소 사용가능)
+		//one('이벤트명', 자동호출함수) : 하당 이벤트 1회 가능 (모든 요소 사용가능)
+		//toggle(자동호출 함수. 자동호출 함수) : 한개의 요소에 두가지 기능 실행(ON/OFF)
+		
+	});
+</script>
+
+</head>
+<body>
+
+<a href="http://www.dotnetkorea.com/"> 닷넷코리아</a>
+<img id="logo" src="dotentKorealogo.gif" alt="닷넷코리아로고"/>
+<img id="copy"	src="icon_copy.gif" />
+	
+</body>
+</html>
+
