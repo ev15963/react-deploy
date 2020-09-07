@@ -8,7 +8,24 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
+			//[1] each 메서드 설명
+			//$('p').each(function(index) {alert(index); });
 			
+			//[2] for문 처럼 반복한다. index는 0부터 자동 증가됨
+			//for문 처럼 반복한다. index는 0부터 자동 증가됨
+			$('p').each( //p태그 있는 만큼 반복
+				
+				function(index) {
+				
+					$(this).attr({ //attr({어트리뷰트:값});})
+						'id' : "para-" + index //id 속성 동적으로 부여
+				});
+			});
+			
+			//[3] 0번째 요소의 텍스트 읽어오기
+			$('#btn').click(function() {
+				alert($('#para-0').text()); //text() : 태그안의 값 : C#
+			});
 	});
 </script>
 
