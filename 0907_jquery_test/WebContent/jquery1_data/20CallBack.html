@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>브라우저 버전</title>
+<!--  이전버전 브라우저 지원여부를 위한 과정 브라우저마다 버전값이 다르다 -->
+<style type="text/css">
+	.button { background-color:Yellow;}
+	.region { color:Red;}
+</style>
+
+<script src = "jquery-1.6.2.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+			$('p:eq(1)')
+				.css('backgroundColor', 'Yellow')
+				.click(function() {
+					var $thisPara = $(this);
+				
+					$thisPara.next()
+					
+					.slideDown('slow', function() {
+						$thisPara.slideUp('Slow');
+					});
+				});
+			});
+</script>
+
+</head>
+<body>
+	<p>첫번째</p>
+	<p>두번째</p>
+	<p style="display:none;">세번째</p>
+	<p>네번째</p>
+</body>
+</html>
+
+<!-- 토글함수 버튼으로 적용했다 안했다 토글클래스 디자인을  (버튼의 차이) add class remove class만 실행시켜주면 된다 -->
