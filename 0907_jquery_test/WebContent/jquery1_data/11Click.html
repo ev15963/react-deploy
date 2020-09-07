@@ -13,18 +13,18 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		//[1] 닷넷코리아 레이어 클릭시 CSS 클래스 해제
-		$('#dnk').bind('click', function() {
+		//[2] mainMenu의 모든 항목에 대해서 click 이벤트 적용
+		$('#mainMenu .redColor').bind("click", function() {
 			
-			//[a] 해제
-			$('#mainMenu .redColor'); //3개의 요소의 CSS 클래스 해제
-			
-			
-			//[b] #dnk만 다시 적용
-			$(this).addClass('redColor'); //현재 나만 다시 적용
+			//[!] this.id로 분기
+			if (this.id == "dnk") {
+				location.href = "http://www.dotnetkorea.com";				
+			} else if (this.id == "va") {
+				window.open("http://www.VisualAcademy.com/", "", ""); //1)이동할 주소 3)새로운창에 대한 크기
+			}
 		});
-		
 	});
+			
 </script>
 
 </head>
@@ -32,7 +32,7 @@
 	<div id="mainMenu">
 		<div id="dnk" class="redColor">닷넷코리아</div>
 		<div id="va" class="redColor">비주얼아카데미</div>
-		<div id="dnk" class="redColor">라이선스랜드</div>
+		<div id="ll" class="redColor">라이선스랜드</div>
 	</div>
 </body>
 </html>
