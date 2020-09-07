@@ -15,7 +15,9 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		
+		$('#btnClick')
+		.bind("mouseover", function() {$('#btnClick').addClass('yellowBorder')})
+		.bind("mouseout", function() {$(this).removeClass('yellowBorder')});
 		
 	});
 </script>

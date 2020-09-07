@@ -8,13 +8,20 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		
+		$('#btnClick').bind("click", function() { alert('클릭됨');});
+
+		$('#btnClick').bind("mouseover", function() {
+			document.getElementById('btnClick').style.backgroundColor = 'red';
+		});
+		$('#btnClick').bind("mouseout", function() {
+			$('#btnClick').get(0).style.backgroundColor = 'blue';
+		});
 	});
 </script>
 </head>
 <body>
 
-	<div id="btnclick">클릭하세요!!</div>
+	<div id="btnClick">클릭하세요!!</div>
 
 </body>
 </html>

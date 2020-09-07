@@ -14,7 +14,9 @@
 	$(document).ready(
 	
 		function() {
+			// [1] td 태그내의 텍스트가 RedPlus를 포함하는 요소를 검색후 배경색을 red
 			
+			$("td:contains('RedPlus')").addClass('redColor');
 		}
 			
 	);

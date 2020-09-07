@@ -13,11 +13,17 @@
 }
 </style>
 
-<script src="jquery-1.6.2" type="text/javascript"></script>
+<script src="jquery-1.6.2.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 	$(document).ready(function() {
+		$('td:contains("RedPlus")') //td 속 RedPlus 찾기
+		.siblings() //형제 노드에게 전경생 red
+		.addClass("redColor")
 		
+		.parent() //부모로이동
+		.find('td:eq(0)') //0번째 셀 찾아서 RedPlus : Blue
+		.addClass('blueColor');
 	});
 </script>
 </head>
