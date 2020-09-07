@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>toggle() 메서드로 CSS 클래스에 대한 토글링</title>
+
+<style type="text/css">
+.hidden {
+	display : none;
+}
+</style>
+<script src = "jquery-1.6.2.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		$('#btn').click(function(){
+			$('#myLayer').toggleClass('hidden');
+			})
+		});
+					
+</script>
+
+</head>
+<body>
+	<h1>버튼을 클릭할 때마다 레이어 보이기/숨기기</h1>
+	<input id="btn" type="button" value="버튼" />
+	<div id = "myLayer" style="background-color: Yellow"> 안녕 </div>
+</body>
+</html>
+
+<!-- 토글함수 버튼으로 적용했다 안했다 토글클래스 디자인을  (버튼의 차이) add class remove class만 실행시켜주면 된다 -->
