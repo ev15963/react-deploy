@@ -17,7 +17,8 @@
 <script src="jquery-1.6.2.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function(){ // 페이지가 준비되었을 때
-			
+			$('#hw').addClass("bg"); //hw라는 id속성으로 가져와 그것에 bg CSS 클래스 적용
+			$('#hw').click(function() {alert('안녕'); $(this).addClass("sil"); });
 	});
 </script>
 </head>
