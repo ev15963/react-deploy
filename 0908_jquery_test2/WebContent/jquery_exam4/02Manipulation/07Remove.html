@@ -13,6 +13,19 @@
     <script type="text/javascript">
         $(document).ready(function() {
 
+        	//[1] 내용 지우기
+        	$('#btnEmpty').click(function() {
+        		$('div').empty();
+        		$('div').append('<b>hi</b>'); //div에 추가기능
+        	});
+               	
+        	
+        	
+        	//[2] 요소 없애기
+        	$('#btnRemove').click(function() {
+        		$('div').remove();
+        		$('div').append("<b>hi</b>"); //div 존재하지 않음
+        	});
 
 
         });
@@ -27,8 +40,8 @@
         <p>Ajax</p>
     </div>
 
-    <input type="button" id="btnEmpty" value="위 영역 삭제" />
-    <input type="button" id="btnRemove" value="위 영역 삭제" />
+    <input type="button" id="btnEmpty" value="위 영역 remove" /> <!-- 영역안 내부 비움 -->
+    <input type="button" id="btnRemove" value="위 영역 삭제" /> <!-- 기존 태그까지 전부제거 -->
 
 </body>
 

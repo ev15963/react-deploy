@@ -151,8 +151,23 @@ tu es vonita님이 모두에게:  04:48 PM
 
 
 
+tu es vonita님이 모두에게:  05:17 PM
+요소를 제거하는 remove() 함수.. 07Remove.html
+
+$('div').empty();
+$('div').append('<b>hi</b>'); //div에 추가기능
+
+${'div'}.remove();
+${'div'}.append("<b>hi</b>"); //div 존재하지 않음
 
 
 
+
+내일 json 이팩트부분
+tu es vonita님이 모두에게:  05:50 PM
+Events
+Effects
+Ajax
+Ajax 좀 더 자세하게~~
 
 

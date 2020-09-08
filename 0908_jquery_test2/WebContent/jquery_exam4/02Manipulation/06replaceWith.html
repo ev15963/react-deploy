@@ -14,7 +14,17 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-
+			
+        	//모든 버튼 요소를 클릭시
+        	$("button").click(function() {
+        		
+        		//나 자신(버튼)을 <div> 태그로 변경하자
+        		$(this).replaceWith("<div>" + $(this).text()+"</div>");
+        		
+        		//$(this) : click 이벤트를 발생시킨 요소
+        		//.replaceWith("~~") : 요소 변경.. (내부 요소 변경이 아닌. 자기 자신 요서 뱐걍!!!)
+        		//$(this).text() =>First
+        		//즉, <button>First</button> -> <div>First</div>
 
             });
         });
