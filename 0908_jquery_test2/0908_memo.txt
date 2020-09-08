@@ -28,3 +28,39 @@ EQ _ 사이에 띄어쓰기 제거하니깐 되네요
 
 -----------------------------------------------
 4번째 시간
+
+02is.html 자식요소와 존재 여부 확인 함수
+
+if ($('#myForm').children().is("input[type=submit]")) {
+
+input[type=submit] // input 안 type이 submit
+
+tu es vonita님이 모두에게:  12:18 PM
+특정요소를 배제한 나머지 요소를 검색하는 not() 03not.html 입니다..
+
+
+
+tu es vonita님이 모두에게:  12:35 PM
+다음은 검색하고 중지하는 find() 와 end() 함수 입니다.. 04end.html 입니다..
+
+
+
+<div id="myForm">
+    <p>
+        <b>JavaScript2</b>
+    </p>
+    <p>
+        <b>jQuery</b>
+    </p>
+</div> 
+
+1) alert( $('div') .find('p') .html() );
+div 태그 내 p태그를 찾아
+
+질문) 나로부터 모두에게:  12:50 PM
+n번째 p태그를 가져오려면 "p:?"형식으로 가져올 수 있나요??
+
+tu es vonita에서 나에게:  (비공개로) 12:56 PM
+어제 배운 nth 사용
+아니면 아까 배운 eq() 사용
+

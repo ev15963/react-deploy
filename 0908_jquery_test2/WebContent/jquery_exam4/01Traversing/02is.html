@@ -12,9 +12,17 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-
+			//myForm 영역에 submit 버튼이 있는지 검사
+			if ($('#myForm').children().is("input[type=submit]")) {
+				alert("있다.");
+			} else {
+				alert("없다.");
+			}
 
         });
+        
+        //chilren() 특정 요소의 자식들.. <input type ="submit" />
+        //is()특정 요소가 있는 지 확인.. true;
 
     </script>
 

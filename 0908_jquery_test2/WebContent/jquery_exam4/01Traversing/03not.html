@@ -16,10 +16,30 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-
+			//라디오 버튼을 제외한 input 태그에 배경색을 Yellow로 설정
+			$('input').not("input[type=radio]").each(function() {
+				$(this).addClass("Yellow").css("border","1px solid red");
+			})
 
         });
+        
+        //1. $('input') : <input type="text /> <input type"password" /> <input type="radio" />
+       	//2. .not("input[type=radio]") : <input type="text" /> <input type="password" />
+       	//3. .each(function() {
+       	//3-1. <input type="text" /> <= {background-color:Yellow;}			<="border", "1px solid red"
+       	//3-2. <input type="password" /> <= {background-color:Yellow;}		<="border", "1px solid red"
+		// });
+       	
+       	
+		//not(요소) 지정한 요소를 제외.
+		//each() 반복문 (java의 for(:)과 비슷한 역할)
+		//addClass() : <style></style>에서 설정한 스타일클래스를 적용할 때
+		//css() : 특정요소의 스타일 속성 추출
+		//css(스타일 속성) : 특정요소의 지정된 스타일 속성값을 추출
+		//css(스타일 속성, 속성값) : 특정 요소의 스타일을 설정..
+        
     </script>
+
 
 </head>
 
