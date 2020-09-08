@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>텍스트 값 가져오기 및 설정</title>
+
+<script src = "jquery-1.6.2.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		//get
+		var text = $('b').text(); //jQueryJavaScript
+		alert(text);
+		
+		//set
+		$('p:first').text("<b>First</b>.");
+		//('p:first') => <p> 또 만나요. </p> => <p><b>First</b>.</p> :text() 그대로
+		
+		$('p:last').html("<b>Last</b>");
+		//('p:last') => <p>언제요?</p> => <p><b>Last</b></p> : html() 컴파일
+		//동적으로 추가될때 삭제 될때 사용되는 함수
+		
+		//get
+		alert($('p:last').html());
+	});
+	// 참고 : jQuery의 html()와 동일한 역할을 하는
+    // javascript : innerHTML
+
+</script>
+
+</head>
+<body>
+<div>
+	안녕하세요. <b>jQuery</b> <br>
+	반갑습니다. <b>JavaScript</b> <br>
+	<p>jQuery</p>
+	<p>jQuery</p>
+</div>
+	
+</body>
+</html>
+
