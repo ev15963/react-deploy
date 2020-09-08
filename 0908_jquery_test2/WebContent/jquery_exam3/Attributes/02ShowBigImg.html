@@ -11,7 +11,7 @@
 
 		//아래코드는 모든 이미지 파일의 아미지명을 얻어
 		//bigs/ 폴더에 있는 동일한 이미지를 div에 보여준다.
-		$("#product img").moveover(function() {
+		$("#product > img").moveover(function() {
 			
 			$("#showImage").show(); //이미지 보여줄 레이어 보이기
 		
@@ -21,9 +21,9 @@
 			//이미지 파일 <img src="image/ico_go_up_s.gif" />
 			imgsrc = $(this).attr("src"); //attr() 로 src get하기 : "ico_go_up_s.gif"
 			
-			//imgsrc <= "image/ico_go_up_s.gif"
+			imgsrc = "image/ico_go_up_s.gif";
 			
-			//imgsrc.lastIndexOf("/") => 5 /까지 번째
+			imgsrc.lastIndexOf("/") //=> 5 /까지 번째
 			//imgsrc.lastIndexOf("/") +1 => 15
 			//imgsrc.substr(6) => "ico_go_up_s.gif"
 			
@@ -34,12 +34,12 @@
 		});
 		
 		//마우스 아웃시 레이어 숨기기
-		$('product img').mouseout(function() {
+		$('#product > img').mouseout(function() {
 			})
 		$("#showImage").hide();
-		});
+		
+	});	
 	
-	});}
 	
 		
 		

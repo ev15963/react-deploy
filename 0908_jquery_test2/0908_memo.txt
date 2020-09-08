@@ -1,6 +1,32 @@
+
+03MapCollection.html
+.attr()
+element가 가지는 속성값이나 정보를 조회 (style, src, rowspan 등) 하거나 세팅
+
+.prop()
+element가 가지는 실제적인 상태 (활성화, 체크, 선택여부 등) 를 제어
+
+alt type : 이미지를 보여줄 수 없을 때 대신 보여줄 대체 텍스트를 명시
+title type : 커서 댈 때 나오는 박스
+
+04PRemoveAttr.html
+
 img:first = <img />내서 첫번째
 
 removeAttr ("src") //src속성 삭제
+
+$(document).ready(function() {
+});
+
+05Text.html
+	안녕하세요. <b>jQuery</b> <br>
+	반갑습니다. <b>JavaScript</b> <br>
+	<p>jQuery</p>  ->	<b>First</b>. text로 인식
+	<p>jQuery</p>  -> 	<b>Last</b> tag로 인식
+
+$('p:first').text("<b>First</b>.");
+
+$('p:last').html("<b>Last</b>");
 
 
 06var html
@@ -169,5 +195,13 @@ Events
 Effects
 Ajax
 Ajax 좀 더 자세하게~~
+
+
+
+02showbigimg
+
+
+
+
 
 
