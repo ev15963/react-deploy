@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>마우스 오버시 큰 이미지 보여주기</title>
+
+<script src = "jquery-1.6.2.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		//아래코드는 모든 이미지 파일의 아미지명을 얻어
+		//bigs/ 폴더에 있는 동일한 이미지를 div에 보여준다.
+		$("#product img").moveover(function() {
+			
+			$("#showImage").show(); //이미지 보여줄 레이어 보이기
+		
+			
+			var imgSrc = "";
+			
+			//이미지 파일 <img src="image/ico_go_up_s.gif" />
+			imgsrc = $(this).attr("src"); //attr() 로 src get하기 : "ico_go_up_s.gif"
+			
+			//imgsrc <= "image/ico_go_up_s.gif"
+			
+			//imgsrc.lastIndexOf("/") => 5 /까지 번째
+			//imgsrc.lastIndexOf("/") +1 => 15
+			//imgsrc.substr(6) => "ico_go_up_s.gif"
+			
+			imgSrc = "<img src'../image/bigs/" +imgSro+ "'/>"; //큰이미지 설정
+			// <img src="../image/bigs/ico_go_up_s.gif"/>
+			
+			$("#showImage")/html(imgSrc); //레이어에 HTML추가
+		});
+		
+		//마우스 아웃시 레이어 숨기기
+		$('product img').mouseout(function() {
+			})
+		$("#showImage").hide();
+		});
+	
+	});}
+	
+		
+		
+</script>
+
+</head>
+<body>
+	<div id ="product">
+		<img src="ico_go_up_s.gif" />
+		<img src="ico_go_down_s.gif"/>
+		
+		<div id="showImage" style="border: 1px solid red; width:400px; height:400px;">
+		<!-- <img src="../image/bigs/ico_go_down_s.gif /> -->
+	</div>	
+</body>
+</html>
+
