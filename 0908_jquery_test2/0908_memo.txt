@@ -55,7 +55,10 @@ tu es vonita님이 모두에게:  12:35 PM
 </div> 
 
 1) alert( $('div') .find('p') .html() );
-div 태그 내 p태그를 찾아
+div 태그 내 p태그를 찾아 html로 변환
+
+2) var result = $('div').find('p:get(1)').find('b').html();
+
 
 질문) 나로부터 모두에게:  12:50 PM
 n번째 p태그를 가져오려면 "p:?"형식으로 가져올 수 있나요??
@@ -63,4 +66,31 @@ n번째 p태그를 가져오려면 "p:?"형식으로 가져올 수 있나요??
 tu es vonita에서 나에게:  (비공개로) 12:56 PM
 어제 배운 nth 사용
 아니면 아까 배운 eq() 사용
+
+5교시
+tu es vonita님이 모두에게:  02:10 PM
+Manipulation 폴더 부터 시작합니다...
+
+tu es vonita님이 모두에게:  02:11 PM
+동적으로 태그 삽입/수정/제거 등을 다룹니다..
+01append.html 입니다
+
+
+
+02Manipulation
+
+01append.html
+
+span = 영역을 띄어줌
+
+$().empty(); 태그 초기화
+
+.append : 특정요소에 다른 요소를 추가시키는 메소드
+
+실행시키는 법
+
+[] 단계별로 입력하고 출력하고 확인하고..
+
+$('#tr:odd').addClass('Yellow');
+
 

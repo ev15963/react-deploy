@@ -14,7 +14,42 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
+			
+        	//[1] 태그안의 내용 초기화
+        	$('#lblDisplay').empty(); //<b>태그 초기화 시킴
+        	
+        	//[2] 동적으로 태그 추가
+        	var strHtml = $("<a href='#'>닷넷 코리아</a><hr />");
+        	$('#lblDisplay').append(strHtml);
+        	
+        	//[3] 버튼 크릭시 테이블 생성
+        	$('#btnCreate').click(function() {
+        		
+        		$('#lblTable').empty(); //클리어 : 생략했을경우
 
+        		var row = $('#row').val();
+        		var col = $('#col').val();
+        		var strTable = "<table border='1'>";
+        		
+        		for (var i = 0; i <row; i++) { //행반복 <tr>
+        			strTable += "<tr>";
+        			
+        			for (var j=0; j< col; j++) {	//열반복 <td>
+        				strTable+= "<td>" + (i+1) + "행, " + (j+1) + "열" + "</td>";
+        			}
+        			
+        			strTable += "</tr>";
+        		}
+        		
+        		strTable += "</table>";
+
+        		$('#lblTable').append(strTable); //append에 의해 삽입이 실행
+        		$('#tr:odd').addClass('Yellow');
+        		$('#tr:even').addClass('Green');
+        		
+        		$('#td:odd').addClass('Yellow');
+        		$('#td:even').addClass('Green');
+        	})
 
         });
     </script>
