@@ -14,8 +14,21 @@
     <script type="text/javascript">
         $(document).ready(function() {
 
+			// [1] 내용 뒤에 구분선(<hr />) 삽입
+			$('<hr />').insertAfter(".Content");
+			// class 속성값이 .Content 인 요소의 뒤에 <hr> 태그 삽입
 
-
+			
+			// [2] TOP 링크를 Chapter 앞에 추가
+			$('p.Chapter:gt(0)').before("<a href='#'>TOP</a>");
+			//<p>태그 중 class 속성값이 Chapter 인 요소들 중 인덱스 번호가 0보다 큰 요소만
+			//그 앞에 <a href='#'>TOP</a> 요소를 추가..
+			
+			// p: <p> 태그 중
+			// .Chapter : class 속성값이 Chapter 인 요소들 중
+			// :gt(0) : 인덱스 번호가 0보다 큰 요소
+			// 앞에 : .before()
+			// <a href="#">TOP</a> 요소를 추가
         });
     </script>
 

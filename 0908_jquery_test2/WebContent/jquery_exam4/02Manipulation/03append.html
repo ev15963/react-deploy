@@ -14,8 +14,20 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
+			
+        	//[1] term CSS 클래스에 배경색 적용
+        	$('.term')
+        	.not(":odd").css("background-Color", "Yellow")
+        	.end()
+        	.filter(":odd").css("background-color", "LightBlue");
+        	
+        	//[2] 각각의 주석/용어 뒤에 번호 붙이기
+        	$('.term').each(function(i) { $(this).append("<sup>"+ (i+1)+ "</sup>"); });
 
-
+        	//<span class="term">jQuery<sup>1</sup></span>
+        	//<span class="term">Java Script<sup>2</sup></span>
+        	//<span class="term">HTML<sup>3</sup></span>
+        	//<span class="term">Ajax<sup>4</sup></span>
 
         });
     </script>

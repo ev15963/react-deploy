@@ -94,3 +94,26 @@ $().empty(); 태그 초기화
 $('#tr:odd').addClass('Yellow');
 
 
+tu es vonita님이 모두에게:  03:18 PM
+다음은 03append.html 파일입니다... 
+
+나무위키 [1] 태그
+
+
+end() 다시 종료시키고 부모태그로 넘어간다
+
+sup 윗첨자
+
+sub 아래첨자
+
+
+tu es vonita님이 모두에게:  03:40 PM
+다음은 특정 태그를 감싸는 wrap() 함수를 합니다.. 파일은 04wrap.html 입니다..
+
+
+
+
+
+
+
+
