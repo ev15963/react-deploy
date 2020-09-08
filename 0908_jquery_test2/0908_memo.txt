@@ -111,6 +111,45 @@ tu es vonita님이 모두에게:  03:40 PM
 다음은 특정 태그를 감싸는 wrap() 함수를 합니다.. 파일은 04wrap.html 입니다..
 
 
+tu es vonita님이 모두에게:  04:16 PM
+다음은  기존 태그를 복사하는 clone() 함수입니다.. 05clone.html
+
+[!] 상단 메뉴를 복사(Clone)해서 하단 메뉴에 추가(Append)
+$('#menu').clone().insertBefore('#submenu');
+$('#menu').clone().prependTo('#submenu');
+       
+       
+       
+원래 하단 메뉴가 있는 위치
+$('$menu').clone().insertAfter('#submenu');
+$('$menu').clone().appendTo('#submenu');
+        
+        
+문법 부모노드.insertBefore(삽입 할 노드, 기준 점 노드);        
+
+Return 삽입 된 노드
+
+$('#menu') .clone() .insertBefore('#submenu');
+
+누구 앞에 삽입하라
+
+tu es vonita님이 모두에게:  04:42 PM
+clone() 특정요소를 복사
+
+clone
+
+tu es vonita님이 모두에게:  04:44 PM
+clone() 특정요소를 복사
+insertBefore() 특정요소 앞에
+prependTo()  특정요소 바로 앞에 insertBefore()와 유사 
+insertAfter() 특정요소 뒤에
+
+
+tu es vonita님이 모두에게:  04:48 PM
+다음은 요소를 바꿔주는 replaceWith() 함수 합니다.. 06replaceWith.html
+5시부터 시작할께요~~
+
+
 
 
 
