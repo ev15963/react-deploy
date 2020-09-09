@@ -21,3 +21,17 @@ tu es vonita에서 나에게:  (비공개로) 09:53 AM
 JQuery.getJSON.js
 
 
+04Events
+
+01 Trigger.html
+
+trigger : 사용자가 설정하지 않아도 전단계 실행후 바로 실행
+다못함...
+
+02UnBind.html
+
+.unbind() 바인딩 해제 (이벤트)
+
+tu es vonita님이 모두에게:  10:27 AM
+Effects 폴더의 01ShowHide.html
+
