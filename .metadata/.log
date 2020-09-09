@@ -1836,3 +1836,24 @@ Java Model Exception: Java Model Status [0909_jquery_test3 does not exist]
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:56)
 !SUBENTRY 1 org.eclipse.jdt.core 4 969 2020-09-09 09:22:29.922
 !MESSAGE 0909_jquery_test3 does not exist
+
+!ENTRY org.eclipse.wst.server.core 4 0 2020-09-09 12:45:04.508
+!MESSAGE Server Tomcat v8.0 Server at localhost was unable to start within 45 seconds. If the server requires more time, try increasing the timeout in the server editor.
+
+!ENTRY org.eclipse.wst.server.core 4 0 2020-09-09 14:00:18.792
+!MESSAGE Server Tomcat v8.0 Server at localhost was unable to start within 45 seconds. If the server requires more time, try increasing the timeout in the server editor.
+
+!ENTRY org.eclipse.wst.server.core 4 0 2020-09-09 14:24:23.694
+!MESSAGE Server Tomcat v8.0 Server at localhost was unable to start within 45 seconds. If the server requires more time, try increasing the timeout in the server editor.
+
+!ENTRY org.eclipse.jst.jsp.ui 2 2 2020-09-09 14:34:39.821
+!MESSAGE Computing Java proposals did not complete normally. The operation took too long to return.
+
+!ENTRY org.eclipse.wst.server.core 4 0 2020-09-09 14:43:10.744
+!MESSAGE Server Tomcat v8.0 Server at localhost was unable to start within 45 seconds. If the server requires more time, try increasing the timeout in the server editor.
+
+!ENTRY org.eclipse.jface.text 2 0 2020-09-09 14:45:18.779
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2020-09-09 14:45:18.802
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'

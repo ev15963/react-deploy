@@ -138,7 +138,33 @@ lib\gson-2.8.5.jar 확인
 src \ com.lsw.dto\ Member.java 확인
 
 
+$.ajax() 메소드
+HTTP 요청을 만드는 강력하고도 직관적인 방법을 제공
+
+$.ajax({
+
+    url: "/examples/media/request_ajax.php", // 클라이언트가 요청을 보낼 서버의 URL 주소
+
+    data: { name: "홍길동" },                // HTTP 요청과 함께 서버로 보낼 데이터
+
+    type: "GET",                             // HTTP 요청 방식(GET, POST)
+
+    dataType: "json"                         // 서버에서 보내줄 데이터의 타입
+
+})
+
+제이쿼리 내 ajax 사용
+
+js가 jsp의 소통을 위한 ajax
 
 
+//에러발생시 실행 실패시
+request.fail(function(jqXHR, textStatus) { //파라미터 임의선언
+jqXHR : jsp를 기준으로 응답할 경로가 들어온다
+textStatus : 실패메시지
+
+
+tu es vonita님이 모두에게:  02:52 PM
+ajaxTest.html 와 ajaxCallTest.jsp 파일 사용할 겁니다~~
 
 
