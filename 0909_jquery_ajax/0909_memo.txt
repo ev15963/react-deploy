@@ -187,3 +187,43 @@ ajaxCallTest.jsp
 
 어렵다.
 ajax2.html, 
+
+7교시
+
+ajaxCallTest.jsp
+response.setHeader("Content-Disposiont", "attach
+나가는부분의 설정
+
+외부로부터 들어오는건 전부 request 내장객체
+
+tu es vonita님이 모두에게:  04:29 PM
+GsonTest.jsp
+
+
+json
+
+list를 json으로 변경한거
+
+8교시
+
+
+파라미터 여러개 넘기는법
+
+사용자가 입력안했을시 기본 0으로 세팅
+
+ajaxCallTest3.jsp
+
+tu es vonita님이 모두에게:  05:11 PM
+ajaxTest3.html 과  ajaxCallTest3.jsp 을 추가해주세요..
+기본 코드 완료되셨나요?
+준규 지님이 모두에게:  05:11 PM
+넵
+tu es vonita님이 모두에게:  05:11 PM
+jsp로 넘어갑니다..
+tu es vonita님이 모두에게:  05:31 PM
+못하신 분~~
+
+
+ajax_array_size.js
+
+44줄 list 자체를 map으로
