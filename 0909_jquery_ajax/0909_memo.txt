@@ -1,0 +1,23 @@
+tu es vonita님이 모두에게:  09:24 AM
+어제 이어서 Ajax 폴더의 02JQuerygetJSON.html 을 작업합니다..
+JQuery.getJSON.js 도 같이 열어 주세요~~
+
+
+$("#btn.btnLoad").click(function() {
+$.getJSON("JQuery.getJSON.js", function(data) {
+$('#pnlDisplay').empty(); //패널(div)의 내용 초기화
+$.each(data, function(index, entry) { //indexn 번호 자동으로 증가
+ㄴ data, function순으로 값을 전달
+entry ->  {"Num": "1", "Name": "홍길동"}
+
+나로부터 모두에게:  09:52 AM
+$.each(data, function(index, entry) {~};에서 data가 k값 fuction부분이 v값으로 보면 되나요??
+tu es vonita에서 나에게:  (비공개로) 09:53 AM
+아뇨.. 그것은 값을 전달하는 순서입니다..
+
+
+
+03Ajax
+JQuery.getJSON.js
+
+
