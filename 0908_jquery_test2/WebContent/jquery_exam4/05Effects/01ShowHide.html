@@ -17,9 +17,23 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-
+			//[1] 기본값 설정
+			$(".region").show();		// region 영역 보이기
+			$("#moreRegion").hide();	// more.. 숨기기 즉, "또 만나요"를 감싸는 태그 감추기
+			
+			//[2] more.. 클랙시 보이기 및 숨기기
+			$("span.more").click(function() {
+				$("#moreRegion").show('slow');	//천천히 보이기 //3000  : 3초, 'slow', 'normal', 'test'
+				$(this).hide('fast');	//more 버튼 숨기기
+			});
 
         });
+
+        // . show() 특정요소 보이기
+        // . hide() 특정요소 감추기 (제거가 아님 보여지지만 않을뿐)
+        // . show() / .hide() 에 전달할 수 있는 값..
+        //			'slow' / 'fast' / 'normal' /사용자 지정시간 (ms : 1/1000초)
+        //			전달되는 값은 보여지거나, 감춰질때 까지 걸리는 시간
     </script>
 
 </head>

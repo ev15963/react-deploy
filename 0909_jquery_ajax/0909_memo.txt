@@ -35,3 +35,16 @@ trigger : 사용자가 설정하지 않아도 전단계 실행후 바로 실행
 tu es vonita님이 모두에게:  10:27 AM
 Effects 폴더의 01ShowHide.html
 
+
+tu es vonita님이 모두에게:  10:42 AM
+02FadeInFadeOut.html
+
+
+
+
+
+
+
+
+
+
