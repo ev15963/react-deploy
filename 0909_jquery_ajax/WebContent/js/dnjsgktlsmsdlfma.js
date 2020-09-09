@@ -6,7 +6,7 @@ $(document).ready(function() {
 				var request = $.ajax({
 					url: "ajaxResult.jsp",	// 호출된 url
 					method : "POST",		//메서드 type : post/get
-					data : { paraNum : 1 }, //파라미터 생략가능
+					data : { paramNum : 1 }, //파라미터 생략가능
 					dataType: "json"		// 응답타임 응답받을 전달받을 데이터가 없으면 생략가능
 				
 			});

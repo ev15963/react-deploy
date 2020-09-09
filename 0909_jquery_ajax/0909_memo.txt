@@ -157,14 +157,33 @@ $.ajax({
 
 js가 jsp의 소통을 위한 ajax
 
+나에서 tu es vonita에게:  (비공개로) 02:30 PM
+jqXHR 대한 설명 다시 들을 수 있나요??
+어떤용도로 사용되나요??
+네
+감사합니다.
+
+
 
 //에러발생시 실행 실패시
 request.fail(function(jqXHR, textStatus) { //파라미터 임의선언
 jqXHR : jsp를 기준으로 응답할 경로가 들어온다
 textStatus : 실패메시지
 
-
+//////////////////////////////
 tu es vonita님이 모두에게:  02:52 PM
 ajaxTest.html 와 ajaxCallTest.jsp 파일 사용할 겁니다~~
 
 
+
+15:05 6교시
+ajaxTest.html
+ajaxCallTest.jsp
+
+
+아이디 005 - >중복아이디
+
+없는아이디 -> 사용 가능한 아이디
+
+어렵다.
+ajax2.html, 
