@@ -16,9 +16,19 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-
+		
+        	$("#moreRegion").hide();	//기본값으로 숨기기 또만나요 부분
+        	
+        	$("span.more").click(function() {
+        		$("#moreRegion").animate({height: '200px', width: 'show', opacity: 'show'}, 'slow');
+        		
+        		$(this).hide('fast');
+        	});
 
         });
+        
+        //animate() : 세부적인 값들을 이용하여 효과를 내고 싶을 경우..
+        //
     </script>
 
 </head>
