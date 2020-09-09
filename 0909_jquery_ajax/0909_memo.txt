@@ -104,16 +104,38 @@ tu es vonita님이 모두에게:  11:39 AM
 
 4교시
 
+tu es vonita님이 모두에게:  11:39 AM
+보내드린 그림보면 이해가 더 쉬울 듯...
+이번 에는 animate() 함수를 사용해봅니다.. 05Animate.html
+
+~12:14
+06Stop.html
+
+$(document).ready(function() {dfsdf});
+
+.animate({left: '+=100px', top: '+=100px'}, 2000);
 
 
+tu es vonita님이 모두에게:  12:16 PM
+이제 ajax에 대하여 본격적으로 공부합니다. 
+jquery_ajax_01 프로젝트입니다..
+
+javaScript와 jsp간의 관계를 이어주는 부분이기 때문에
+중요합니다...
+
+열어두실 파일은 
+ajax.html  / ajaxResult.jsp
 
 
+js 자바스크립트언어
+jsp 자바언어
+이 서로다른 언어를 연결시켜주는것이 AJAX
 
+*준비사항
+js\jquery-3.4.1.min.js 확인 (제이쿼리 실행 자체가 안됨)
+lib\gson-2.8.5.jar 확인
 
-
-
-
-
+src \ com.lsw.dto\ Member.java 확인
 
 
 

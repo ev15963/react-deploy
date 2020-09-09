@@ -17,10 +17,33 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-
+			
+        	//Start animariono
+        	$("#go").click(function() {
+        		$(".block").animate({left: '+=100px', top: '+=100px'}, 2000);
+        	});
+        	
+        	//Stop animarion when button is clicked
+        	$("#stop").click(function() {
+        		$(".block").stop();
+        	});
+        	
+        	//Star animarion in the opposite direction
+        	$("#back").click(function() {
+        		$(".block").animate({left: '-=100px', top: '-=100px'}, 2000);
+        	});
+        	
+        	
 
 
         });
+        
+        
+        //left : '+=100px' : 현재 위치에서 100픽셀 x축 방향으로 딩동
+        //top : '+=100px' : 현재 위치에서 100픽셀 ycnr qkdgiddmfh dlehd
+        //컴퓨터 그래픽에서 x축 + y축방향은 아래쪽
+        //컴퓨터 그래픽에서 3시 방향이 0도
+        //stop() 현재 애니메이션 중지..
     </script>
 
 </head>
