@@ -100,9 +100,31 @@ showDataLabels  : 원그래프 안의 %
 
 [[['서울', 18], ['경기', 14], ['강원', 3], ['기타',7]]]
 43 33 17 7 각도로 추출
+rendererOptions
 
 numberRows : legend를 n줄로 표현하라
 
 location : 범례의 위치
 
 marginTop : 
+
+
+5교시
+
+tu es vonita님이 모두에게:  02:17 PM
+오전 내용 중 버블차트를 마무리 합니다..
+<head>~~</head> 
+<body>~~</body>완료되셨나요??
+jQuery 로 넘어 갑니다..
+
+05bubble-chart.html
+
+
+버블차트는 특정구역의 분포를 나타냄
+
+x축, y축, +@
+
+shadowAlpha  : 투명도 (알파값으로 표현) 0~1 소숫점 실수값
+
+WebContent\jqplot\examples (코드를 바로 사용하고 싶다면 
+kcp_area.html > area chart

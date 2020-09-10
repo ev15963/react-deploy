@@ -18,35 +18,44 @@
 <script src="jqplot/jquery.jqplot.min.js"></script>
 
 <!-- jqPot 파이 차트 플러그인 파일 -->
-<script src="jqplot/jquery.jqplot.pieRenderer.min.js"></script>
+<script src="jqplot/plugins/jqplot.pieRenderer.min.js"></script>
 
 <script>
-	$(doucument).ready(function(){
-		var plot1 = $.jqplot('chartdiv', [[['서울', 18], ['경기', 14], ['강원', 3], ['기타',7]]],
-				{
-						title: '원형 그래프 예제', 	
-						gridPadding : { top :25, bottom:38, left:0, right:0},
-						
-						seriesDefaults: {
-							renderer:$.jqplot.PieRenderer,
-							rendererOptions: { padding: 8, showDataLabels : true }
-						},
-						
-						legend: {
-							show: true,
-							placement : 'outside',
-							
-							rendererOptions: {
-								numberRows: 1
-							},
-							
-							location: 's'
-							
-							marginTop: '15px'
-							}
+	$(document).ready(
+			function() {
+				var plot1 = $.jqplot('chartdiv', [ [ [ '서울', 18 ],
+						[ '경기', 14 ], [ '강원', 3 ], [ '기타', 7 ] ] ], {
+					title : '원형 그래프 예제',
+					gridPadding : {
+						top : 25,
+						bottom : 38,
+						left : 0,
+						right : 0
+					},
+
+					seriesDefaults : {
+						renderer : $.jqplot.PieRenderer,
+						rendererOptions : {
+							padding : 8,
+							showDataLabels : true
 						}
-				})
-	})
+					},
+
+					legend : {
+						show : true,
+						placement : 'outside',
+
+						rendererOptions : {
+							numberRows : 1
+						},
+
+						location : 's',
+
+						marginTop : '15px'
+					}
+
+				});
+			});
 </script>
 
 

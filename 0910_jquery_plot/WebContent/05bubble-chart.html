@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script>
+	$(document).ready(function() {
+		var arr = [
+			[11, 123, 1236, "수원"],
+			[45, 92, 1067, "인천"],
+			[24, 104, 1176, "서울"],
+			[50, 23, 610, "충청"],
+			[18, 17, 539, "오산"],
+			[7, 89, 864, "부천"],
+			[2, 13, 1026, "동탄"]
+			
+		];
+		
+		plot1 = $.jqplot('chartdiv', [arr], {
+			title: '버블 그래프 예제',
+			renderer : $.jqplot.BubbleRenderer,
+			
+			rendererOptions: {
+				bubbleAhpha : 0.6
+			},
+			
+			shadow : true,
+			
+			shadowAlpha : 0.05
+		}
+		
+		});
+		
+	});
+</script>
+
+</head>
+<body>
+
+</body>
+</html>
