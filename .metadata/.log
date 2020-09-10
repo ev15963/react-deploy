@@ -1969,3 +1969,9 @@ java.net.UnknownHostException: dist.springsource.com
 
 !ENTRY org.eclipse.wst.server.core 4 0 2020-09-10 10:25:17.111
 !MESSAGE Server Tomcat v8.0 Server at localhost failed to start.
+
+!ENTRY org.eclipse.wst.server.core 4 0 2020-09-10 14:52:29.372
+!MESSAGE Server Tomcat v8.0 Server at localhost was unable to start within 45 seconds. If the server requires more time, try increasing the timeout in the server editor.
+
+!ENTRY org.eclipse.wst.server.core 4 0 2020-09-10 14:55:52.188
+!MESSAGE Server Tomcat v8.0 Server at localhost failed to start.

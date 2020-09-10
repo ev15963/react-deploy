@@ -128,3 +128,66 @@ shadowAlpha  : 투명도 (알파값으로 표현) 0~1 소숫점 실수값
 
 WebContent\jqplot\examples (코드를 바로 사용하고 싶다면 
 kcp_area.html > area chart
+
+jquery.mobile-1.4.5.min.css : 웹에서도 확인가능
+
+tu es vonita님이 모두에게:  02:49 PM
+dbHandle.js
+복사 붙여 넣기 되셨죠?? 잠시 후, 각 페이지를 만들어서 먼저 테스트 해볼 꺼구요.. 
+
+
+tu es vonita님이 모두에게:  02:49 PM
+
+페이지 테스트가 완료되면 js 파일 완성할 겁니다..
+
+
+1시간 5개 페이지 완성
+
+1시간 js파일 완성
+
+1시간 마무리
+
+html 128라인
+
+
+<div data-role="header" 
+data-position="fixed" 
+data-theme="b"> //테마색깔
+
+<h1>도서 정보 관리</h1>
+	<a href="#page0" data-icon="home" 
+	data-iconpos="notext"  : 보여지지 않겠다
+	class="ui-btn-right">
+	home</a>
+
+
+
+풋터는 완성
+헤더 컨텐츠만 계속 건듦
+
+
+data-dircetion resuerve
+<li><a href="#page1> 입력 ~~ 
+: 가로로 메뉴 출력
+
+
+
+
+tu es vonita님이 모두에게:  03:30 PM
+content부분 합니다..
+
+
+15"33
+
+<!-- 3 -->에서
+
+input type "text, name, id 알고있기
+
+7교시
+
+제이쿼리 모바일에서 데스트톱 버전 jsp로 만들고 싶다면
+
+header context footer로 각각 만들고 
+
+include 한다.
+
