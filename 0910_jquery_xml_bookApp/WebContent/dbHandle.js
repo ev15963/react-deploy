@@ -34,12 +34,55 @@ function createTable() {
 
 // 데이터 입력 트랜잭션 실행
 function insertBook() {
+	db.transaction(function(tr){
+		var type =$('#bookType1').val();
+		var name =$('#bookName1').val();
+		var insertSQL ='insert into book(type, name) values(?, ?)';
+	
+		tr.executeSql(insertSQL,
+				[type, name],
+				function(tr, rs) {
+						console.log('3_책등록...no: ' + rs.insertId);
+						alert('도서명' + $('#bookName1').val() + '이 입력되었습니다.');
+						$('#bookName1').val('');
+						$('#bookType1').val('미정').attr('selected', 'selected');
+						$('#bookType1').selectmenu('refresh');
+		},
+		
+		function(tr, err) {
+			alert('DB오류 ' + err.message + err.code);
+		}
 
+		); //tr.executeSql() END
+	});	//db.transaction() END
 }
 
 // 전체 데이터 검색 트랜잭션 실행
 function listBook() {
+	db.transcation(function(tr) {
+		var selectSQL= 'select * from book';
+		
+		tr.executeSql(selectSQL,
+				[],
+				function(tr, rs) {
+					console.log('책 조회...' + rs.rows.length + '건.');
+					
+					if (position == 'first') {
+						if(index == 0) { alert('더 이상의 도서가 없습니다.'); } else { index = 0; }
+					} else if(position == 'prev') {
+						if(index == 0) { alert('더 이상의 도서가 없습니다.'); } else { index = --index; }
+					} else if(position == 'next') {
+						if(index == rs.rows.length-1) { alert('더 이상의 도서가 없습니다'); } else { index = ++index; }
+					} else {
+						if(index == rs.rows.length-1) { alert('더 이상의 도서가 없습니다'); } else { index = rs.rows.length-1; }
+					}
 
+					$('#bookType4').val(rs.rows.item(index).type);
+					$('#bookName4').val(rs.rows.item(index).name);
+			}
+		);		// tr.executeSql() END
+	});		// db.transaction() END
+	
 }
 
 // 데이터 수정 트랜잭션 실행
