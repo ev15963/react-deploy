@@ -134,8 +134,13 @@ initial-scale=1">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 구글에서 제공하는 제이쿼리
 
-메뉴 1 <button onclick="ShowSubMenu('#sub1')">+</button>
 
+if (lySubMenu.first().is(":hidden") ) {
+
+lySubMenu의 첫번째 태그
+
+메뉴 1 <button onclick="ShowSubMenu('#sub1')">+</button>
+많이 헷갈림
 
 
 

@@ -1,0 +1,48 @@
+1교시
+
+ajax 과제 설명
+ajaxTest5.html
+html('') 초기화 empty 사용가능
+
+undefined &&
+
+
+2교시
+
+제이쿼리 라인차트 만들기
+
+라인차트 만들기 
+
+jqplot.canvasTextRenderer.min.js
+차트 안의 문자열 표시
+
+jqplot.canvasAxisLabelRenderer.min.js
+x축과 y축의 축 제목 표시
+
+
+line-chart.html
+data-role="footer" //header footer 고유단어
+
+data-position="fixed" //고정 
+
+제이쿼리 모바일, 제이쿼리 라이브러리 파일 (웹주소지 숙지)
+
+jquery-1.11.1.min.js : 제이워리의 최소한의 값을을 가짐
+
+query.mobile-1.4.5.min-js : 제이쿼리 header footer 지원
+
+http://code.jquery.com/mobile-1.4.5.min.css
+: css 자동지원 (디자인)
+
+jqplot :그래프를 실질적으로 그려주는 함수
+
+wpdltms qusrud ajax 생성
+
+tu es vonita님이 모두에게:  10:43 AM
+다음은 bar-chart1.html 을 합니다..
+
+
+응용 정답률 체크할때
+포털사이트 검색 유입경로 분포율
+
+10:54 오류 잡음

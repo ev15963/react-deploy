@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>JQuery</title>
+
+<!-- 제이쿼리 모바일, 제이쿼리 라이브러리 파일 -->
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script
+	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+<!-- jqPlot 기본 라이브러리 파일 -->
+<link rel="stylesheet" href="jqplot/jquery.jqplot.min.css" />
+<script src="jqplot/jquery.jqplot.min.js"></script>
+
+<!-- jqPlot x축 y축 라벨 표시 플러그인 파일 -->
+<script src="jqplot/plugins/jqplot.canvasTextRenderer.min.js"></script>
+<script src="jqplot/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+		var plot1 = $.jqplot('chartdiv', [ [ 3, 7, 9, 1, 5, 3, 8, 2, 5 ] ], {
+			title : '선그래프예제',
+			axesDefaults : {
+				labelRenderer : $.jqplot.CanvasAxisLabelRenderer
+			},
+
+			axes : {
+				xaxis : {
+					label : 'x축'
+				},
+				yaxis : {
+					label : 'y축'
+				}
+			}
+		});
+	});
+
+	//$.jqplot (그래프출력위치 '', 그래프데이터[[]], 그래프 옵션{})
+	//$.jqplot ('태그의 id값', 기본 2차원배열(x,y), {기본축, 축들의 제목})
+</script>
+
+</head>
+
+<!-- 모바일 jquery 사용방법 -->
+<body>
+	<div data-role="page">
+		<div data-role="header">
+			<!-- 페이지 선언 -->
+			<h1>header 영역</h1>
+			<!-- 페이지의 상단 선언 -->
+		</div>
+
+		<div data-role="content">
+			<!-- 페이지의 컨텐츠 선언 -->
+			<div id="chartdiv" style="height: 400px; width: 300px;"></div>
+		</div>
+
+		<div data-role="footer" data-position="fixed">
+			<!-- 페이지의 하단 선언 -->
+			<h4>footer영역</h4>
+		</div>
+	</div>
+</body>
+</html>
