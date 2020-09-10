@@ -191,3 +191,40 @@ header context footer로 각각 만들고
 
 include 한다.
 
+개발자도구 > 어플리케이션
+
+웹 스토리지
+웹 SQL 데이터베이스 
+인덱스 데이터베이스
+
+sqlite db 안드로이드 app 아이폰 app 웹에서 사용
+
+트렌젝션 : 오류가 발생하면 가상으로 처리..
+
+ rollback 개념
+ 
+ 생성된 데이터베이스에 대한 버전 (해당버전과 같은면 유지 아니면 앱스토어 쪽에서 관리
+ "북DB"
+ 
+ 1024*1024
+ 데이터베이스의 총용량
+ 
+ ANSI sql 쿼리
+ 
+ 생성된DB를 통해서 트랜잭션 함수로 호출
+ 
+ db.transtion 
+ 		[ function 쿼리문이 실패됐을때 자동호출 함수
+ 		[쿼리문이 성공했을때
+ 		
+ 		
+ 		
+ db명령어 실해ㅔㅇ executeSql() 메섣,
+ 치환값
+ 상겅 콜백함수
+ 실패 콜백함수
+ 
+ transation 
+ 첫번째 함수 : createSQL
+ 	if not exist 존재유무에따라 생성
+ 
