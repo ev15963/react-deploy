@@ -228,3 +228,9 @@ sqlite db 안드로이드 app 아이폰 app 웹에서 사용
  첫번째 함수 : createSQL
  	if not exist 존재유무에따라 생성
  
+ 
+ 확인은 브라우저 개발자모드 
+ 
+ Application 탭에서 
+ 
+ 처리결과는 Console 에서

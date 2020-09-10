@@ -11,8 +11,7 @@ function openDB() {
 
 // 테이블 생성 트랜잭션 실행
 function createTable() {
-	db
-			.transaction(function(tr) {
+	db.transaction(function(tr) {
 				var createSQL = 'create table if not exists book(type text, name text)';
 
 				tr.executeSql(createSQL, [], function() {

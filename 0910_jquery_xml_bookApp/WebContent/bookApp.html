@@ -11,10 +11,13 @@
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 <!-- 사용자 정의 자바스크립트 파일 -->
 <script src="dbHandle.js"></script>
+
+<!-- jQuery를 이용하여 이벤트 실정 및 함수 호출 -->
 <script>
 	$(document).ready( function() {
 		// DB 연결
-
+		openDB();
+		createTable();
 		// 이벤트 함수 정의
 
 	});    
@@ -67,7 +70,7 @@
 			<div class="ui-body ui-body-a gap">
 				<label for="bookType1" class="select">장르:</label>
 				<select name="bookType1" id="bookType1" data-native-menu="false" data-mini="true" data-inline="true">
-					<option vlaue="미정">미정</option>
+					<option value="미정">미정</option>
 					<option value="경제">경제</option>
 					<option value="시사">시사</option>
 					<option value="문학">문학</option>
