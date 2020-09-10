@@ -36,6 +36,10 @@ http://code.jquery.com/mobile-1.4.5.min.css
 
 jqplot :그래프를 실질적으로 그려주는 함수
 
+$.jqplot (그래프출력위치, 그래프데이터, 그래프옵션)
+$.jqplot ('태그의 id값' , 기본 2차원 배열(x,y) , {기본축, 축들의 제목}) 
+
+
 wpdltms qusrud ajax 생성
 
 tu es vonita님이 모두에게:  10:43 AM
@@ -77,3 +81,28 @@ xaxis : {
 	},
 	
 네이버카페 통계 그래프
+
+4교시
+
+그래프가 두개
+
+tu es vonita님이 모두에게:  12:14 PM
+jQuery 로 넘어 갑니다..
+
+jqPot 파이 차트 플러그인 추가
+pieRenderer
+
+BarRenderer
+
+PieRenderer
+
+showDataLabels  : 원그래프 안의 %
+
+[[['서울', 18], ['경기', 14], ['강원', 3], ['기타',7]]]
+43 33 17 7 각도로 추출
+
+numberRows : legend를 n줄로 표현하라
+
+location : 범례의 위치
+
+marginTop : 
