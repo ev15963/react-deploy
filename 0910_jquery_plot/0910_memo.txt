@@ -46,3 +46,34 @@ tu es vonita님이 모두에게:  10:43 AM
 포털사이트 검색 유입경로 분포율
 
 10:54 오류 잡음
+
+3교시
+
+02bar-chart1.html
+
+head 작성
+
+tu es vonita님이 모두에게:  11:14 AM
+<head>~~</head> 완료되셨나요??
+<body>~~</body>로 넘어 갑니다..
+
+jqplot.pointLabels.min.js : 막대그래프 위에 뜨는 숫자
+pointLabels : 
+
+<script> 부분 시작 11:19
+
+11:32 막대그래프가 안나온다..
+
+
+seriesDefaults : { //막대그래프 생성부분
+	renderer : $.jqplot.BarRend
+	k
+	
+xaxis : {
+	renderer : $.jqplot.CategoryAxisRenderer,
+	ticks : ticks,
+	label : '분기',
+	labelRenderer: $.jqplot.canvasTextRenderer
+	},
+	
+네이버카페 통계 그래프
