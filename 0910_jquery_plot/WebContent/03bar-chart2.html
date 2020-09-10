@@ -48,9 +48,9 @@
 				renderer : $.jqplot.BarRenderer,
 				pointLabels : {show : true},
 				shadowAngle : 135,		//그림자 각도
-				//rendererOptions: {		// 
-				//	barDirection : 'horizontal'	//가로방향
-				//},
+				rendererOptions: {		// 
+					barDirection : 'horizontal'	//가로방향
+				},
 			},
 			series: [
 				{ label : '남학생'},
@@ -61,7 +61,7 @@
 				placement : 'inside'		//범위를 바깥쪽으로 빼라
 			},
 			axes : {
-				xaxis : {
+				yaxis : {
 					renderer : $.jqplot.CategoryAxisRenderer,
 					ticks : ticks
 				}
