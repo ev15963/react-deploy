@@ -1,4 +1,4 @@
-1교시
+﻿1교시
 
 
 // 데이터 조건 검색 트랜잭션 실행
@@ -105,3 +105,199 @@ $('#cancel1').click(function() {
 
 전체조회 추가해보기..
 12:54
+
+
+5교시 
+
+오라클
+
+릴레이션 개념
+
+속성 필드. 컬럼
+튜플 레코드 행
+
+도메인
+각 필드에 입력가능한 값들의 범위
+더이상 불리되지 않는 값이여야한다.
+
+널
+특정값이 정해지지 않거나 없거나
+
+0, " "과 null은 다름
+
+cf) NaN : not a Number
+
+릴레이션개념(5)
+null 값의 정의되지 않음
+배열형태
+
+R(A1, A2, …, An)
+R : 릴레이션
+A : 어트리튜브
+
+차수 = 1 : 	단항 테이블(unary relation)
+차수 = 2 : 	이항 테이블(binary relation)
+차수 = n : 	n 항 테이블(n-ary relation)
+
+테이블 인스턴스 table instance
+데이터를 레코드(행)으로 저장하는 형태
+
+카디널리티 레코드의 수
+
+중복된 레코드가 존재하지 않음
+테이벌 인서턴스는 레코드들의 집합
+
+키(key)
+레코드간 데이터간 순서가 의미없으므로 레코드를 구분하기위해선 각 레코드 값을 이용
+필드 일부 지정 각 레코드들을 유일하기 식별해낼 수 있는 식별자
+여러개의 필드로 키를 구성가능
+
+관계형 데이터 모델에서 특정 레코드를 구별하거나 탐색하기 위한 유일한 방법
+
+되도록 하나의 필드로 구성된 후보키를 선정하는 것이 유리함
+
+외래키
+
+R1의 각 레코드의 FK값은 R2 의 레코드 중 하나의 PK값과 일치하거나 널이 됨
+
+C:\web_work\0910_jquery_xml_bookApp
+
+DDL & DML
+데이터 정의 언어
+create 테이블 생성 drop 테이블 삭제 alter 테이블 수정
+데이터 조작 언어
+
+
+표준SQL ANSI SQL
+
+기본키 외래키 설정
+
+
+
+테이블 생성(student table)
+
+not null과 기본키를 저장한 studnet 테이블 생성 예
+
+SQL> create table department (
+  2  dept_id    varchar2(10)    not null,
+  3  dept_name  varchar2(14)    not null,
+  4  office     varchar2(10)
+  5  );
+
+(질의2)
+create table department (
+dept_id varchar2(10),
+dept_name varchar2(20) not null,
+office varchar2(20),
+constraint pk_department primary key(dept_id)
+)
+
+(질의3)
+create table student (
+stu_id varchar2(10),
+resident_id varchar2(14) not null,
+name varchar2(10) not null,
+year int,
+address varchar2(10),
+dept_id varchar2(10),
+constraint pk_student primary key(stu_id),
+constraint fk_student foreign key(dept_id) references department(dept_id)
+);
+
+프라이머리키를 잡아주고 그에대한 뭐시기를 붙여줘야한다.
+참조하는 키는 외래키를 붙여야한다.
+
+professor 테이블
+질의 5
+create table professor (
+prof_id varchar2(10),
+resident_id varchar2(14) not null,
+name varchar2(10) not null,
+dept_id varchar2(10),
+position varchar2(10),
+year_emp int,
+constraint pk_professor primary key(prof_id),
+constraint fk_professor foreign key(dept_id) references department(dept_id)
+);
+
+ORA-00955: name is already used by an existing object
+기존의 객체가 이름을 사용하고 있습니다
+
+질의6 
+create table course(
+course_id varchar2(10),
+title varchar(14) not null,
+credit int,
+constraint pk_course primary key(course_id)
+);
+
+(질의7)
+create table class(
+class_id varchar2(10),
+course_id varchar2(10),
+year int,
+semester int,
+division char(1),
+prof_id varchar2(10),
+classroom varchar(9),
+enroll int,
+constraint pk_class primary key(class_id),
+constraint fk_class1 foreign key(course_id) references course(course_id),
+constraint fk_class2 foreign key(prof_id) references professor(prof_id)
+);
+
+
+(질의8)
+
+create table takes(
+stu_id varchar2(10),
+class_id varchar2(10),
+grade char(5),
+constraint pk_takes primary key(stu_id, class_id),
+constraint fk_takes1 foreign key(stu_id) references student(stu_id),
+constraint fk_takes2 foreign key(class_id) references class(class_id)
+);
+
+다른테이블에서 외래키로 참조되는 경우는 절대 삭제X
+
+참조대상을 먼저 지우고 삭제해야한다.
+
+오류코드 ORA-02449
+
+없는 테이블을 추가 add<추가할 필드>
+
+질의 9
+
+alter table student
+add age int;
+
+SQL> desc student
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STU_ID                                    NOT NULL VARCHAR2(10)
+ RESIDENT_ID                               NOT NULL VARCHAR2(14)
+ NAME                                      NOT NULL VARCHAR2(10)
+ YEAR                                               NUMBER(38)
+ ADDRESS                                            VARCHAR2(10)
+ DEPT_ID                                            VARCHAR2(10)
+ AGE                                                NUMBER(38)
+
+ORA-00904: : invalid identifier 부적합한 식별자
+
+필드 삭제 형식
+alter table<테이블 이름> drop column<삭제할 필드>
+
+질의 10
+
+alter table student
+drop column age;
+
+SQL> desc student
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STU_ID                                    NOT NULL VARCHAR2(10)
+ RESIDENT_ID                               NOT NULL VARCHAR2(14)
+ NAME                                      NOT NULL VARCHAR2(10)
+ YEAR                                               NUMBER(38)
+ ADDRESS                                            VARCHAR2(10)
+ DEPT_ID                                            VARCHAR2(10)
