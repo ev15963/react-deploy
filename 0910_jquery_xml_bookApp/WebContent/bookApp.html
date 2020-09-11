@@ -17,9 +17,24 @@
 	$(document).ready( function() {
 		// DB 연결
 		openDB();
+		
+		// 테이블 생성
 		createTable();
+		
 		// 이벤트 함수 정의
 
+		
+		// 추가 화면의 추가 버튼
+		$('#submit1').click( function() {
+			insertBook();
+		});
+		
+		// 추가화면의 취소 버튼
+		$('#cancel1').click(function() {
+			$('#bookType1').val('미정').attr('selected'),
+			$('#bookType1').selectmenu('refresh');
+			
+		});
 		
 		//전체 검색 화면의 |<  <  >  >| 버튼들
 		$('#first').click(function() {
@@ -112,6 +127,7 @@
 		<h4>Book n Book Library</h4>
     </div>
   </div>
+ <!-- 시작 화면 끝 -->
 
  <!-- 도서정보 추가 화면 --> 
   <div data-role="page" id="page1">

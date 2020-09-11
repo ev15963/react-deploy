@@ -19,7 +19,7 @@ function updateBook() {
 
 sqlite 사용시 트랜젝션 사용
 
-ar updateSQL = 'update book set type = ?, name =?, where name =?';
+var updateSQL = 'update book set type = ?, name =?, where name =?';
 
 preparedstatement와 비슷한 기능
 
@@ -90,4 +90,18 @@ tu es vonita님이 모두에게:  11:27 AM
 
 오후에는 oracle 
 
-4교시
+tu es vonita님이 모두에게:  11:41 AM
+오후에 오라클 실습합니다.. 설치 안되신 분들은 설치 완료하세요~~
+
+// 추가 화면의 추가 버튼
+$('#submit1').click( function() {
+ : 도서내용 입력시 필요 12:21
+
+// 추가화면의 취소 버튼
+$('#cancel1').click(function() {
+
+
+4교시 
+
+전체조회 추가해보기..
+12:54

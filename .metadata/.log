@@ -2197,3 +2197,9 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.eclipse.jface.text 2 0 2020-09-11 11:20:18.915
 !MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2020-09-11 11:43:51.337
+!MESSAGE No repository found at https://github.com/ev15963/java_work,git.
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2020-09-11 11:45:18.860
+!MESSAGE Server returned lastModified <= 0 for https://raw.github.com/guari/eclipse-ui-theme/master/com.github.eclipseuitheme.themes.updatesite/content.jar
