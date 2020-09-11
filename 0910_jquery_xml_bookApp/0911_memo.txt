@@ -60,3 +60,34 @@ bookApp.html
 dbHandle.js
 
 수정중...
+
+
+3교시
+
+11:12
+// 데이터 삭제 트랜잭션 실행
+function deleteBook() {
+
+}
+
+tu es vonita님이 모두에게:  11:17 AM
+다음 함수로 이동 합니다~~ 미완성이신 분???
+
+//삭제 화면의 검색 버튼
+$('#search3').click( function() {
+
+//삭제 화면의 삭젠 버튼
+$('#submit3').click (function() {
+		
+//삭제 화면의 취소 버튼
+$('#cancel3').click (function() {
+
+tu es vonita님이 모두에게:  11:27 AM
+잘 실행되시죠??
+
+
+미션) 목록 조회 해보기
+
+오후에는 oracle 
+
+4교시

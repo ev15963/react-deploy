@@ -62,6 +62,26 @@
 			updateBook();
 		});
 		
+		/////////////////////////////////////////////
+		
+		//삭제 화면의 검색 버튼
+		$('#search3').click( function() {
+			var name = $('#sBookName3').val();
+			selectBook3(name);
+		});
+		
+		//삭제 화면의 삭젠 버튼
+		$('#submit3').click (function() {
+			deleteBook();
+		});
+		
+		//삭제 화면의 취소 버튼
+		$('#cancel3').click (function() {
+			$('#bookType3').val('미정').attr('selected', 'selected');
+			$('#bookType3').selectmenu('refresh');
+		});
+		
+		
 	});    //$(document).ready END
 	
 	

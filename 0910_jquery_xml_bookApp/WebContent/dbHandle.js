@@ -34,7 +34,7 @@ function createTable() {
 			);
 }
 
-// 데이터 입력 트랜잭션 실행
+// 데이터 입력 트랜잭션 실행 : 추가 화면의 추가 버튼
 function insertBook() {
 	db.transaction(function(tr) {
 		var type = $('#bookType1').val();
@@ -43,7 +43,7 @@ function insertBook() {
 
 		tr.executeSql(insertSQL, [ type, name ], function(tr, rs) {
 			console.log('3_책등록...no: ' + rs.insertId);
-			alert('도서명 ' + name + ' 이(가) 입력되었습니다.');
+			alert('도서명 ' + $('#bookName1').val() + ' 이(가) 입력되었습니다.');
 			$('#bookName1').val('');
 			$('#bookType1').val('미정').attr('selected', 'selected');
 			$('#bookType1').selectmenu('refresh');
@@ -104,7 +104,7 @@ function updateBook() {
 		var type = $('#bookType2').val();
 		var new_name = $('#bookType2').val();
 		var old_name = $('#sBookType2').val();
-		var updateSQL = 'update book set type = ?, name =?, where name =?';
+		var updateSQL = 'update book set type = ?, name =? where name =?';
 
 		tr.executeSql(updateSQL, [ type, new_name, old_name ],
 				function(tr, rs) { // 성공했을때
@@ -124,7 +124,24 @@ function updateBook() {
 
 // 데이터 삭제 트랜잭션 실행
 function deleteBook() {
-
+	db.transaction(function(tr) {
+		var name = $('sBookName3').val();
+		var deleteSQL = 'delete from book where name = ?';
+		
+		tr.executeSql(deleteSQL,
+				[name],
+				function(tr, rs){
+					console.log('6_책 삭제...');
+					alert('도서명' + $('#bookName3').val() + '이 삭제되었습니다.');
+					$('#bookType3').val(''); $('#bookName3').val(''); $('#sBookName3').val('');
+				},
+				
+				function(tr, err) {
+					alert('DB오류' + err.message + err.code);
+				}
+				
+		); //tr.executeSql end
+	});	//db.transaction end
 }
 
 // 데이터 수정 위한 데이터 검색 트랜잭션 실행
@@ -148,10 +165,21 @@ function selectBook2(name) { // 매개변수명 (변경가능)
 
 // 데이터 삭제 위한 데이터 검색 트랜잭션 실행
 function selectBook3(name) {
-
+	db.transaction(function(tr){
+		var selectSQL = 'select type, name from book where name=?';
+		
+		tr.executeSql(selectSQL,
+				[name],
+				function(tr, rs) {
+					if(rs.rows.length>0) {
+						$('#bookType3').val(rs.rows.item(0).type);
+					}
+		})
+	});
+	
 }
 
-// 데이터 조건 검색 트랜잭션 실행
+// 데이터 조건 검색 트랜잭션 실행 : 전체 검색 화면의 검색 버튼
 function selectBook4(name) {
 	db.transaction(function(tr) {
 		var selectSQL = 'select type, name from book where name=?';
