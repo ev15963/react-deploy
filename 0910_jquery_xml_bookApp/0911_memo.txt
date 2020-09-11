@@ -302,6 +302,8 @@ SQL> desc student
  ADDRESS                                            VARCHAR2(10)
  DEPT_ID                                            VARCHAR2(10)
 
+7교시
+
 기본키 외래키 관련
 
 외래키를 필드로 갖는 테이블을 생성 할 때
@@ -353,3 +355,191 @@ where department.dept_id = student.dept_id
 
 파티션 프로덕트 : 비교할 테이블을 하나씩 대조
 
+
+8교시
+
+(질의 22)
+select distinct address from student;
+
+ADDRESS
+--------------------
+서울
+
+(질의 24)
+select name, 2012-year_emp from professor;
+
+(질의 25)
+select student.name, student,stu_id, department,dept_name
+from stdent, department
+where student.dept_id = department,dept_id
+
+(질의 26)
+select student.stu_id
+from student, department
+where student.dept_id = department.dept_id and
+	student.year = 3 and
+	department.dept_name='컴퓨터공학과';
+
+no rows selected
+
+(질의27)
+select name, stu_id
+from student
+where year = 3 or year = 4
+order by name, stu_id;
+
+NAME                 STU_ID
+-------------------- --------------------
+김정현               1292002
+
+select name, dept_id
+from student
+where year = 3 or year = 4
+order by name, stu_id;
+
+tu es vonita님이 모두에게:  05:16 PM
+SQL> select name, dept_id
+  2  from student
+  3  where year = 3 or year = 4
+  4  order by dept_id, name, stu_id;
+
+NAME                         DEPT_ID
+---------------------------- --------------------
+김광식                       920
+김정현                       920
+김현정                       923
+박광수                       923
+박철수                       925
+백태성                       925
+
+6 rows selected.
+
+(질의 28)
+select name, stu_id
+from student
+where year = 3 or year = 4
+order by name desc, stu_id;
+
+NAME                 STU_ID
+-------------------- --------------------
+김정현               1292002
+
+(질의 30)
+
+select name, position, 2012-year_emp from professor;
+
+no rows selected
+
+(질의 33)
+
+select name 이름, position 직위, 2012-year_emp 재직연수 --재정의
+from professor
+
+no rows selected
+
+tu es vonita님이 모두에게:  05:16 PM
+SQL> select name, dept_id
+  2  from student
+  3  where year = 3 or year = 4
+  4  order by dept_id, name, stu_id;
+
+
+tu es vonita님이 모두에게:  05:20 PM
+NAME                         DEPT_ID
+---------------------------- --------------------
+박철수                       925
+백태성                       925
+김현정                       923
+박광수                       923
+김광식                       920
+김정현                       920
+
+
+(질의 35)
+
+select * from student
+where resident_id like '%~2%'
+
+
+no rows selected
+
+2. 관계형 ppt
+집합연산 
+union 합집합
+minus 차집합
+intersect
+
+형식
+<select문> <집합연산자> <select문 2>
+
+UNION
+std테이블의 학생 이름과 profeesor 테이블의 교수이름을 합쳐 출력
+
+select name from student union select name from professor
+
+NAME
+--------------------
+김정현
+
+
+union 연산자는 연산결과에 중복되는 값이 들어갈 경우 한번만 중복 제거하고 싶지 않다면 union 연산자 대신 union all 연산자를 사용
+
+
+intersect 
+
+(질의 37)
+select s.stu_id 
+from student s, department d, take t
+where s.dept_id=d.dept_id and
+t.stu_id=s.stu_id and
+dept_name='컴퓨터공학과' and grade ='A+'
+
+(질의 40)
+select stu_id
+from student s, department d
+where s.dept_id=d.dept_id and dept_name='컴퓨터공학과'
+intersect
+select stu_id
+from takes
+where grade='A+'
+
+
+질의41
+
+select stu_id from student s, department d
+where s.dept_id - d.dept_id and dept_name='산업공학과'
+minus
+select stu_id from takes
+where grade = 'A+'
+
+
+tu es vonita님이 모두에게:  05:45 PM
+STU_ID
+--------------------
+1292003
+진혁 김님이 모두에게:  05:45 PM
+넵
+tu es vonita님이 모두에게:  05:45 PM
+SQL> select s.stu_id
+  2  from student s, department d, takes t
+  3  where s.dept_id = d.dept_id and
+  4  t.stu_id = s.stu_id and
+  5  dept_name='컴퓨터공학과' and grade = 'A+';
+
+
+
+STU_ID
+--------------------
+1292003
+
+SQL> select stu_id
+  2  from student s, department d
+  3  where s.dept_id = d.dept_id and dept_name='컴퓨터공학과'
+  4  intersect
+  5  select stu_id
+  6  from takes
+  7  where grade = 'A+';
+
+STU_ID
+--------------------
+1292003
