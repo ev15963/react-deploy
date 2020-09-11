@@ -20,7 +20,51 @@
 		createTable();
 		// 이벤트 함수 정의
 
-	});    
+		
+		//전체 검색 화면의 |<  <  >  >| 버튼들
+		$('#first').click(function() {
+			position='first';
+			listBook();
+		});
+		
+		$('#prev').click(function() {
+			position='prev';
+			listBook();
+		});
+		
+		$('#next').click(function() {
+			position='next';
+			listBook();
+		});
+		
+		$('#last').click(function() {
+			position='last';
+			listBook();
+		});
+		
+		
+		
+		//전체 검색 화면의 검색 버튼
+		$('#search4').click(function() {
+			var name = $('sBookName4').val();
+			selectBook4(name);
+		});
+		
+		
+		// 수정화면의 검색버튼
+		$('#search2').click( function() {
+			var name = $('#sBookName2').val();
+			selectBook2(name);
+		});
+		
+		//수정 화면의 수정 버튼
+		$('#submit2').click (function() {
+			updateBook();
+		});
+		
+	});    //$(document).ready END
+	
+	
 </script>
 <style type="text/css">
   img { padding:10px; margin:10px 50px; }
@@ -119,7 +163,7 @@
 				<input type="search" name="sBookName2" id="sBookName2" value="" data-mini="true"/>
 				<label for="bookType2" class="select">장르:</label>
 				<select name="bookType2" id="bookType2" data-native-menu="false" data-mini="true" data-inline="true">
-					<option vlaue="미정">미정</option>
+					<option value="미정">미정</option>
 					<option value="경제">경제</option>
 					<option value="시사">시사</option>
 					<option value="문학">문학</option>

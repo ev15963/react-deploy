@@ -11,104 +11,115 @@ function openDB() {
 
 // 테이블 생성 트랜잭션 실행
 function createTable() {
-	db.transaction(function(tr) {
-				var createSQL = 'create table if not exists book(type text, name text)';
+	db
+			.transaction(
+					function(tr) {
+						var createSQL = 'create table if not exists book(type text, name text)';
 
-				tr.executeSql(createSQL, [], function() {
-					console.log('2_1_테이블 생성_sql 실행성공...');
-				}, function() {
-					console.log('2_1_테이블 생성_sql 실행 실패...');
-				});
-			},
-			
-			function() {
-				console.log('테이블 생성 트랜잭션 실패... 롤백은 자동');
-			},
-			
-			function() {
-				console.log('테이블 생성 트랜잭션 성공...');
-			}
-			
-		);
+						tr.executeSql(createSQL, [], function() {
+							console.log('2_1_테이블 생성_sql 실행성공...');
+						}, function() {
+							console.log('2_1_테이블 생성_sql 실행 실패...');
+						});
+					},
+
+					function() {
+						console.log('테이블 생성 트랜잭션 실패... 롤백은 자동');
+					},
+
+					function() {
+						console.log('테이블 생성 트랜잭션 성공...');
+					}
+
+			);
 }
 
 // 데이터 입력 트랜잭션 실행
 function insertBook() {
-	db.transaction(function(tr){
-		var type =$('#bookType1').val();
-		var name =$('#bookName1').val();
-		var insertSQL ='insert into book(type, name) values(?, ?)';
-	
-		tr.executeSql(insertSQL,
-				[type, name],
-				function(tr, rs) {
-						console.log('3_책등록...no: ' + rs.insertId);
-						 alert('도서명 ' + name + ' 이(가) 입력되었습니다.');
-						$('#bookName1').val('');
-						$('#bookType1').val('미정').attr('selected', 'selected');
-						$('#bookType1').selectmenu('refresh');
+	db.transaction(function(tr) {
+		var type = $('#bookType1').val();
+		var name = $('#bookName1').val();
+		var insertSQL = 'insert into book(type, name) values(?, ?)';
+
+		tr.executeSql(insertSQL, [ type, name ], function(tr, rs) {
+			console.log('3_책등록...no: ' + rs.insertId);
+			alert('도서명 ' + name + ' 이(가) 입력되었습니다.');
+			$('#bookName1').val('');
+			$('#bookType1').val('미정').attr('selected', 'selected');
+			$('#bookType1').selectmenu('refresh');
 		},
-		
+
 		function(tr, err) {
 			alert('DB오류 ' + err.message + err.code);
 		}
 
 		); // tr.executeSql() END
-	});	// db.transaction() END
+	}); // db.transaction() END
 }
 
 // 전체 데이터 검색 트랜잭션 실행
 function listBook() {
 	db.transcation(function(tr) {
-		var selectSQL= 'select * from book';
-		
-		tr.executeSql(selectSQL,
-				[],
-				function(tr, rs) {
-					console.log('책 조회...' + rs.rows.length + '건.');
-					
-					if (position == 'first') {
-						if(index == 0) { alert('더 이상의 도서가 없습니다.'); } else { index = 0; }
-					} else if(position == 'prev') {
-						if(index == 0) { alert('더 이상의 도서가 없습니다.'); } else { index = --index; }
-					} else if(position == 'next') {
-						if(index == rs.rows.length-1) { alert('더 이상의 도서가 없습니다'); } else { index = ++index; }
-					} else {
-						if(index == rs.rows.length-1) { alert('더 이상의 도서가 없습니다'); } else { index = rs.rows.length-1; }
-					}
+		var selectSQL = 'select * from book';
 
-					$('#bookType4').val(rs.rows.item(index).type);
-					$('#bookName4').val(rs.rows.item(index).name);
+		tr.executeSql(selectSQL, [], function(tr, rs) {
+			console.log('책 조회...' + rs.rows.length + '건.');
+
+			if (position == 'first') {
+				if (index == 0) {
+					alert('더 이상의 도서가 없습니다.');
+				} else {
+					index = 0;
+				}
+			} else if (position == 'prev') {
+				if (index == 0) {
+					alert('더 이상의 도서가 없습니다.');
+				} else {
+					index = --index;
+				}
+			} else if (position == 'next') {
+				if (index == rs.rows.length - 1) {
+					alert('더 이상의 도서가 없습니다');
+				} else {
+					index = ++index;
+				}
+			} else {
+				if (index == rs.rows.length - 1) {
+					alert('더 이상의 도서가 없습니다');
+				} else {
+					index = rs.rows.length - 1;
+				}
 			}
-		);		// tr.executeSql() END
-	});		// db.transaction() END
-	
+
+			$('#bookType4').val(rs.rows.item(index).type);
+			$('#bookName4').val(rs.rows.item(index).name);
+		}); // tr.executeSql() END
+	}); // db.transaction() END
+
 }
 
 // 데이터 수정 트랜잭션 실행
 function updateBook() {
-	db.transaction (function(tr){
+	db.transaction(function(tr) {
 		var type = $('#bookType2').val();
 		var new_name = $('#bookType2').val();
 		var old_name = $('#sBookType2').val();
 		var updateSQL = 'update book set type = ?, name =?, where name =?';
-		
-		tr.executeSql(updateSQL,
-				[type, new_name, old_name],
-				function(tr, rs){
+
+		tr.executeSql(updateSQL, [ type, new_name, old_name ],
+				function(tr, rs) { // 성공했을때
 					console.log('5_책수정....');
-					alert('도서명'+$('#sBookName2').val()+ '이 수정되었습니다.');
+					alert('도서명' + $('#sBookName2').val() + '이 수정되었습니다.');
 					$('#bookName2').val('');
 					$('#sBookName2').val('');
 					$('#bookType2').val('미정').attr('selected', 'selected');
 					$('#bookType2').selectmenu('refresh');
-				),
-				
-				function(tr, err) {
-					alert('DB오류' +err.message + err.code);
-				}
-		});
-	});
+				},
+
+				function(tr, err) { // 실패했을때
+					alert('DB오류' + err.message + err.code);
+				}); // tr.executeSql end
+	}); // db.transaction end
 }
 
 // 데이터 삭제 트랜잭션 실행
@@ -117,24 +128,21 @@ function deleteBook() {
 }
 
 // 데이터 수정 위한 데이터 검색 트랜잭션 실행
-function selectBook2(name) {
-	db.transaction(function(tr){
+function selectBook2(name) { // 매개변수명 (변경가능)
+	db.transaction(function(tr) {
 		var selectSQL = 'select type, name from book where name=?';
-		
-		tr.executeSql(selectSQL,
-				[name],
-				function(tr, rs) {
-					if(rs.rows.length>0) {
-						$('#bookType2').val(rs.rows.item(0).type).attr('selected', 'selected');
-						$('#bookType2').selectmenu('refresh');
-						$('#bookName2').val(rs.rows.item(0).name);
-					} else {
-						alert('검색된 도서가 없습니다.');
-					}
-			}
-		}); //tr.executeSql() END
-	});	//db.transaction() END
-	
+
+		tr.executeSql(selectSQL, [ name ], function(tr, rs) {
+			if (rs.rows.length > 0) { // 한건이라도 찾았다.
+				$('#bookType2').val(rs.rows.item(0).type).attr('selected',
+						'selected');
+				$('#bookType2').selectmenu('refresh');
+				$('#bookName2').val(rs.rows.item(0).name);
+			} else {
+				alert('검색된 도서가 없습니다.');
+			} //
+		}); // tr.executeSql() END
+	}); // db.transaction() END
 
 }
 
@@ -145,24 +153,20 @@ function selectBook3(name) {
 
 // 데이터 조건 검색 트랜잭션 실행
 function selectBook4(name) {
-	db.transaction(function(tr){
+	db.transaction(function(tr) {
 		var selectSQL = 'select type, name from book where name=?';
-		
-		tr.executeSql(selectSQL,
-				[name],
-				function(tr, rs){
-					if(rs.rows.length>0) {
-						$('#bookType4').val(rs.rows.item(0).type);
-						$('#bookName4').val(rs.rows.item(0).name);
-					} else {
-						alert('검색된 도서가 없습니다.');
-					}
-				},
-				
-				function(tr, err) {
-					alert('DB오류', +err.message + err.code);
-				}
-			)
-		});
-	});
+
+		tr.executeSql(selectSQL, [ name ], function(tr, rs) {
+			if (rs.rows.length > 0) {
+				$('#bookType4').val(rs.rows.item(0).type);
+				$('#bookName4').val(rs.rows.item(0).name);
+			} else {
+				alert('검색된 도서가 없습니다.');
+			}
+		},
+
+		function(tr, err) {
+			alert('DB오류', +err.message + err.code);
+		}); // tr.executeSql() END
+	}); // db.transaction() END
 };

@@ -1,0 +1,62 @@
+1교시
+
+
+// 데이터 조건 검색 트랜잭션 실행
+function selectBook4(name) {
+
+// 데이터 수정 트랜잭션 실행
+function updateBook() {
+
+// 데이터 수정 위한 데이터 검색 트랜잭션 실행
+function selectBook2(name)
+
+작성
+
+2교시
+
+// 데이터 수정 트랜잭션 실행
+function updateBook() {
+
+sqlite 사용시 트랜젝션 사용
+
+ar updateSQL = 'update book set type = ?, name =?, where name =?';
+
+preparedstatement와 비슷한 기능
+
+[type, new_name, old_name], : 와일드 카드에 순서대로 들어감
+
+
+selectmenu ??
+
+rs : resultset
+
+function(tr, rs) {
+if(rs.rows.length>0) { //한건이라도 찾았다.
+	$('#bookType2').val(rs.rows.item(0).type).attr('selected', 'selected');
+	$('#bookType2').selectmenu('refresh');
+	$('#bookName2').val(rs.rows.item(0).name);
+} else {
+	alert('검색된 도서가 없습니다.');
+	
+// 데이터 조건 검색 트랜잭션 실행
+function selectBook4(name) {
+전체조회 검색하는 거
+
+나에서 tu es vonita에게:  (비공개로) 10:41 AM
+확인해서 오류는 없앴는데 도서 내용은 입력이 돼지 않습니다..
+tu es vonita에서 나에게:  (비공개로) 10:42 AM
+어제 추가까지 되지 않았나요?
+
+나에서 tu es vonita에게:  (비공개로) 10:44 AM
+어제 입력하는 창(보이는창)까지 됐었어요
+tu es vonita에서 나에게:  (비공개로) 10:46 AM
+어제 도서명 입력하면 테이블에 삽입.. 전체검색까지 완료했는데... 미완성이었나요?
+보내드린 파일.. 내부 코드를 비교 해보세요.. 보내드린 파일을 그냥 실행하면 안됩니다..~~!!!
+나에서 tu es vonita에게:  (비공개로) 10:46 AM
+코드는 따라쳤는데 db조회는 안됐어요
+네네 확인해볼께요
+
+bookApp.html
+dbHandle.js
+
+수정중...
