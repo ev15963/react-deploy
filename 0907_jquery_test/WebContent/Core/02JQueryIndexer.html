@@ -11,14 +11,14 @@
 			//h3 요소 모두 가져오기
 			//				var headers = $('h3');
 							// 반복문을 써서 반복 : for문 보다는 jQuery의 each문이 사용하기 편리
-							//for (var i=0; i<headers.lengthl i++) {
+							//for (var i=0; i<headers.length; i++) {
 			//					alert($(headers[i].html()));
 			//				}
 			
 			// 위코드를 each문으로 변경
 			$('h3').each(
 					function(index) {
-						alert($(this).html());
+						alert($(this).text());
 					});
 			});
 </script>
