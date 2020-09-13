@@ -543,3 +543,42 @@ SQL> select stu_id
 STU_ID
 --------------------
 1292003
+
+
+
+
+데이터 정의 언어 (DML)
+
+constraint 제약식이름 primary key(필드명);
+
+                       ↓
+
+constraint pk_테이블명 primary key(필드명);
+
+
+기본키 (primary key)
+
+ : constraint pk_테이블명 primary key(필드명);
+
+
+외래키 (foreign key)
+
+ : constraint fk_테이블명 foreign key(필드명) 
+   references 참조되는 테이블명(필드명);
+   
+   
+1. 참조되는 테이블(department) (반드시 프라이머리키 하나 잡혀야 한다)
+2. 참조하는 테이블(student)
+
+두개이상 외래키일 경우 이름 다르게 1,2 설정
+
+1.  테이블에 새로운 필드 추가하기
+alter table student  add      age      int
+alter table 테이블명 add 추가할필드명 데이터타입(크기);
+
+확인 :  desc 테이블명;
+
+2.  테이블의 기존 필드를 삭제하기
+alter table 테이블명 drop column 삭제할필드명;
+alter table  student drop column age;
+
