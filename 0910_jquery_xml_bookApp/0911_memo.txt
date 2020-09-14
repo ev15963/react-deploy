@@ -547,7 +547,7 @@ STU_ID
 
 
 
-데이터 정의 언어 (DML)
+데이터 정의 언어 (DDL)
 
 constraint 제약식이름 primary key(필드명);
 
@@ -582,3 +582,155 @@ alter table 테이블명 add 추가할필드명 데이터타입(크기);
 alter table 테이블명 drop column 삭제할필드명;
 alter table  student drop column age;
 
+
+데이터 정의 언어 (DDL)
+
+insert into 테이블명 (필드) values (값);
+
+칼럼 크기 변경하기
+
+alter table department modify dept_name varchar2(20);
+
+insert into department (dept_id, dept_name ) values ('920', '캄퓨터공학과');
+
+레코드 수정
+
+update 테이블명 set 수정할 내용, 수정할 내용,.. where 조건;
+
+select * from student; 출력
+
+stutdent 테이블 내 학년을 하나식 증가하기
+
+update student set year = year+1; (학년)
+
+professer 테이블에서 
+
+고희석 교수 직위(position)를 부교수에서 교수로,
+ 
+학과번호(dept_id)를 920에서 923으로
+
+update professor set position='교수', dept_id='923' where name='고희석';
+
+레코드 삭제
+
+delete from 테이블명 where 조건;
+
+where절에 있는 조건을 삭제
+cf) where절 생략시, 테이블 모든 레코드를 삭제
+
+professor 테이블에서 이름(name)이 '김태석'인 교수님 삭제
+delete from professor where name ='김태석';
+
+외래키로 참조하는 필드를 갖고 있는 레코드를 삭제할 시 오류 발생
+ORA-02449: unique/primary keys in table referenced by foreign keys
+
+레코드 검색 join, group by, having
+
+검색레코드 종류
+
+카티션 프로덕트
+: 두개의 테이블에서 각각의 레코드들을 서로 결합해서, 하나의 레코드로 구성하면서,s
+모든 가능한 조합의 레코드들로 테이블을 만드는 연산
+
+예1)
+student 테이블과 department 테이블
+
+select name, dept_name
+from department, student
+where department.dept_id = student.dept_id;
+
+컴퓨터공학과 3학년 학생들의 학번
+select student.stu_id
+from student, department
+where student.dept_id = department.dept_id
+and department.dept_name ='컴퓨터공학과' and student.year =3;
+
+중복된 레코드를 제거하고 검색 -  distinct
+
+
+student 테이블에서 모든 학생들의 주소 (address)를 추출하면,
+
+SQL> select address from student;
+
+ADDRESS
+------------------------------
+서울
+서울
+대전
+대구
+광주
+부산
+대전
+서울
+
+8 rows selected.
+
+중복 제거시 : distinct
+
+select distinct address from student;
+
+SQL> select distinct address from student;
+
+ADDRESS
+-------------------
+서울
+부산
+대전
+광주
+대구
+
+select 할때 산술식이나 상수를  통해 select하기
+
+select 절에는 필드명과 산술식 또는 상수를 사용할 수 도 있다.
+
+professor 테이블에서, 교수의 이름(name)현재까지의 재직연수를 select 
+
+select name, 200-year-emp from professor;
+
+SQL> select name, 2020-year_emp from professor;
+
+NAME				2020-YEAR_EMP
+------------------	--------------
+이태규							23
+고희석							17
+최성희							15
+박철재							13
+장민석							15
+
+2020-year_emp이라는 산술식도 가능
+
+professor 테이블의 year_emp 필드
+
+SQL> select year-ep from professor;
+
+ YEAR_EMP
+---------
+	1997
+	2003
+	2005
+	2007
+	2005
+	
+2020 - 'year_emp'의 각 레코드 값 = '2020-year_emp'
+
+
+레코드의 순서 지정 order by
+
+검색(select) 결과를 정렬해서 출력하는 기능
+
+select문의 제일 마지막 order by절을 추가해서 정렬 검색
+
+order by + 필드리스트
+
+기본값은 오른차순(asc)
+필드리스트 부분에 여러개의 필드를 나열해서 검색하는 경우, 나열된 순서대로 정렬
+
+student 테이블에서 3,4 학년(year) 학생들의 이름(name), 학번(stu_id)을 검색 (오름차순)
+
+select name, stu_id from student where year=3 or year=4 order by name, stu_id;
+
+
+select name, stu_id
+from student
+where year=3 or year=4
+order by name, stu_id;
