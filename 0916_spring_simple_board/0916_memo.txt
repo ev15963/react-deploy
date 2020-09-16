@@ -19,40 +19,117 @@ ORA-01756: quoted string not properly terminated
 
 스프링 게시판(초간단) 설계
 
-src 	BoardDAO JNDI명을 이용하여 DB접속 및 list() 메서드 정의
-ListActionController : list() 호출
+구조		파일 생성 및 역할
+src 		BoardDAO JNDI명을 이용하여 DB접속 및 list() 메서드 정의
+		ListActionController : list() 호출
 
-META-INF   Context.xml : DB정보를 태그형태로 설정
-WEB-INF	   lib : spring 라이브러리 복사
-		   web.xml : Dispatcher Servlet 컨트롤러 등록
-		   board-servlet.xml : 요청 명령어 등록
-WebContent 화면에 출력할 pages (~.html / ~.jsp)
-page 생성  list에 있는 내용을 Web에 뿌림
+META-INF  	Context.xml : DB정보를 태그형태로 설정
+WEB-INF	   	lib : spring 라이브러리 복사
+		web.xml : Dispatcher Servlet 컨트롤러 등록
+		board-servlet.xml : 요청 명령어 등록
+WebContent	화면에 출력할 pages (~.html / ~.jsp)
+page 생성	list에 있는 내용을 Web에 뿌림
 
 Java Resources
 패키지	    		파일							역할
 board.command		BoardCommand.java				사용자로부터 순수 입력 받는 값만 처리해주는 Class.
-													WriteActionController와 UpdateActionController에서 사용.
-board.controller	ListActionController.java		Controller 구현 받음
-													handleRequest() 메서드 내에서 DAO의 list() 결과 값을 list.jsp 에게 ArrayList 전달
-					WriteActionController.java		AbstractCommandController를 상속 받음
-													handle() 메서드 내에서 입력받은 값을 DAO의 write()로 저장하고 list.jsp를 호출
-					RetrieveActionController.java	Controller 구현 받음
-													전달된 num을 이용하요 DAO의 retrieve()를 통해 해당 레코드만 DTO객체에 담아 retrieve.jsp를 호출
-					UpdateActionController.java		AbstractCommandController를 상속 받음
-													전달된 수장 값들을 DAO의 update()로 수정하고 list.jsp를 호출
-					DeleteActionController.java		Controller 구현 받음. 전달된 num을 이용하여 DAO의 delete()로 삭제하고 list.jsp를 호출
-					SearchActionController.java		Controller 구현 받음. 전달된 num을 이용하여 DAO의 search()를 수행
-													그 결과 값을 ArrayList 객체에 담아 list.jsp에게 전달
+									WriteActionController와 UpdateActionController에서 사용.
+board.controller		ListActionController.java				Controller 구현 받음
+									handleRequest() 메서드 내에서 DAO의 list() 결과 값을 list.jsp 에게 ArrayList 전달
+			WriteActionController.java				AbstractCommandController를 상속 받음
+									handle() 메서드 내에서 입력받은 값을 DAO의 write()로 저장하고 list.jsp를 호출
+			RetrieveActionController.java	Controller 구현 받음
+									전달된 num을 이용하요 DAO의 retrieve()를 통해 해당 레코드만 DTO객체에 담아 retrieve.jsp를 호출
+			UpdateActionController.java				AbstractCommandController를 상속 받음
+									전달된 수장 값들을 DAO의 update()로 수정하고 list.jsp를 호출
+			DeleteActionController.java				Controller 구현 받음. 전달된 num을 이용하여 DAO의 delete()로 삭제하고 list.jsp를 호출
+			SearchActionController.java				Controller 구현 받음. 전달된 num을 이용하여 DAO의 search()를 수행
+									그 결과 값을 ArrayList 객체에 담아 list.jsp에게 전달
 													
-board.dao			BoardDAO.java					각 쿼리를 실제로 수행하는 class.
-													생성자를 통해 Context로부터 DB 접속.
-													조회, 검색, 수정, 삭제 등의 쿼리를 수행하고 결과를 반환.
-													각 Controller에서 호출되는 메서드를 보유
-board.dto			BoardDTO.java					~.jsp,
+board.dao		BoardDAO.java					각 쿼리를 실제로 수행하는 class.
+									생성자를 통해 Context로부터 DB 접속.
+									조회, 검색, 수정, 삭제 등의 쿼리를 수행하고 결과를 반환.
+									각 Controller에서 호출되는 메서드를 보유
+board.dto		BoardDTO.java					~.jsp, ~Controller, DAO 간의 데이터 전달 역할
 
 
-web.xml
+WebContent		index.jsp						초기 화면인 list.jsp로 바로 이동
+
+									web.xml에
+										<welcome-file-list>
+											<welcome-file>초기 로딩 페이지</welcome-file>
+										<welcome-file-list>
+									같이 설정하면
+									애플리케이션 명으로 요청이 들어 왔을 때 자동 호출.
+
+			list.jsp						글 목록 및 검색 결과를 출력
+										ListActionController 로 부터 전달된 ArrayList 객체를
+
+										1.ArrayList 객체가 null 인지를 확인
+										2. null이 아닌 경우 Iterator 객체 추출
+										3. 전달된 각 데이터를 하나씩 추출
+										4. 추출될 때마다 DTO 객체로 형변환하고,
+										5. <table></table> 내에 한 줄씩 출력
+			
+										제목은 "retrivev.do?num=글번호" 형태로 글 번호를
+									글 제목 중 하나를 선택하면 해당 글 번호를
+									RetrieveActionController에게 전달
+
+									글쓰기와 검색기능 보유
+
+			writer.jsp						글쓰기 화면을 출력
+
+									입력된 내용을 WriteActionController에게 전달
+
+									글 저장과 글 목록으로 이동하는 기능 보유
+
+			retrieve.jsp					글 상세보기 및 수정 화면을 출력
+									수정된 내용을 UpdateActionController 에게 전달
+
+									수정완료와 목록으로 이동기능 보유
+
+META_INF		Context.xml					데이터베이스에 관련된 내용 기술.
+
+WEB-INF				lib					작업에 필요한 라이브러리(~~.jar)들울 보유
+				web.xml					전체를 조정하는 DIspatcherServlet과 요청 URL을 등록
+									자동으로 로딩될 파일 리스트도 정의
+				board-servlet.html				요청에 따라 수행할 컨트롤러들을 등록
+									DB접속방법 및 각종 컨트롤러 설정
+									각 컨트롤러의 결과에 따라 전달할 화면을 설장
+sql				spring_simple_board.sql			테이블 생성 쿼리문
+
+
+boad.command
+import org.springframework.web.servlet.mvc.Controller; 를 구현받은 클래스
+
+ㄴDeleteActionController
+ㄴListActionController
+ㄴRetrieveActionController
+ㄴSearchActionController 
+************************************************************************
+
+****** ******************************************************************
+import org.springframework.web.servlet.mvc.AbstractCommandController; 를 상속받은 클래스
+
+ㄴUpdateActionController
+ㄴWriteActionController
+************************************************************************
+
+****** **************
+일반클래스
+board.command
+ㄴBoardCommand
+
+board.dao
+ㄴBoardDAO
+
+board.dto
+ㄴBoardDTO
+********************
+
+****** ****************************************
+log4j.properties 는 첨부파일(압축풀기)
+**********************************************
 
 
 <!-- 컨트롤러역할을 하는 서블릿의 이름 및 요청경로를 지정 -->
@@ -95,290 +172,3 @@ Spring library
 
 관리 MAVEN (porm.xml) : 프레임 라이브러리를 안대고 원본 사용하는 방식 -> grade (by google)
 ------------------------
- 	 ~.jar
- 	 프레임워크 개발시 사용
- 	 
-1. ~.jar -> eclipse
-2. Maven elicpse plug
-
-STS
-
-board-servlet.xml
-<!-- DB접속 방법 -> JNDI 방법 -->
-
-	<bean id="boardDAO" class="board.dao.BoardDAO" />
-	
-class를 통해서 id로 생성
-
-	<!-- 1. 글 목록 보기 -->
-
-	<bean name="/list.do"
-		class="board.controller.ListActionController">
-		
-	~.list.do
-		 ↓
-	dispatherServlet
-	
-	handlemapping에게 물어봄 <!-- 컨트롤러를 알려주는 역할 -->
-	
-
-	<bean name="/index.do"
-		class="org.springframework.web.servlet.mvc.ParameterizableViewController">
-		
-		
-		/////////////////////
-		
-		
-WriteActionController
-
-	<!-- 2. 컨트롤러(=모델2의 액션 클래스) 글쓰기화면 페이지 이동 -->
-
-	<!-- ParameterizableViewController의 viewName 속성값을 설정하면, 콜백메서드인 handleRequestInternal() 
-		에 의해 지정된 뷰명을 가지는 ModelAndView 객체를 돌려준다. -->
-
-	<bean name="/writeui.do"
-		class="org.springframework.web.servlet.mvc.ParameterizableViewController">
-
-		​
-
-	</bean>
-
-	​
-
-	<!-- 3. 글쓰기(글 수정하기와 거의 유사) DB연결해서 -->
-
-	<bean name="/write.do"
-		class="board.controller.WriteActionController">
-
-		​
-
-	</bean>
-	
-	<!-- 4. 글 상세보기 -->
-
-	<bean name="/retrieve.do"
-		class="board.controller.RetrieveActionController">
-	</bean>
-
-	<!-- 5.글 수정하기 -->
-
-	<bean name="/update.do"
-		class="board.controller.UpdateActionController">
-		
-		/update.do -> UpdateActionController 에게 지시
-	
-	
-	<!-- 6.글 삭제하기 -->
-
-	<bean name="/delete.do"
-		class="board.controller.DeleteActionController">
-
-	</bean>
-
-	​
-
-	<!-- 7.글 검색하기 -->
-
-	<bean name="/search.do"
-		class="board.controller.SearchActionController">
-
-		
-	</bean>
-	
-	<!-- viewResolver(위치, 이동할 페이지 지정) -->
-
-	<bean id="viewResolover"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-
-	</bean>
-	
-	BoardDTO : database
-	BoardCommand.java : BOARD
-	
-	
-http:// localhost:3000/simplespringboard/
-
-list.do	-> web.xml
-
-write.do
-
-<selvet-mapping>
-<url-partten>
-
-????????????
-
-
-list.do -> dispatchServlet "list.do"
-
-board-servlet.xml
-
-Handle list.do Mapping => dispaterServelt 
-
-접속객체 dao
-
-board.controller.ListActionController
-
-멤버변수명이 dao property 
-
-maxActive= 몇개를 활성화
-maxIdle= 최대 몇개
-
-InitialContext lookup //data connection pool 방식
-
-ListActionController.java
-
-implement (인터페이스 상속)
-
-conection pool  : k,v을 생성
-
-
-5교시
-
-작업순서
-
-dto 생성
-dao 생성
-
-
-
-
-
-Context.xml
-<?xml version="1.0" encoding="UTF-8" ?>
-
-<Context>								//InitialContext(Context) dao 일때 수정가능 인터페이스 
-		<Resource 
-			name="jdbc/orcl" 			//JNDI이름(이름은 변경 가능)
-			auth="container" 			//웹 컨테이너 : 수정불가능 = 커넥션 풀의 소유주
-			type="javax.sql.DataSource" //반환 타입 데이터 소스 반환타입
-			username="lsw" 				//사용자 계정 (자유)
-			password="1234"				//비밀번호
-			driverClassName="oracle.jdbc.driver.OracleDriver" //디비가 MYSQL로 바뀌면 변경가능
-			factory="org.apache.commons.dbcp.BasicDataSourceFactory" //데이터 소스객체를 만들어주는 공장
-			url="jdbc:oracle:thin:@localhost:1521:XE" 					//데이터베이스가 바귀면 해당사항도 바뀜
-			maxActive="20" 				//활성화 Connection 객체 최대 갯수 DAO 생성자코드와 이 두부분은 같이 묶여야한다.
-			maxIdle="10">				//사용  Connection 객체 최대 갯수
-	</Resource>
-</Context>
-
-이니셜 클래스는 생성자를 받는 클래스
-
-
-gosemffkqalvlddms 빈태그 간
-
- 명시되있는 클래스를 알려줌
-
-dispatcher 쪽으로
-
-빈태그는 list
-
-board-servlet.html list action servlet
-
-board action 
-/list.do
-
-implements Controller : 자동으로 주입
-
-<!-- viewResolver(위치, 이동할 페이지 지정) -->
-	<bean id="viewResolover"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="viewClass"
-			value="org.springframework.web.servlet.view.InternalResourceView"/>
-		<property name = "prefix" value="/"/> //컨트롤러가 지정한 경로명
-		<property name = "suffix" value="/jsp"/> //suffix 어떤 파일인지
-		/list.jsp http://~/simple_spring_borad list.jsp
-	</bean>
-	
-	
-	
-	
-board-servlet.xml
-	<bean name="/index.do"
-			class="org.springframework.web.servlet.mvc.ParameterizableViewController">
-		<property name="viewName" value="list"></property>
-	</bean>
-	
-	<bean id="boardDAO" class="board.dao.BoardDAO" /> <!-- ListActionController --> 
-	
-	<bean name="/list.do" class="board.controller.ListActionController"> <!-- dto에게 의존성 주입 -->
-		<property name ="dao">
-			<ref bean="boardDAO"/>
-		</property>
-	</bean>
-	
-	<bean name="/writeui.do"
-		class="org.springframework.web.servlet.mvc.ParameterizableViewController">
-	</bean>
-
-	
-	<bean name="/write.do"
-		class="board.controller.WriteActionController">
-	</bean>
-
-	
-	<bean name="/retrieve.do"
-		class="board.controller.RetrieveActionController">
-	</bean>
-
-	<bean name="/update.do"
-		class="board.controller.UpdateActionController">
-	</bean>
-
-	
-	<bean name="/delete.do"
-		class="board.controller.DeleteActionController">
-	</bean>
-
-	
-	<bean name="/search.do"
-		class="board.controller.SearchActionController">
-	</bean>
-
-	
-	<bean id="viewResolover"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="viewClass"
-			value="org.springframework.web.servlet.view.InternalResourceView"/>
-		<property name = "prefix" value="/"/>
-		<property name = "suffix" value="/jsp"/>
-	</bean>
-	
-	
-오류메시지
-java.lang.IllegalArgumentException
-
-
-1.xml
-
-<? ?> --------------</>
- <>
- <>
- 
- 나머지 태그도 오류
- 
- 2. 1. writeui.do
- 
-  1.   Apach Tomcat
-    
-    debug --- create ---- list.do
-    		  Finish ---- list.do
-    		  creating -- writeui.do
-    		  Factory -> Destroying
-    		  
-   사용되지 않은 부분 제거 하고 실행해보기
-   
-   
-    2. 생성자 오류 (ListActionContrlooer)
- 
- 
- 
-    3. index.do
-    	<property-> setproperty
-    	
-
- Dispatcher servlet
- 
- ViewResovler
- 
- 
- 
