@@ -277,7 +277,7 @@ suffix = 어떤 타입인지
 		<property name="viewClass"
 			value="org.springframework.web.servlet.view.InternalResourceView"/>
 		<property name = "prefix" value="/"/>
-		<property name = "suffix" value="/jsp"/>
+		<property name = "suffix" value=".jsp"/>
 	</bean>
 	
 	
