@@ -88,8 +88,7 @@ public class projDAO {
 		// 회원가입 아이디 비번 이름 주소 폰번호 추가  //MemberDAO
 		public int insertMember(MemberVO memberVO) {
 			int result = 0;
-			String sql = "insert into member(id, pwd, name, zip_num,";
-			sql += " address, phone) values(?, ?, ?, ?, ?, ?)";
+			String sql = "insert into member(id, pwd, name, zip_num, address, phone) values(?, ?, ?, ?, ?, ?)";
 
 			Connection conn = null;
 			PreparedStatement pstmt = null;

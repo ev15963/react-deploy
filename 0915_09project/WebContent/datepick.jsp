@@ -98,17 +98,20 @@
 </head>
 
 <body>
+<form>
 	<table>
 		<tr>
 			<th>예약년,월,일</th>
-			<td><input type="text" name="rev_date" id="rev_date" size="8" /></td>
+			<td><input type="text" name="rev_date" id="rev_date" size="8" required="required" /></td>
 		</tr>
 		<tr>
-			<th>예약시간111</th>
-			<td><input type="text" name="rev_time" id="rev_time" /></td>
+			<th>예약시간</th>
+			<td><input type="text" name="rev_time" id="rev_time" required="required"/></td>
 		</tr>
-
-		
+		<tr>
+			<td><input type="submit" name="submit" value="제출" /></td>
+		</tr>
 	</table>
+	</form>
 </body>
 </html>
