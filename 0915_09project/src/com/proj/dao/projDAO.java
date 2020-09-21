@@ -24,8 +24,36 @@ public class projDAO {
 		}
 
 		
-//		아이디 찾기
-		public int confirmID(String userid) {
+
+		// 회원가입 아이디 비번 이름 주소 폰번호 추가  //MemberDAO
+		public int customer_insert(hairDTO hDTO) {
+			int result = 0;
+			String sql = "insert into member(id, pwd, name, phoneNumber, address, enrollDate) values(?, ?, ?, ?, ?, ?)";
+			
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+
+			try {
+				conn = DBManager.getConnection();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, hDTO.getId());
+				pstmt.setString(2, hDTO.getPwd());
+				pstmt.setString(3, hDTO.getName());
+				pstmt.setString(4, hDTO.getZipNum());
+				pstmt.setString(5, hDTO.getAddress());
+				pstmt.setString(6, hDTO.getPhone());
+				result = pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				DBManager.close(conn, pstmt);
+			}
+			return result;
+		}
+		
+		
+//		아이디 중복확인
+		public int customer_searchone(String userid) {
 			int result = -1;
 			String sql = "select * from member where id=?";
 
@@ -50,9 +78,11 @@ public class projDAO {
 			}
 			return result;
 		}
-
-		public MemberVO getMember(String id) {
-			MemberVO memberVO = null;
+		
+		//////////////////////////////////////////////////////////
+		//아이디기준으로 회원정보 찾기
+		public hairDTO getMember(String id) {
+			hairDTO hDTO = null;
 			String sql = "select * from member where id=?";
 
 			Connection connn = null;
@@ -65,16 +95,16 @@ public class projDAO {
 				pstmt.setString(1, id);
 				rs = pstmt.executeQuery();
 				if (rs.next()) {
-					memberVO = new MemberVO();
-					memberVO.setId(rs.getString("id"));
-					memberVO.setPwd(rs.getString("pwd"));
-					memberVO.setName(rs.getString("name"));
-					memberVO.setEmail(rs.getString("email"));
-					memberVO.setZipNum(rs.getString("zip_num"));
-					memberVO.setAddress(rs.getString("address"));
-					memberVO.setPhone(rs.getString("phone"));
-					memberVO.setUseyn(rs.getString("useyn"));
-					memberVO.setIndate(rs.getTimestamp("indate"));
+					hDTO = new hairDTO();
+					hDTO.setId(rs.getString("id"));
+					hDTO.setPwd(rs.getString("pwd"));
+					hDTO.setName(rs.getString("name"));
+					hDTO.setEmail(rs.getString("email"));
+					hDTO.setZipNum(rs.getString("zip_num"));
+					hDTO.setAddress(rs.getString("address"));
+					hDTO.setPhone(rs.getString("phone"));
+					hDTO.setUseyn(rs.getString("useyn"));
+					hDTO.setIndate(rs.getTimestamp("indate"));
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -85,31 +115,6 @@ public class projDAO {
 		}
 
 		
-		// 회원가입 아이디 비번 이름 주소 폰번호 추가  //MemberDAO
-		public int insertMember(MemberVO memberVO) {
-			int result = 0;
-			String sql = "insert into member(id, pwd, name, zip_num, address, phone) values(?, ?, ?, ?, ?, ?)";
-
-			Connection conn = null;
-			PreparedStatement pstmt = null;
-
-			try {
-				conn = DBManager.getConnection();
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, memberVO.getId());
-				pstmt.setString(2, memberVO.getPwd());
-				pstmt.setString(3, memberVO.getName());
-				pstmt.setString(4, memberVO.getZipNum());
-				pstmt.setString(5, memberVO.getAddress());
-				pstmt.setString(6, memberVO.getPhone());
-				result = pstmt.executeUpdate();
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				DBManager.close(conn, pstmt);
-			}
-			return result;
-		}
 
 		/*
 		 * * 관리자 모드에서 사용되는 메소드 * *
