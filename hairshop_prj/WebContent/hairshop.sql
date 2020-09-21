@@ -5,7 +5,7 @@
 --private String name= null;
 --private String phone= null;
 --private String address= null;
---private String enroll= null;
+---private String enroll= null;
 
 
 create table rPWjd (
