@@ -56,7 +56,7 @@ public class prjDAO {
 //		아이디 중복확인
 		public static boolean customer_searchone(String id) {
 			
-			String sql = "select id from member"; //다시
+			String sql = "select id from member";
 
 			Connection conn = null;
 			PreparedStatement pstmt = null;
@@ -82,39 +82,81 @@ public class prjDAO {
 			return false;
 		}
 		
-		//////////////////////////////////////////////////////////
-		//아이디기준으로 회원정보 찾기
-		public hairDTO getMember(String id) {
-			hairDTO hDTO = null;
-			String sql = "select * from member where id=?";
+		
+		//삭제하기
+		public void customer_delete(int id) {
+			String sql = "delete from table where id=?";
 
-			Connection connn = null;
+			Connection conn = null;
 			PreparedStatement pstmt = null;
-			ResultSet rs = null;
 
 			try {
-				connn = DBManager.getConnection();
-				pstmt = connn.prepareStatement(sql);
-				pstmt.setString(1, id);
-				rs = pstmt.executeQuery();
-				if (rs.next()) {
-					hDTO = new hairDTO();
-					hDTO.setId(rs.getString("id"));
-					hDTO.setPw(rs.getString("pw"));
-					hDTO.setName(rs.getString("name"));
-					hDTO.setAddress(rs.getString("address"));
-					hDTO.setPhone(rs.getString("phone"));
-					hDTO.setEnroll(rs.getString("email"));
-				}
+				conn = DBManager.getConnection();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, id);
+				pstmt.executeUpdate();
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
-				DBManager.close(connn, pstmt, rs);
+				DBManager.close(conn, pstmt);
 			}
-			return hDTO;
+		}
+		
+
+//		//회원 관리 dto
+//		private String id=null;
+//		private String pw= null;
+//		private String name= null;
+//		private String phone= null;
+//		private String address= null;
+//		private String enroll= null;
+//		
+//		//예약 테이블
+//		private String rsv_date= null;
+//		private String rsv_time= null;
+//		private String rsv_status= null;
+//		private String p_type= null;
+//
+//		//관리자 테이블 
+//		private String workerid= null;
+//		private String workerpw= null;
+		
+		
+		//예약하기
+//		public customer_appointment() {
+//			String sql = ""
+//			
+//			
+//		}
+	
+		
+		//회원정보 변경 CartDAO.java
+		public void customer_update(QnaVO qnaVO) {
+			String sql = "update qna set reply=?, rep='2' where qseq=?";
+
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			try {
+				conn = DBManager.getConnection();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, qnaVO.getReply());
+				pstmt.setInt(2, qnaVO.getQseq());
+				pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				DBManager.close(conn, pstmt);
+			}
+		}
+		
+		public ArrayList<hairDTO> customer_selectList() {
+			
+			
+			return null;
+			
+			
 		}
 
-		
 
 		/*
 		 * * 관리자 모드에서 사용되는 메소드 * *
@@ -159,65 +201,41 @@ public class prjDAO {
 		}
 		
 	
-		
-		//삭제하기
-		public void customer_delete(int id) {
-			String sql = "delete from table where id=?";
 
-			Connection conn = null;
+		//////////////////////////////////////////////////////////
+		//아이디기준으로 회원정보 찾기
+		public hairDTO getMember(String id) {
+			hairDTO hDTO = null;
+			String sql = "select * from member where id=?";
+
+			Connection connn = null;
 			PreparedStatement pstmt = null;
+			ResultSet rs = null;
 
 			try {
-				conn = DBManager.getConnection();
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(1, id);
-				pstmt.executeUpdate();
+				connn = DBManager.getConnection();
+				pstmt = connn.prepareStatement(sql);
+				pstmt.setString(1, id);
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					hDTO = new hairDTO();
+					hDTO.setId(rs.getString("id"));
+					hDTO.setPw(rs.getString("pw"));
+					hDTO.setName(rs.getString("name"));
+					hDTO.setAddress(rs.getString("address"));
+					hDTO.setPhone(rs.getString("phone"));
+					hDTO.setEnroll(rs.getString("email"));
+				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
-				DBManager.close(conn, pstmt);
+				DBManager.close(connn, pstmt, rs);
 			}
+			return hDTO;
 		}
-		
 
-//		//회원 관리 dto
-//		private String id=null;
-//		private String pw= null;
-//		private String name= null;
-//		private String phone= null;
-//		private String address= null;
-//		private String enroll= null;
-//		
-//		//예약 테이블
-//		private String rsv_date= null;
-//		private String rsv_time= null;
-//		private String rsv_status= null;
-//		private String p_type= null;
-//
-//		//관리자 테이블 
-//		private String workerid= null;
-//		private String workerpw= null;
 		
 		
 		
-	
 		
-		//회원정보 변경 CartDAO.java
-		public void customer_update(QnaVO qnaVO) {
-			String sql = "update qna set reply=?, rep='2' where qseq=?";
-
-			Connection conn = null;
-			PreparedStatement pstmt = null;
-			try {
-				conn = DBManager.getConnection();
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, qnaVO.getReply());
-				pstmt.setInt(2, qnaVO.getQseq());
-				pstmt.executeUpdate();
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				DBManager.close(conn, pstmt);
-			}
-		}
 	}

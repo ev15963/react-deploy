@@ -5,7 +5,7 @@
 <article>
 	<div> <!-- 상단 왼쪽에 자리배치 -->
 		<input type="button" value="이전페이지" style="float: left;"
-					onClick="go_back()">
+					onClick="location.href='login.jsp'">
 		<br/>
 		<br/>
 		<br/>
@@ -52,9 +52,8 @@
 	</div>
 
 	<div> <!-- 하단 왼쪽의 버튼들 -->
-		
 		<input type="button" value="고객정보 및 시술내역 수정"
-					onClick="location.href='HairshopServlet?command=cus_detail&url=customer_detail_update.jsp&id=${detail.id }'">				
+					onClick="location.href='아이디 값으로 고객상세정보수정 페이지로 가주세요'">				
 		<input type="button" value="고객정보 삭제"
 					onClick="delete_check()">
 	</div>

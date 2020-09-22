@@ -5,7 +5,6 @@
 <article>
 	<div>
 		<c:forEach var="list" items="${proList }">
-		<form name="formm" method="post">
 		<table border="1">
 			<tr>
 				<th>이름</th>
@@ -15,17 +14,15 @@
 				<th></th>
 			</tr>
 			<tr>
-				<td><input type="text" name="name" value="${list.name }" readonly="readonly" ></td>
-				<td><input type="text" name="phone" value="${list.phone }" readonly="readonly" ></td>
-				<td><input type="text" name="res_date" value="${list.res_date }" readonly="readonly" ></td>
+				<td>${list.name }</td>
+				<td>${list.phone }</td>
+				<td>${list.res_date }</td>
 				<td><input type="text" name="pType" value="${list.p_type }"></td>
-				<td><input type="hidden" name="id" value="${list.id }">
-				<input type="button" value="시술완료" onclick="go_reservation_end()"></td>
+				<td><input type="button" value="시술완료" 
+				onclick="해당아이디 값으로 예약상태 이용완료 처리해주시고 시술내역에 추가해주세요"></td>
 			</tr>
 		</table>
-		</form>
 		</c:forEach>
-		
 	</div>
 </article>
 <%@ include file="footer.jsp" %>

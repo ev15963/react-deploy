@@ -4,14 +4,14 @@
 <%@ include file="submenu.jsp" %>
 <article>
 	<div id= 'search'>
-		<form name="formm" method="post">
+		<form action="고객 조회 액션 클래스로  이동" method="post">
 			<label>고객검색</label>
 			<select name="searchType">
 				<option value="name">성 명</option>
 				<option value="phone">연락처</option>
 			</select>
 			<input type="text" name="searchText" size="15">
-			<input type="submit" value="검색" onclick="go_search()">
+			<input type="submit" value="검색" name="customerSearch">
 		</form>
 	</div> <!-- 검색창 -->
 	<br /><br /><br />
@@ -32,7 +32,7 @@
 				</tr>
 			<c:forEach var="list" items="${cusList }">
 				<tr>
-					<td><a href="HairshopServlet?command=cus_detail&url=customer_detail.jsp&id=${cusList.id}">${cusList.name }</a></td>
+					<td><a href="아이디 값으로 상세보기 조회해주세요 ${cusList.id}">${cusList.name }</a></td>
 					<td>${list.phone}</td>
 					<td>${list.address}</td>
 					<td>${list.enroll}</td>

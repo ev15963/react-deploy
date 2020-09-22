@@ -4,14 +4,14 @@
 <%@ include file="submenu.jsp" %>
 <article>
 	<div id= 'search'>
-		<form name="formm" method="post">
+		<form action="고객 조회 액션 클래스로  이동" method="post">
 			<label>고객검색</label>
 			<select name="searchType">
 				<option value="name">성 명</option>
 				<option value="phone">연락처</option>
 			</select>
 			<input type="text" name="searchText" size="15">
-			<input type="submit" value="검색" onclick="go_search()">
+			<input type="submit" value="검색" name="customerSearch">
 		</form>
 	</div> <!-- 검색창 -->
 	<br /><br /><br />
@@ -43,7 +43,7 @@
 					<td id="name"><a href="아이디 값으로 상세보기 조회해주세요 ${list.id}">${list.name }</a></td>
 					<td>${list.phone }</td>
 					<td>${list.res_date }</td>  <!-- 테이블 필드명이 겹쳐서 이름 정해지면 바꿔야해요-->
-					<td>${list.p_type }</td>	<!-- 위쪽의 res_date는 예약테이블 아래쪽은 시술내역테이블 -->
+					<td>${list.p_type }</td>	<!-- 위쪽의 res_date는 예약테이블 아래쪽은 시술내역테이블ㄴ-->
 					
 					<c:choose>
 						<c:when test="${list.res_status == 1}">
@@ -51,7 +51,7 @@
 						</c:when>
 						<c:otherwise>
 							<td><input type="button" value="확정" 
-						onclick="location.href='HairshopServlet?command=cusres_update&id=&${list.id}'"></td>
+						onclick="해당아이디 값으로 예약상태 확정으로 처리해주세요"></td>
 						</c:otherwise>
 					</c:choose>	<!-- 에약이 확정된 경우 버튼 안뜨도록 -->
 					

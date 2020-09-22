@@ -11,7 +11,7 @@
 </head>
 <body>
 <div>
-	<form method="post" name="formm" action="HairshopServlet?command=id_check_form">
+	<form method="post" name="formm" action="서블릿?아이디체크">
 		User ID<input type="text" name="id" value="">
 		<input type="submit" value="검색"><br />
 		<div>

@@ -5,14 +5,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Admin login</title>
-<script type="text/javascript" src="admin.js"></script>
 <link rel="stylesheet" href="../admin/css/admin.css">
 <script type="text/javascript">
 	function worker_check() {
-		if (document.formm.adminId.value == "") {
+		if (document.frm.adminId.value == "") {
 			alert("아이디를 입력하세요.");
 			return false;
-		} else if (document.formm.adminPw.value == "") {
+		} else if (document.frm.adminPw.value == "") {
 			alert("비밀번호를 입력하세요.");
 			return false;
 		}
@@ -28,29 +27,26 @@
 			<p align="left">
 				<b id="b">Admin mode</b>
 			</p>
-			<form name="formm" method="post"
-				action="HairshopServlet?command=Admin_login">
-
+			<form name="frm" method="post"
+				action="Hairshop?command=Admin_login">
 				<table>
 					<tr>
-						<td>I D</td>
-						<td><input type="text" name="adminId" size="10"
+						<td>${workerid}</td>
+						<td><input type="text" name="worekerid" size="10"
 							value="admin"></td>
 					</tr>
 					<tr>
-						<td>P W</td>
-						<td><input type="password" name="adminPw" size="10"
+						<td>${workerpw}</td>
+						<td><input type="password" name="workerpw" size="10"
 							value="1234"></td>
 					</tr>
 					<tr align="right">
 						<td colspan="2"><input type="submit" value="Login"
-							onclick="return worker_check()"><br>
-						<h4 style="color: red">${message}</h4></td>
+							onclick="location='Hairshop?command=id_check_form'">
 					</tr>
 				</table>
 			</form>
 		</div>
 	</div>
-	
 </body>
 </html>

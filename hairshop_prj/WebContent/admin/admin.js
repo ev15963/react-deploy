@@ -8,7 +8,7 @@ function cancel_check(){ // main.jsp에서 예약취소버튼을 눌렀을 경�
 	console.log(cancel_id);
 	 
     if ( cancel == true ) {
-       location.href= "HairshopServlet?command=cusres_delete&id=" + cancel_id;
+       location.href= "서블릿?커맨드=취소처리&id=" + cancel_id;
     }
 }
 
@@ -19,7 +19,7 @@ function delete_check(){ // customer_detail.jsp에서 고객정보삭제버튼�
 	console.log(cancel_id);
 	
 	if(cancel==true){
-		location.href="HairshopServlet?command=cus_delete&id=" + cancel_id;
+		location.href="서블릿?커맨드=삭제처리&id=" + cancel_id;
 	}
 }
 
@@ -27,24 +27,24 @@ function open_win(url, name) { // submenu.jsp에서 고객등록 or 고객정보
 	window.open(url, name, 'width=500, height=350');
 }
 
-function idcheck(){	// 중복확인 클릭 시 발생하는 함수
+function idcheck(){
 	if(document.formm.id.value == ""){
 		alert("id를 입력해 주세요.");
 		document.formm.id.focus();
 		return;
 	}
-	var url = "HairshopServlet?command=id_check_form&id=" + document.formm.id.value;
+	var url = "서블릿?아이디체크&id=" + document.formm.id.value;
 	window.open(url, "idcheck", "toolbar=no, menubar=no, " +
 			"scrollbars=yes, resizable=no, width=330, height=200");
 }
 
-function idok(){	// 중복확인 페이지에서 id 사용눌렀을 떄 발생하는 함수
+function idok(){
 	opener.formm.id.value="${id}";
 	opener.formm.id.value="${id}";
 	self.close();
 }
 
-function insert_customer(){ // customer_insert.jsp에서 빈칸입력안되게
+function insert_customer(){ // 입력다했는지 체크하는 구문 삽입할 것!!!!!!!!!!!!!!
 	if(document.formm.id.value==""){
 		document.formm.id.focus();
 	} else if(document.formm.id.value != document.formm.reid.value){
@@ -62,52 +62,7 @@ function insert_customer(){ // customer_insert.jsp에서 빈칸입력안되게
 	} else if(document.formm.address.value==""){
 		document.formm.address.focus();
 	} else {
-		document.formm.action = "HairshopServlet?command=cus_insert";
+		document.formm.action = "서블릿?커맨드=등록처리 후 class에서 close.jsp로 페이지 이동해주세요";
 		document.formm.submit();
 	}
-}
-
-//main.jsp, customer_list.jsp에서 고객검색 시 빈칸입력안되게 설정
-// 이거 스크립트문이 살짝 헷갈려요... 액션클래스 완성되면 말씀해주세요
-function go_search(){   
-	if(doument.formm.searchText.value==""){
-		alert("성명이나 연락처를 입력해주세요.")
-		document.formm.searchText.focus();
-		return;
-	} else{
-		document.formm.action = "HairshopServlet?command=cus_list";
-		document.formm.submit();
-	}
-}
-
-function go_reservation_end(){ // procedure_enroll.jsp에서 시술내용 빈칸입력안되게 설정
-	if(document.formm.pType.value==""){
-		alert("시술내역을 입력해주세요.");
-		document.formm.pType.focus();
-		return;
-	} else {
-		document.formm.action = "HairshopServlet?command=cusres_end"
-		document.formm.submit();
-	}
-}
-
-function go_detail_update(){ // customer_detail_update에서 빈칸 입력안되게
-	if(document.formm.name.value==""){
-		document.formm.name.focus();
-	} else if(document.formm.phone.value==""){
-		document.formm.phone.focus();
-	} else if(document.formm.name.value==""){
-		document.formm.name.focus();
-	} else if(document.formm.adress.value==""){
-		document.formm.adress.focus();
-	} else if(document.formm.p_type.value==""){
-		document.formm.p_type.focus();
-	} else {
-		document.formm.action = "HairshopServlet?command=cus_update";
-		document.formm.submit();
-	}
-}
-
-function go_back(){
-	history.back();
 }
