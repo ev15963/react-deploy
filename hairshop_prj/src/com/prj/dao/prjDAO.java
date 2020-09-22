@@ -33,12 +33,6 @@ public class prjDAO {
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 
-//			private String id=null;
-//			private String pw= null;
-//			private String name= null;
-//			private String phone= null;
-//			private String address= null;
-//			private String enroll= null;
 //			
 //			//예약 테이블
 //			private String rsv_date= null;
