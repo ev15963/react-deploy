@@ -32,17 +32,6 @@ public class prjDAO {
 			
 			Connection conn = null;
 			PreparedStatement pstmt = null;
-
-//			
-//			//예약 테이블
-//			private String rsv_date= null;
-//			private String rsv_time= null;
-//			private String rsv_status= null;
-//			private String p_type= null;
-//
-//			//관리자 테이블 
-//			private String workerid= null;
-//			private String workerpw= null;
 			
 			
 			try {
@@ -51,12 +40,12 @@ public class prjDAO {
 				pstmt.setString(1, hDTO.getId());
 				pstmt.setString(2, hDTO.getPw());
 				pstmt.setString(3, hDTO.getName());
-				pstmt.setString(6, hDTO.getPhone());
+				pstmt.setString(4, hDTO.getPhone());
 				pstmt.setString(5, hDTO.getAddress());
-				pstmt.setString(4, hDTO.getEnroll());
+				pstmt.setString(6, hDTO.getEnroll());
 				result = pstmt.executeUpdate();
 			} catch (Exception e) {
-				e.printStackTrace();
+				System.out.println("customer_insert err : "+e.getMessage());
 			} finally {
 				DBManager.close(conn, pstmt);
 			}
@@ -65,30 +54,32 @@ public class prjDAO {
 		
 		
 //		아이디 중복확인
-		public int customer_searchone(String userid) {
-			int result = -1;
-			String sql = "select * from member where id=?";
+		public static boolean customer_searchone(String id) {
+			
+			String sql = "select id from member"; //다시
 
-			Connection connn = null;
+			Connection conn = null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 
 			try {
-				connn = DBManager.getConnection();
-				pstmt = connn.prepareStatement(sql);
-				pstmt.setString(1, userid);
+				conn = DBManager.getConnection();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, id);
 				rs = pstmt.executeQuery();
-				if (rs.next()) {
-					result = 1;
-				} else {
-					result = -1;
+
+				while(rs.next() ) {
+					if(rs.getString("id").equals(id)) {
+						return true;
+					}
 				}
-			} catch (Exception e) {
-				e.printStackTrace();
+				
+			} catch (SQLException e) {
+				System.out.println("customer_searchone err : "+e.getMessage());
 			} finally {
-				DBManager.close(connn, pstmt, rs);
+				DBManager.close(conn, pstmt, rs);
 			}
-			return result;
+			return false;
 		}
 		
 		//////////////////////////////////////////////////////////
@@ -109,21 +100,18 @@ public class prjDAO {
 				if (rs.next()) {
 					hDTO = new hairDTO();
 					hDTO.setId(rs.getString("id"));
-					hDTO.setPwd(rs.getString("pwd"));
+					hDTO.setPw(rs.getString("pw"));
 					hDTO.setName(rs.getString("name"));
-					hDTO.setEmail(rs.getString("email"));
-					hDTO.setZipNum(rs.getString("zip_num"));
 					hDTO.setAddress(rs.getString("address"));
 					hDTO.setPhone(rs.getString("phone"));
-					hDTO.setUseyn(rs.getString("useyn"));
-					hDTO.setIndate(rs.getTimestamp("indate"));
+					hDTO.setEnroll(rs.getString("email"));
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
 				DBManager.close(connn, pstmt, rs);
 			}
-			return hairDTO;
+			return hDTO;
 		}
 
 		
@@ -133,8 +121,8 @@ public class prjDAO {
 		 */
 		
 		//시간 기준으로 검색??
-		public ArrayList<MemberVO> listMember(String member_name) {
-			ArrayList<MemberVO> memberList = new ArrayList<MemberVO>();
+		public ArrayList<hairDTO> customer_selectList(String member_name) {
+			ArrayList<hairDTO> memberList = new ArrayList<hairDTO>();
 			String sql = "select * from member where name like '%'||?||'%' " + "order by indate desc";
 
 			Connection conn = null;
@@ -149,19 +137,18 @@ public class prjDAO {
 				} else {
 					pstmt.setString(1, member_name);
 				}
+							
 				rs = pstmt.executeQuery();
 				while (rs.next()) {
-					MemberVO memberVO = new MemberVO();
-					memberVO.setId(rs.getString("id"));
-					memberVO.setPwd(rs.getString("pwd"));
-					memberVO.setName(rs.getString("name"));
-					memberVO.setEmail(rs.getString("email"));
-					memberVO.setZipNum(rs.getString("zip_num"));
-					memberVO.setAddress(rs.getString("address"));
-					memberVO.setPhone(rs.getString("phone"));
-					memberVO.setUseyn(rs.getString("useyn"));
-					memberVO.setIndate(rs.getTimestamp("indate"));
-					memberList.add(memberVO);
+					hairDTO hDTO = new hairDTO();
+					hDTO.setId(rs.getString("id"));
+					hDTO.setPw(rs.getString("pw"));
+					hDTO.setName(rs.getString("name"));
+					hDTO.setPhone(rs.getString("phone"));
+					hDTO.setAddress(rs.getString("address"));
+					hDTO.setEnroll(rs.getString("enroll"));
+					
+					memberList.add(hDTO);
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -171,9 +158,11 @@ public class prjDAO {
 			return memberList;
 		}
 		
+	
+		
 		//삭제하기
-		public void deleteCart(int cseq) {
-			String sql = "delete cart where cseq=?";
+		public void customer_delete(int id) {
+			String sql = "delete from table where id=?";
 
 			Connection conn = null;
 			PreparedStatement pstmt = null;
@@ -181,7 +170,7 @@ public class prjDAO {
 			try {
 				conn = DBManager.getConnection();
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(1, cseq);
+				pstmt.setInt(1, id);
 				pstmt.executeUpdate();
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -190,8 +179,31 @@ public class prjDAO {
 			}
 		}
 		
+
+//		//회원 관리 dto
+//		private String id=null;
+//		private String pw= null;
+//		private String name= null;
+//		private String phone= null;
+//		private String address= null;
+//		private String enroll= null;
+//		
+//		//예약 테이블
+//		private String rsv_date= null;
+//		private String rsv_time= null;
+//		private String rsv_status= null;
+//		private String p_type= null;
+//
+//		//관리자 테이블 
+//		private String workerid= null;
+//		private String workerpw= null;
+		
+		
+		
+	
+		
 		//회원정보 변경 CartDAO.java
-		public void updateAcount(QnaVO qnaVO) {
+		public void customer_update(QnaVO qnaVO) {
 			String sql = "update qna set reply=?, rep='2' where qseq=?";
 
 			Connection conn = null;
