@@ -9,8 +9,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.proj.dto.QnaVO;
-import com.proj.util.DBManager;
+import com.prj.dto.hairDTO;
+import com.prj.util.DBManager;
 
 public class prjDAO {
 
