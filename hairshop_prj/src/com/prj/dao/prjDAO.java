@@ -33,15 +33,33 @@ public class prjDAO {
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 
+//			private String id=null;
+//			private String pw= null;
+//			private String name= null;
+//			private String phone= null;
+//			private String address= null;
+//			private String enroll= null;
+//			
+//			//예약 테이블
+//			private String rsv_date= null;
+//			private String rsv_time= null;
+//			private String rsv_status= null;
+//			private String p_type= null;
+//
+//			//관리자 테이블 
+//			private String workerid= null;
+//			private String workerpw= null;
+			
+			
 			try {
 				conn = DBManager.getConnection();
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, hDTO.getId());
-				pstmt.setString(2, hDTO.getPwd());
+				pstmt.setString(2, hDTO.getPw());
 				pstmt.setString(3, hDTO.getName());
-				pstmt.setString(4, hDTO.getZipNum());
-				pstmt.setString(5, hDTO.getAddress());
 				pstmt.setString(6, hDTO.getPhone());
+				pstmt.setString(5, hDTO.getAddress());
+				pstmt.setString(4, hDTO.getEnroll());
 				result = pstmt.executeUpdate();
 			} catch (Exception e) {
 				e.printStackTrace();
