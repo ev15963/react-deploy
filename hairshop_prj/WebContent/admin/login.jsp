@@ -32,7 +32,7 @@
 				<table>
 					<tr>
 						<td>${workerid}</td>
-						<td><input type="text" name="worekerid" size="10"
+						<td><input type="text" name="workerid" size="10"
 							value="admin"></td>
 					</tr>
 					<tr>

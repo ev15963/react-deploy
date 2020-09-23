@@ -33,7 +33,7 @@ public class HairshopServlet extends HttpServlet {
 		String command =request.getParameter("command");
 		System.out.println("hairshopservet 요청 된"+command);
 		
-		ActionFacttory af = ActionFacttory.getInstance();
+		ActionFactory af = ActionFactory.getInstance();
 		Action action = af.getaction(command);//admin_
 		
 		if(action != null) {

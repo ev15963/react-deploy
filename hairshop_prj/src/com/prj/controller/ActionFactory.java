@@ -64,7 +64,7 @@ public class ActionFactory {
 	          action = new CusIndexAction();
 	       } else if (command.equals("cus_logout")) {
 	          action = new CusLogoutAction();
-		
+	       }
 		return action;
 	}
 }

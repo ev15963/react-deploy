@@ -36,6 +36,7 @@ public class hairDAO {
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, workerid);
 			rs = pstmt.executeQuery();
 			if (rs.next()) { // 아이디가 일치하면
 				result = 0;
@@ -82,7 +83,7 @@ public class hairDAO {
 
 	// 검색 (이름, 전화번호 뒷자리(4))
 	public void costomer_searchone() {
-		String sql = "select * from rPWjd lㅑ";
+		String sql = "select * from rPWjd";
 		int result = -1;
 		// 디비와 연동
 		Connection conn = null;

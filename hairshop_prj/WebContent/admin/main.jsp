@@ -19,7 +19,7 @@
 	<c:choose>
 		<c:when test="${resList.size()==0}">
 			<h3 style="text-align: center;"> 현재 예약이 없습니다.</h3>
-		</c:when> <!-- 예약관리 페이지에 들어갈 값이 없을 경우 -->
+		</c:when> 
 		<c:otherwise>
 			<table border="1">
 				<tr> 

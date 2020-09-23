@@ -10,7 +10,7 @@ import java.sql.Statement;
 
 public class DBManager {
 	private static String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	private static String id = "choehun"; // 아이디
+	private static String id = "lsw"; // 아이디
 	private static String pw = "1234"; // 비밀번호
 	private static String driver = "oracle.jdbc.driver.OracleDriver";
 	private static Connection conn;
