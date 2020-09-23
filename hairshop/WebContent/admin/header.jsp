@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Admin header</title>
+<title>Admin111 header</title>
 <link rel="stylesheet" href="css/admin.css">
 <script type="text/javascript" src="admin.js"></script>
 <script src="jquery-1.6.2.js" type="text/javascript"></script>
@@ -23,3 +23,4 @@
 			</div>
 		</header>
 		<div class="clear"></div>
+	</div>

@@ -4,15 +4,15 @@
 <%@ include file="submenu.jsp" %>
 <article>
 	<div id= 'search'>
-		<form action="고객 조회 액션 클래스로  이동" method="post">
-			<label>고객검색</label>
-			<select name="searchType">
-				<option value="name">성 명</option>
-				<option value="phone">연락처</option>
-			</select>
-			<input type="text" name="searchText" size="15">
-			<input type="submit" value="검색" name="customerSearch">
-		</form>
+		<form name="formm" method="post">
+         <label>고객검색</label>
+         <select name="searchType">
+            <option value="name">성 명</option>
+            <option value="phone">연락처</option>
+         </select>
+         <input type="text" name="searchText" size="15">
+         <input id="butt" style="background:black;" type="submit" value="검색" onclick="go_search()">
+      </form>
 	</div> <!-- 검색창 -->
 	<br /><br /><br />
 	<div>

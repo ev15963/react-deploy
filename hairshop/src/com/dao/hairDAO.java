@@ -60,7 +60,7 @@ public class hairDAO {
 	//검색 (이름, 전화번호 뒷자리(4))
 	
 	public void  costomer_searchone() {
-		String sql = "select * from rPWjd lㅑ";
+		String sql = "select * from rPWjd where id=%?% || phoneNumber=";
 		int result = -1;
 		// 디비와 연동
 		Connection conn = null;
@@ -130,9 +130,12 @@ public class hairDAO {
 		
 	}
 	//전체 보기
-	public void costmoer_selectList() {//상우 완료
+	public ArrayList<hairVO> costmoer_selectList() {//상우 완료
 		String sql = "select d.rsv_date, d.rsv_time, d.p_type, d.id, s.rsv_date, s.p_type,"+ 
-				"from  dPdir d, sangSE where d.id=s.id";
+				" from dPdir d, sangSE s where d.id=s.id";
+		
+		ArrayList<hairVO> list = new ArrayList<hairVO>();
+		
 		// 디비와 연동
 		Connection conn = null;
 		// 쿼리문(select)을 수행하기 위한 문장 객체
@@ -141,6 +144,32 @@ public class hairDAO {
 		
 		// 결과값을 저장할 ResultSet
 		ResultSet rs = null;
+		return null;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				hairVO hvo = new hairVO();
+				hvo.setRsv_date(rs.getString("rsv_date"));
+				hvo.setRsv_time(rs.getString("rsv_time"));
+				hvo.setP_type(rs.getString("p_type"));
+				hvo.setId(rs.getString("id"));
+				hvo.setRsv_date(rs.getString("rsv_date"));
+				hvo.setP_type(rs.getString("p_type"));
+				list.add(hvo);
+			}
+			System.out.println("예약 리스트 확인 "+list);
+				
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage()+"예약 QUERY 오류");
+		}
+		return list;
+		
 		
 	}
 	//정보 갱신

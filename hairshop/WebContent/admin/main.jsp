@@ -4,7 +4,7 @@
 <%@ include file="submenu.jsp" %>
 <article>
 	<div id= 'search'>
-		<form action="고객 조회 액션 클래스로  이동" method="post">
+		<form action="searchAction" method="post">
 			<label>고객검색</label>
 			<select name="searchType">
 				<option value="name">성 명</option>

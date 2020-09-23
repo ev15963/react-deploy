@@ -6,9 +6,9 @@
 	<hr>
 	<div id="copy">
 		All contents Copyright 2020 KLCHair Inc. all rights reserved<br>
-		Contact mail : KLCHair@hair.com Tel: +82 64 123 4315 Fax +82 64 123
-		4321
-		혹시나 이걸 보게 된다면 뭔가 아래쪽에 넣고싶은게 있으면 말해주세요
+		Contact mail : KLCHair@hairInc.com Tel: +82 64 123 4315 Fax +82 64 123
+		4321<br>
+		사업자등록번호 : 384-서울마포-3384
 	</div>
 </footer>
 </div>
