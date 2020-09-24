@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.sound.midi.Synthesizer;
+
 import com.dto.hairVO;
 import com.util.DBManager;
 
@@ -53,8 +55,29 @@ public class hairDAO {
 		return result;
 	}// wokerCheck end
 
-	// 등록,회원 가입
-	public void costomer_insert() {//상우 완료
+	// 등록,회원 가입 9.24
+	public void costomer_insert(hairVO hVO) {//상우 완료
+		String sql = "insert into rPWjd (id, pwd, name, phoneNumber, address, enroll) "
+				+ "values(?, ?, ?, ?, ?, ?)";
+		
+		Connection conn = null;
+		PreparedStatement pstmt =null;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt=conn.prepareStatement(sql);
+
+			pstmt.setString(1, hVO.getId());
+			pstmt.setString(2, hVO.getPw());
+			pstmt.setString(3, hVO.getName());
+			pstmt.setString(4, hVO.getPhoneNumber());
+			pstmt.setString(5, hVO.getAddress());
+			pstmt.setString(6, hVO.getEnroll());
+		} catch (SQLException e) {
+			System.out.println("costomer_insert err : "+ e.getMessage());
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
 		
 	}
 	//검색 (이름, 전화번호 뒷자리(4))
@@ -69,13 +92,29 @@ public class hairDAO {
 		// 결과값을 저장할 ResultSet
 		ResultSet rs = null;
 	}
-	//삭제
-	public void costomer_delete(){//상우 완료
-				
+	//삭제 9.24
+	public void costomer_delete(String ii){//상우 완료
+		String sql = "delete * from rPWjd r, dPdir d where r.id = d.id";
+		//select d.rsv_date, d.rsv_time, d.rsv_status, r.name, r.phoneNumber,
+		//d.rsv_date, d.p_type from rPWjd r, dPdir d where r.id = d.id;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		conn = DBManager.getConnection();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, ii);
+			
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("costmer_delete err : "+ e.getMessage());
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
 	}
 	//예약
 	public ArrayList<hairVO> costomer_appointmentlist() {
-		String sql = "select d.rsv_date, d.rsv_time, r.name, r.phonenumber, d.rsv_date, d.p_type"
+		String sql = "select d.rsv_date, d.rsv_time, r.name, r.phoneNumber, d.rsv_date, d.p_type"
 				+ " from rPWjd r, dPdir d where r.id = d.id"; 
 				
 		ArrayList<hairVO> list = new ArrayList<hairVO>();
@@ -98,7 +137,7 @@ public class hairDAO {
 				hvo.setRsv_date(rs.getString("rsv_date"));
 				hvo.setRsv_time(rs.getString("rsv_time"));
 				hvo.setName(rs.getString("name"));
-				hvo.setphoneNumber(rs.getString("phonenumber"));
+				hvo.setPhoneNumber(rs.getString("phoneNumber"));
 				hvo.setRsv_date(rs.getString("rsv_date"));
 				hvo.setP_type(rs.getString("p_type"));
 				list.add(hvo);
@@ -125,14 +164,15 @@ public class hairDAO {
 		return result;
 		
 	}
-	//상세 보기
+	//상세 보기 jH
 	public void costomer_detailview() {
 		
 	}
-	//전체 보기
+	//전체 보기 - 9/24 카톡보냄 다시확인
 	public ArrayList<hairVO> costmoer_selectList() {//상우 완료
-		String sql = "select d.rsv_date, d.rsv_time, d.p_type, d.id, s.rsv_date, s.p_type,"+ 
-				" from dPdir d, sangSE s where d.id=s.id";
+		String sql = "select d.rsv_date, d.rsv_time, d.rsv_status, r.name, r.phoneNumber, s.rsv_date, s.p_type "
+				+ "from rPWjd r, dPdir d, sangSE s "
+				+ "where r.id = d.id and d.rsv_date = s.rsv_date";
 		
 		ArrayList<hairVO> list = new ArrayList<hairVO>();
 		
@@ -144,7 +184,7 @@ public class hairDAO {
 		
 		// 결과값을 저장할 ResultSet
 		ResultSet rs = null;
-		return null;
+
 		
 		try {
 			conn = DBManager.getConnection();
@@ -172,8 +212,32 @@ public class hairDAO {
 		
 		
 	}
-	//정보 갱신
-	public void costmoer_update() {//상우 완료
+	//정보 갱신 9.24 - CustomerUpdateAction -카톡 보냄
+	public void costmoer_update(hairVO hVO) {//상우 완료
+		String sql="update set d.rsv_date=?, d.rsv_time=?, d.rsv_status=?, r.name=?, r.phoneNumber=?, d.rsv_date=?, d.p_type=?" + 
+				" from dPdir d, sangSE s "
+				+ "where d.id=s.id";
+		
+		Connection conn =null;
+		PreparedStatement pstmt = null;
+		
+		conn=DBManager.getConnection();
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, hVO.getRsv_date());
+			pstmt.setString(2, hVO.getRsv_time());
+			pstmt.setString(3, hVO.getRsv_status());
+			pstmt.setString(4, hVO.getName());
+			pstmt.setString(5, hVO.getPhoneNumber());
+			pstmt.setString(6, hVO.getRsv_date());
+			pstmt.setString(7, hVO.getP_type());
+		} catch (SQLException e) {
+			System.out.println("costmoer_update err : "+e.getMessage());
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+		
+		
 		
 	}
 	//시술 내역, 날짜

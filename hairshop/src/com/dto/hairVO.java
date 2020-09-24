@@ -10,6 +10,7 @@ private String address= null;
 private String enroll= null;
 
 //예약 테이블
+private int   rsv_seq;
 private String rsv_date= null;
 private String rsv_time= null;
 private String rsv_status= null;
@@ -18,23 +19,33 @@ private String p_type= null;
 //관리자 테이블 
 private String workerid= null;
 private String workerpw= null;
+
+
+//시술 테이블
+private String sisul_date = null;
+private String sisul_type = null;
+
+
 	public hairVO() {
 		// TODO Auto-generated constructor stub
 	}
 	public String toString() {
-		String str = null;
+		String str = null; ///???????????null 나옴 주의
 		str=str+this.id;
 		str=str+this.pw;
 		str=str+this.name;
 		str=str+this.phoneNumber;
 		str=str+this.address;
 		str=str+this.enroll;
+		str=str+this.rsv_seq;
 		str=str+this.rsv_date;
 		str=str+this.rsv_time;
 		str=str+this.rsv_status;
 		str=str+this.p_type;
 		str=str+this.workerid;
 		str=str+this.workerpw;
+		str=str+this.sisul_date;
+		str=str+this.sisul_type;
 		return str;
 		
 	}
@@ -56,11 +67,11 @@ private String workerpw= null;
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getphoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
-	public void setphoneNumber(String phone) {
-		this.phoneNumber = phone;
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 	public String getAddress() {
 		return address;
@@ -73,6 +84,12 @@ private String workerpw= null;
 	}
 	public void setEnroll(String enroll) {
 		this.enroll = enroll;
+	}
+	public int getRsv_seq() {
+		return rsv_seq;
+	}
+	public void setRsv_seq(int rsv_seq) {
+		this.rsv_seq = rsv_seq;
 	}
 	public String getRsv_date() {
 		return rsv_date;
@@ -110,6 +127,19 @@ private String workerpw= null;
 	public void setWorkerpw(String workerpw) {
 		this.workerpw = workerpw;
 	}
+	public String getSisul_date() {
+		return sisul_date;
+	}
+	public void setSisul_date(String sisul_date) {
+		this.sisul_date = sisul_date;
+	}
+	public String getSisul_type() {
+		return sisul_type;
+	}
+	public void setSisul_type(String sisul_type) {
+		this.sisul_type = sisul_type;
+	}
+	
 	
 	
 }
