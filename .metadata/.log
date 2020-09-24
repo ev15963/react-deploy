@@ -9925,3 +9925,9 @@ java.net.UnknownHostException: spring.io
 
 !ENTRY org.eclipse.jface.text 2 0 2020-09-24 14:24:24.750
 !MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.wst.server.core 4 0 2020-09-24 20:22:49.065
+!MESSAGE Could not delete C:\web_work\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\hairshop\WEB-INF\lib\ojdbc6.jar. May be locked by another process.
+
+!ENTRY org.eclipse.wst.server.core 4 0 2020-09-24 20:22:49.162
+!MESSAGE Could not delete C:\web_work\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\hairshop\WEB-INF\lib\ojdbc6.jar. May be locked by another process.
