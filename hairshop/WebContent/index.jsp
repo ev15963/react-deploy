@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%response.sendRedirect("http://localhost:9000/hairshop/Hairshop?command=index"); %>
+<%response.sendRedirect("http://localhost:9000/hairshop_prjnew/Hairshop?command=index"); %>
 </body>
 </html>

@@ -9,7 +9,7 @@ import java.sql.Statement;
 
 public class DBManager {
    private static String url = "jdbc:oracle:thin:@localhost:1521:XE";
-   private static String uid = "hair_prj";
+   private static String uid = "lsw";
    private static String pwd = "1234";
    private static String driver= "oracle.jdbc.driver.OracleDriver";
    

@@ -16,17 +16,6 @@ public class CusResUpdateAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		hairVO hvo = new hairVO();
-		
-		hvo.setRsv_date(request.getParameter("rsv_date"));
-		hvo.setRsv_time(request.getParameter("rsv_time"));
-		hvo.setRsv_status(request.getParameter("p_type"));
-		hvo.setName(request.getParameter("id"));
-		hvo.setPhoneNumber(request.getParameter("phoneNumber"));
-		hvo.setRsv_date(request.getParameter("rsv_date"));
-		hvo.setP_type(request.getParameter("p_type"));
-
-		new CustomerListAction().execute(request, response);
 		
 	}
 

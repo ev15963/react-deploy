@@ -59,7 +59,24 @@ public class HairDAO {
 
    // 등록,회원 가입
    public void costomer_insert() {//상우 완료
-      
+	   String sql = "insert into rPWjd(id, pwd, name, phoneNumber, address, enroll)" +
+			   		" values(?, ?, ?, ?, ?, ?)";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			//////
+			
+			
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
    }
    //검색 (이름, 전화번호 뒷자리(4))
    
@@ -75,7 +92,21 @@ public class HairDAO {
    }
    //삭제
    public void costomer_delete(){//상우 완료
-            
+	   String sql = "delete * where id=?";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("costomer_delete err : "+e.getMessage());
+		} finally {
+			DBManager.close(conn, pstmt);
+		}    
    }
    //예약
    public ArrayList<HairVO> costomer_appointmentlist() {
@@ -248,17 +279,27 @@ public class HairDAO {
    
    //전체 보기
    public ArrayList<HairVO> costmoer_selectList() {//상우 완료
-      String sql = "select d.rsv_date, d.rsv_time, d.p_type, d.id, s.rsv_date, s.p_type,"+ 
-            " from dPdir d, sangSE s where d.id=s.id";
+      String sql = "select d.rsv_seq, d.rsv_date, d.rsv_time, d.p_type, d.id, s.rsv_date, s.p_type from dPdir d, sangSE s where d.rsv_seq=s.rsv_seq where ";
       // 디비와 연동
       Connection conn = null;
       // 쿼리문(select)을 수행하기 위한 문장 객체
       PreparedStatement pstmt = null;
-      
-      
       // 결과값을 저장할 ResultSet
       ResultSet rs = null;
-      return null;
+      
+      conn = DBManager.getConnection();
+      
+      try {
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(parameterIndex, x);
+	} catch (SQLException e) {
+		System.out.println("costmoer_selectList err : "+e.getMessage());
+	} finally {
+		DBManager.close(conn, stmt, rs);
+	}
+	return id;
+      
+      
       
    }
    
