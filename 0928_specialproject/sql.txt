@@ -1,0 +1,22 @@
+create sequence board_seq1 start with 1 increment by 1;
+
+create table boardtest1(
+    num number not null primary key,
+    name varchar2(30) not null,
+    email varchar2(30) not null,
+    pass varchar2(30),
+    title varchar2(30),
+    content varchar2(50),
+    readcount numeric(4) default 0,
+    writedate date
+);
+
+insert into boardtest1(num, name, email, pass, title, content) values (board_seq1.nextval, '박도현', 'pdh_pdh@naver.com', 1234, '배고프다', '냉체 족발 먹고싶다');
+insert into boardtest1(num, name, email, pass, title, content) values (board_seq1.nextval, '박인혁', 'megatic@naver.com', 1234, '에', '네 그렇습니다.');
+insert into boardtest1(num, name, email, pass, title, content) values (board_seq1.nextval, '류희영', 'rhy901008@naver.com', 1234, '네', '맞아여.');
+
+alter table boardtest1 add writedate DATE ;
+
+insert into boardtest1 (pass, name, email, title, content, readcount, writedate) values(1234 , '박태성', 'parkopp@naver.com', 'hi', 'hi',0, sysdate());
+
+

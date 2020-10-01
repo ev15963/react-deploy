@@ -1,6 +1,5 @@
 package com.lsw.controller;
 
-import com.controller.action.Action;
 
 public class ActionFactory {
 	
