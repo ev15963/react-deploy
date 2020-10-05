@@ -29,7 +29,7 @@ public class BoardUpdateAction implements Action{
 		BoardDAO bDao = BoardDAO.getInstance(); //BoardDAO를 사용할 싱글톤을 bDao에 담는다.
 		bDao.updateBoard(bVo); //bDao에 있는 updateBoard(게시글 수정하기)메서드에 bVo객체의 값을 담는다.
 		
-		new BoardListAction().excute(request, response);
+		new BoardListAction().execute(request, response);
 		//BoardListAction.java의 BoardListAction로 List창으로 가게 한다.
 		//이 때 위에서 코드의 bVo에 저정되어있는 값을 읽어
 		//BoardListAction에서 list에 뿌려주어
