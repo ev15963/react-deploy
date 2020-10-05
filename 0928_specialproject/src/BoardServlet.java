@@ -26,16 +26,19 @@ public class BoardServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String command = request.getParameter("command");
+		//request영역에 있는 command 파라미터 값을 command란는 이름의 String 으로 저장
+		
+		System.out.println("BoardServlet 에서 요청을 받음을 확인"+command);
+		//command값이 무엇인지 콘솔창에서 확인
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		request.setCharacterEncoding("UTF-8"); //request 영역에서 받은 것을 UTF-8로 인코딩 해준후
+		doGet(request, response); //doget으로 보내서 doget메소드와 동일하게 사용
 	}
 
 }
