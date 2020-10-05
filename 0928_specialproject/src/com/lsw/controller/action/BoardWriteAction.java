@@ -25,7 +25,7 @@ public class BoardWriteAction implements Action{
 		bDao.insertBoard(bVo);
 		//bDao에 있는 insertBoard(게시글 입력하기) 메서드에 bVo객체의 값을 담는다.
 		
-		new BoardListAction().excute(request, response);
+		new BoardListAction().execute(request, response);
 		//BoardListAction.java의 BoardListAction로 List창으로 가게한다.
 		//이때 위에서 코드으 bVo에 저장되어있는 값을읽어
 		//BoardListActiond에서 List에 뿌려주어
